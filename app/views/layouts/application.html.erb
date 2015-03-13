@@ -8,7 +8,67 @@
 </head>
 <body>
 
-<%= yield %>
+<div id="page">
+
+  <div id="header">
+    <div id="logo">
+      <%= link_to root_path do %>
+        <%= image_tag("logo.png", alt: "harmony") %>
+      <% end %>
+    </div>
+
+    <div id="search-block">
+      <%= form_tag(method: "get") do %>
+        <%= search_field_tag :search, '', placeholder: "Найти товары"  %>
+        <%= submit_tag("Search") %>
+      <% end %>
+    </div>
+
+    <div id="nav-bar">
+      <nav>
+        <ul>
+          <li><a href="#">nav item </a></li>
+          <li><a href="#">nav item </a></li>
+          <li><a href="#">nav item </a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <div id="basket-block">
+      <ul>
+        <li><a href="">Войти</a></li> |
+        <li><a href="">Зарегестрироваться</a></li>
+      </ul>
+      <div id="cart">
+        <a href="">
+          <i class="icon bag"> </i>
+          <strong>Моя корзина</strong>
+        </a>
+      </div>
+      <div id="goods">
+        <span class="counter">
+          1 товар
+        </span>
+        |
+        <span class="total">
+          355 руб.
+        </span>
+
+      </div>
+    </div>
+    <br/>
+
+    <div id="banner">
+        banner
+    </div>
+  </div>
+
+  <div id="content" class="<%= controller.controller_name  %>">
+    <%= yield %>
+  </div>
+
+</div>
+
 
 </body>
 </html>

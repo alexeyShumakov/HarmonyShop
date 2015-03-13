@@ -1,0 +1,155 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+body {
+  margin: 0;
+  #page {
+    margin: 0 auto;
+    width: 1000px;
+    min-height: 400px;
+    background-color: #ffefbe;
+
+    #header {
+      position: relative;
+      overflow: auto;
+      width: 100%;
+      background-color: #ffffff;
+      ul {
+        list-style-type: none;
+        li {
+          display: inline-block;
+        }
+      }
+      a:hover {
+        background: none;
+        color: #000000;
+        text-decoration: none;
+      }
+
+      #logo {
+        float: left;
+        width: 350px;
+        height: 60px;
+        margin: 15px 0 0 15px;
+        cursor: pointer;
+      }
+
+      #search-block {
+        float: left;
+
+        width: 350px;
+        height: 60px;
+        margin: 15px 0 0 20px;
+      }
+
+      #nav-bar {
+        $radius: 8px;
+        $skew: 25deg;
+        position: absolute;
+        left: 350px;
+        top: 45px;
+
+        ul {
+          display:inline-block;
+          margin:0;
+          padding:0;
+          list-style:none;
+          transform:skew(-$skew);
+
+          li {
+            background: #824cac;
+            float: left;
+            border-right:1px solid #ebd9ff;
+            box-shadow:0 1px 1px rgba(0,0,0,0.1);
+            text-transform:uppercase;
+            color: #ffffff;
+            font-weight:bolder;
+            transition:all 0.3s linear;
+
+            &:first-child{
+              border-radius:$radius 0 0 $radius;
+            }
+
+            &:last-child{
+              border-right:none;
+              border-radius:0 $radius $radius 0;
+            }
+            &:hover{
+              background:#eee;
+              color: #824cac;
+            }
+
+            a{
+              display:block;
+              padding:1em 2em;
+              color:inherit;
+              text-decoration:none;
+              transform:skew($skew);
+            }
+          }
+        }
+
+
+      }
+
+      #basket-block {
+        float: right;
+        text-align: right;
+
+        width: 250px;
+        height: 100px;
+        ul {
+          margin-bottom: 3px;
+        }
+        #cart {
+          .bag {
+            display: inline-block;
+            background: no-repeat image_url("bag.png");
+            width: 30px;
+            height: 30px;
+            vertical-align: -6px;
+          }
+          a {
+            text-decoration: none;
+            margin-top: -5px;
+            font-size: 22px;
+          }
+          strong:hover {
+            text-decoration: underline;
+          }
+        }
+
+      }
+
+      br {
+        clear: both;
+      }
+
+      #banner {
+        width: 100%;
+        height: 170px;
+        background-color: #d6d6d6;
+        margin-top: -5px;
+      }
+    }
+    
+    #content {
+      height: 350px;
+      width: 100%;
+      background-color: #cdd5ff;
+    }
+  }
+}
