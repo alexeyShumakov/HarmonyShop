@@ -57,7 +57,7 @@ body {
 
       #nav-bar {
         $radius: 8px;
-        $skew: 25deg;
+        $skew: 15deg;
         position: absolute;
         left: 350px;
         top: 45px;
@@ -77,7 +77,7 @@ body {
             text-transform:uppercase;
             color: #ffffff;
             font-weight:bolder;
-            transition:all 0.3s linear;
+            transition:all 0.1s linear;
 
             &:first-child{
               border-radius:$radius 0 0 $radius;
@@ -88,8 +88,7 @@ body {
               border-radius:0 $radius $radius 0;
             }
             &:hover{
-              background:#eee;
-              color: #824cac;
+              background: #a375d2;
             }
 
             a{
