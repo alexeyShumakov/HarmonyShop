@@ -1,0 +1,5 @@
+<% for category in @roots %>
+    <li>
+        <%= link_to category.name, category, class: "root" %>
+    </li>
+<% end %>

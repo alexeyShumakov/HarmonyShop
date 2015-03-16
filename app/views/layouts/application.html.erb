@@ -27,9 +27,7 @@
     <div id="nav-bar">
       <nav>
         <ul>
-          <li><a href="#">nav item </a></li>
-          <li><a href="#">nav item </a></li>
-          <li><a href="#">nav item </a></li>
+          <%= render "categories/top_menu" %>
         </ul>
       </nav>
     </div>
@@ -62,6 +60,7 @@
         banner
     </div>
   </div>
+
 
   <div id="content" class="<%= controller.controller_name  %>">
     <%= yield %>

@@ -13,14 +13,16 @@
  *= require_tree .
  *= require_self
  */
-
+ul {
+  list-style-type: none;
+}
 body {
   margin: 0;
   #page {
     margin: 0 auto;
     width: 1000px;
     min-height: 400px;
-    background-color: #ffefbe;
+    background-color: #ffffff;
 
     #header {
       position: relative;
@@ -28,7 +30,7 @@ body {
       width: 100%;
       background-color: #ffffff;
       ul {
-        list-style-type: none;
+
         li {
           display: inline-block;
         }
@@ -146,9 +148,9 @@ body {
     }
     
     #content {
-      height: 350px;
+      min-height: 350px;
       width: 100%;
-      background-color: #cdd5ff;
+      border: solid 1px gray;
     }
   }
 }

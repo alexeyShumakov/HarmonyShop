@@ -1,0 +1,50 @@
+<p id="notice"><%= notice %></p>
+<div class="catalog-sidebar">
+  <ul class="sidemenu">
+    <%=  render @category.get_category  %>
+  </ul>
+</div>
+<div class="bread-crumbs">
+  <%= link_to 'Главная', root_path  %>
+  <% @category.ancestors.each do |ancestor| %>
+      » <%= link_to ancestor.name, ancestor %>
+  <% end %>
+      » <%= @category.name  %>
+</div>
+
+<h1><%= @category.page_title %></h1>
+
+<p>
+  <strong>Name:</strong>
+  <%= @category.name %>
+</p>
+
+<p>
+  <strong>Parent:</strong>
+  <%= @category.parent_id %>
+</p>
+
+<p>
+  <strong>Lft:</strong>
+  <%= @category.lft %>
+</p>
+
+<p>
+  <strong>Rgt:</strong>
+  <%= @category.rgt %>
+</p>
+
+<p>
+  <strong>Depth:</strong>
+  <%= @category.depth %>
+</p>
+
+<p>
+  <strong>Children count:</strong>
+  <%= @category.children_count %>
+</p>
+
+
+
+<%= link_to 'Edit', edit_category_path(@category) %> |
+<%= link_to 'Back', categories_path %>

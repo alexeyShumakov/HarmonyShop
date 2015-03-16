@@ -1,0 +1,21 @@
+<li>
+  <% if category == @category %>
+      ><%= link_to category.name, category, class: "current_category" %>
+  <% elsif category.is_ancestor_of? @category %>
+      <%= link_to category.name, category, class: "parent_category" %>
+  <% else %>
+      <%= link_to category.name, category, class: "root" %>
+  <% end %>
+
+  <ul>
+    <% for child in category.children do %>
+      <li>
+        <% if child == @category %>
+          ><%= link_to child.name, child, class: "current_category" %>
+        <% else %>
+            <%= link_to child.name, child %>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+</li>

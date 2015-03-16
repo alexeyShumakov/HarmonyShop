@@ -1,0 +1,48 @@
+
+.bread-crumbs {
+  a {
+    color: #484848;
+    text-decoration: underline;
+  }
+
+  a:hover {
+    text-decoration: none;
+  }
+}
+.catalog-sidebar {
+  float: left;
+  width: 200px;
+  padding: 2px 0 0;
+  ul {
+    padding: 0;
+  }
+
+  .sidemenu {
+    a {
+      color: #484848;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+    clear: both;
+    margin: 0;
+    padding: 5px 0 15px 20px;
+
+    ul {
+      padding: 3px 0 15px 0;
+    }
+
+
+    .current_category, .root {
+      font-weight: bold;
+      color: #824cac;
+    }
+
+    .parent_category {
+      font-weight: bold;
+      color: inherit;
+    }
+  }
+}
