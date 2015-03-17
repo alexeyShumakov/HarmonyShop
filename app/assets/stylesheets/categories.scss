@@ -36,13 +36,18 @@
 
 
     .current_category, .root {
-      font-weight: bold;
-      color: #824cac;
+      >a {
+        font-weight: bold;
+        color: #824cac;
+      }
+
     }
 
     .parent_category {
-      font-weight: bold;
-      color: inherit;
+      >a {
+        font-weight: bold;
+        color: inherit;
+      }
     }
   }
 }

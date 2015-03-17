@@ -7,9 +7,9 @@
 <div class="bread-crumbs">
   <%= link_to 'Главная', root_path  %>
   <% @category.ancestors.each do |ancestor| %>
-      » <%= link_to ancestor.name, ancestor %>
+     » <%= link_to ancestor.name, ancestor %>
   <% end %>
-      » <%= @category.name  %>
+     » <%= @category.name  %>
 </div>
 
 <h1><%= @category.page_title %></h1>

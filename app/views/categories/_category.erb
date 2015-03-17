@@ -1,20 +1,25 @@
-<li>
-  <% if category == @category %>
-      ><%= link_to category.name, category, class: "current_category" %>
-  <% elsif category.is_ancestor_of? @category %>
-      <%= link_to category.name, category, class: "parent_category" %>
-  <% else %>
-      <%= link_to category.name, category, class: "root" %>
-  <% end %>
+<% if defined? @current_category %>
 
+  <% if category == @current_category %>
+    <li class="current_category">>
+  <% elsif category.is_ancestor_of? @current_category %>
+    <li class="parent_category">
+  <% else %>
+    <li class="root">
+  <% end %>
+<% else %>
+    <li class="root">
+<% end %>
+
+  <%= link_to category.name, category %>
   <ul>
     <% for child in category.children do %>
-      <li>
-        <% if child == @category %>
-          ><%= link_to child.name, child, class: "current_category" %>
-        <% else %>
-            <%= link_to child.name, child %>
-        <% end %>
+      <% if defined?(@current_category) && child == @current_category %>
+        <li class="current_category">>
+      <% else %>
+        <li>
+      <% end %>
+        <%= link_to child.name, child %>
       </li>
     <% end %>
   </ul>

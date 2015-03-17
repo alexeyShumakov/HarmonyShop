@@ -1,6 +1,8 @@
 <p id="notice"><%= notice %></p>
 <div class="catalog-sidebar">
-  <%=  render :partial => 'side_menu', locals: {:roots => @roots} %>
+  <ul class="sidemenu">
+    <%=  render @roots  %>
+  </ul>
 </div>
 
 <h1>Listing Categories</h1>
