@@ -1,5 +1,9 @@
 <% for category in @roots %>
+  <% if defined?(@current_category) && @current_category.root == category %>
+    <li class="current">
+  <% else  %>
     <li>
+  <% end %>
         <%= link_to category.name, category, class: "root" %>
     </li>
 <% end %>

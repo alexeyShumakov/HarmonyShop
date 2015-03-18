@@ -71,6 +71,10 @@ body {
           list-style:none;
           transform:skew(-$skew);
 
+          .current a {
+            color: #fff375;
+          }
+
           li {
             background: #824cac;
             float: left;
@@ -80,6 +84,7 @@ body {
             color: #ffffff;
             font-weight:bolder;
             transition:all 0.1s linear;
+
 
             &:first-child{
               border-radius:$radius 0 0 $radius;
