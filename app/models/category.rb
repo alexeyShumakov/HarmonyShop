@@ -4,9 +4,4 @@ class Category < ActiveRecord::Base
   def get_category
     root? || !leaf? ? self_and_siblings : parent.self_and_siblings
   end
-
-
-
-
-
 end
