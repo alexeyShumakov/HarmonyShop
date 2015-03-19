@@ -1,11 +1,17 @@
 class CategoriesController < ApplicationController
   before_action :set_category, only: [:show, :edit, :update, :destroy]
   before_action :set_roots
+  before_action :set_cookies, only: [:show, :index]
 
   # GET /categories
   # GET /categories.json
   def index
-    @categories = Category.all
+    if cookies[:pagsize]
+      @categories = Category.page(params[:page]).per(cookies[:pagsize])
+    else
+      @categories = Category.page(params[:page])
+
+    end
   end
 
   # GET /categories/1
@@ -76,5 +82,11 @@ class CategoriesController < ApplicationController
 
     def set_roots
       @roots = Category.roots
+    end
+
+    def set_cookies
+      if params[:pagsize]
+        cookies[:pagsize] = params[:pagsize]
+      end
     end
 end

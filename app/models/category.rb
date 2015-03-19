@@ -1,5 +1,6 @@
 class Category < ActiveRecord::Base
   acts_as_nested_set
+  paginates_per 10
 
   validates :name, presence: true
   validates :page_title, presence: true
