@@ -25,7 +25,7 @@ class CategoriesController < ApplicationController
   # POST /categories
   # POST /categories.json
   def create
-    @category = Category.create!(category_params)
+    @category = Category.new(category_params)
 
     respond_to do |format|
       if @category.save
@@ -71,7 +71,7 @@ class CategoriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def category_params
-      params.require(:category).permit(:name, :parent_id, :children_count)
+      params.require(:category).permit(:name, :parent_id, :children_count, :page_title)
     end
 
     def set_roots
