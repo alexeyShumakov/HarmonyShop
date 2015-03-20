@@ -4,47 +4,34 @@
     <%=  render @category.get_category  %>
   </ul>
 </div>
-<div class="bread-crumbs">
-  <%= link_to 'Главная', root_path  %>
-  <% @category.ancestors.each do |ancestor| %>
-     » <%= link_to ancestor.name, ancestor %>
-  <% end %>
-     » <%= @category.name  %>
-</div>
+<div class="categories-wrapper">
+  <div class="bread-crumbs">
+    <%= link_to 'Главная', root_path  %>
+    <% @category.ancestors.each do |ancestor| %>
+       » <%= link_to ancestor.name, ancestor %>
+    <% end %>
+       » <%= @category.name  %>
+  </div>
 
-<h1><%= @category.page_title %></h1>
-
-<p>
-  <strong>Name:</strong>
-  <%= @category.name %>
-</p>
-
-<p>
-  <strong>Parent:</strong>
-  <%= @category.parent_id %>
-</p>
-
-<p>
-  <strong>Lft:</strong>
-  <%= @category.lft %>
-</p>
-
-<p>
-  <strong>Rgt:</strong>
-  <%= @category.rgt %>
-</p>
-
-<p>
-  <strong>Depth:</strong>
-  <%= @category.depth %>
-</p>
-
-<p>
-  <strong>Children count:</strong>
-  <%= @category.children_count %>
-</p>
+  <h1><%= @category.page_title %></h1>
 
 
+  <ul>
+    <% @cat_products.each do |product| %>
+    <li><%= product.title %> - <%= product.price %></li>
+    <% end %>
+  </ul>
+  <%= paginate @cat_products %>
+  <span>показывать по: </span>
+  <%= link_to "3", category_path(@category, pagsize: 3) %>
+  <%= link_to "6", category_path(@category, pagsize: 6) %>
+  <%= link_to "9", category_path(@category, pagsize: 9) %>
+  <br/>
+  <%= link_to 'New Category', new_category_path %>
+  <br/>
 
-<%= link_to 'Edit', edit_category_path(@category) %> |
-<%= link_to 'Back', categories_path %>
+  <%= link_to 'Edit', edit_category_path(@category) %> |
+  <%= link_to 'Back', categories_path %>
+  </div>
+
+<div class="fix"></div>

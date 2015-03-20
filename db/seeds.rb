@@ -1,27 +1,7 @@
+require 'faker'
 Product.delete_all
 Category.delete_all
 
-Product.create!(
-    title: "Футболка",
-    description: "Хорошая футболка",
-    price: 700
-)
-Product.create!(
-    title: "Рубаха",
-    description: "Хорошая рубаха",
-    price: 800
-)
-
-Product.create!(
-    title: "Майка",
-    description: "Хорошая майка",
-    price: 450
-)
-Product.create!(
-    title: "Джинсы",
-    description: "Хорошие джинсы",
-    price: 1200
-)
 
 cat_1 = Category.create!(
     name: "Для женщин",
@@ -43,11 +23,21 @@ cat_3 = Category.create!(
                 name: sub_cat_name,
                 page_title: cat.page_title + " : " + sub_cat_name
     ).move_to_child_of(cat)
-    ["Категория 1", "Категория 2", "Категория 3"].each do |sub_sub_cat_name|
-      Category.create!(
+    3.times do
+      sub_sub_cat_name = Faker::Commerce.department
+      category = Category.create!(
                   name: sub_sub_cat_name,
                   page_title: cat.page_title + " : " + sub_sub_cat_name
       ).move_to_child_of(sub_cat)
+
+      3.times do
+        Product.create!(
+            title: Faker::Commerce.product_name,
+            description: Faker::Lorem.sentence,
+            price: Faker::Commerce.price,
+            leaf_category_id: category.id
+        ).assign_to_branch
+      end
     end
   end
 

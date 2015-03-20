@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
+  after_action :assign_product_to_branch_category, only: [:create, :edit, :update]
 
   # GET /products
   # GET /products.json
@@ -62,6 +63,9 @@ class ProductsController < ApplicationController
   end
 
   private
+    def assign_product_to_branch_category
+      @product.assign_to_branch
+    end
     # Use callbacks to share common setup or constraints between actions.
     def set_product
       @product = Product.find(params[:id])
@@ -69,6 +73,6 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:title, :description, :price)
+      params.require(:product).permit(:title, :description, :price, :leaf_category_id)
     end
 end
