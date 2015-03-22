@@ -4,19 +4,28 @@ describe Category do
 
 
 	it "is invalid without a page title" do
-		expect(build(:category, page_title: nil )).to have(1).error_on(:page_title)
+		category = build(:category, page_title: nil )
+		category.valid?
+		expect(category.errors[:page_title].size).to eq(1)
+
 	end
 
 	it "is invalid without a name " do
-		expect(build(:category, name: nil)).to have(1).error_on(:name)
+		category = build(:category, name: nil)
+		category.valid?
+		expect(category.errors[:name].size).to eq(1)
 	end
 
 	it 'is invalid if parent is not integer' do
-		expect(build(:category, parent_id: "12.3")).to have(1).error_on(:parent_id)
+		category = build(:category, parent_id: 12.3)
+		category.valid?
+		expect(category.errors[:parent_id].size).to eq(1)
 	end
 
 	it 'is invalid if parent is string' do
-		expect(build(:category, parent_id: "string")).to have(1).error_on(:parent_id)
+		category = build(:category, parent_id: "str")
+		category.valid?
+		expect(category.errors[:parent_id].size).to eq(1)
 	end
 
 	it 'is valid with a name, page_title and parent_id=integer' do
