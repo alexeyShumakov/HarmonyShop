@@ -1,0 +1,13 @@
+<div class="product-item">
+  <%= link_to product, {class: "image-link"} do %>
+    <%= image_tag "default_product.png" %>
+    <%= content_tag :span, "Подробнее",{class: "more"} %>
+  <% end %>
+
+  <%= link_to product, {class: 'ref-product'} do %>
+    <%= content_tag :strong, product.title, {class: "product-title"} %>
+    <%= content_tag :span, {class: "product-price"} do %>
+      <%= product.price %> руб.
+    <% end %>
+  <% end %>
+</div>
