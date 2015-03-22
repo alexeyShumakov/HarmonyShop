@@ -5,19 +5,14 @@ class CategoriesController < ApplicationController
   # GET /categories
   # GET /categories.json
   def index
-    if cookies[:pagsize]
-      @categories = Category.page(params[:page]).per(cookies[:pagsize])
-    else
-      @categories = Category.page(params[:page])
-
-    end
+      @products = Product.first(33)
   end
 
   # GET /categories/1
   # GET /categories/1.json
   def show
-    if cookies[:pagsize]
-      @cat_products = @category.products.page(params[:page]).per(cookies[:pagsize])
+    if cookies[:page_size]
+      @cat_products = @category.products.page(params[:page]).per(cookies[:page_size])
     else
       @cat_products = @category.products.page(params[:page])
     end
@@ -81,12 +76,12 @@ class CategoriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def category_params
-      params.require(:category).permit(:name, :parent_id, :children_count, :page_title)
+      params.require(:category).permit(:name, :parent_id, :children_count, :page_title, :description)
     end
 
     def set_cookies
-      if params[:pagsize]
-        cookies[:pagsize] = params[:pagsize]
+      if params[:page_size]
+        cookies[:page_size] = params[:page_size]
       end
     end
 end

@@ -15,19 +15,18 @@
 
   <h1><%= @category.page_title %></h1>
 
+  <%= render 'products/pagination', cat_products: @cat_products %>
 
-  <ul>
-    <% @cat_products.each do |product| %>
-    <li><%= product.title %> - <%= product.price %></li>
-    <% end %>
-  </ul>
-  <%= paginate @cat_products %>
-  <span>показывать по: </span>
-  <%= link_to "3", category_path(@category, pagsize: 3) %>
-  <%= link_to "6", category_path(@category, pagsize: 6) %>
-  <%= link_to "9", category_path(@category, pagsize: 9) %>
+  <div class="catalog">
+    <%= render @cat_products %>
+  </div>
+
+  <%= render 'products/pagination', cat_products: @cat_products %>
+  <p>
+    <%= @category.description %>
+  </p>
   <br/>
-  <%= link_to 'New Category', new_category_path %>
+    <%= link_to 'New Category', new_category_path %>
   <br/>
 
   <%= link_to 'Edit', edit_category_path(@category) %> |
