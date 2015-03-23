@@ -1,25 +1,92 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @product.title %>
-</p>
+  <div class="back">
+    < <%= link_to 'Назад к списку товаров', categories_path %>
+  </div>
+    <div class="container">
+      <div class="photo"></div>
+      <div class="info">
+        <div class="info-box">
+          <h1 class="name">Название товара</h1>
+          <div class="price">300 руб.</div>
+        </div>
+        <div class="info-box">
+          <p class="article">
+            Артикул:
+            <span>
+              1537456
+            </span>
+          </p>
+          <p class="color">
+            Цвет:
+            <span>
+              серый
+            </span>
+          </p>
+          <p class="description">
+            <%= @product.description %>
+          </p>
+        </div>
 
-<p>
-  <strong>Description:</strong>
-  <%= @product.description %>
-</p>
-
-<p>
-  <strong>Price:</strong>
-  <%= @product.price %>
-</p>
-<p>
-  <strong>Branch</strong>
-  <% @product.categories.each do |category| %>
-    <%= category.name %> ->
-  <% end %>
-</p>
-
+        <div class="info-box">
+          <!--TODO сверстать выбор размера-->
+          выберете размер
+          <div class="select-size">
+            <ul>
+              <li>=2=</li>
+              <li>=2=</li>
+              <li>=2=</li>
+              <li>=2=</li>
+            </ul>
+          </div>
+          <div class="order">
+            <button>добавить в корзину</button>
+          </div>
+          <div class="table-of-sizes">
+            <a href="">Определите совй размер</a>
+          </div>
+          <div class="carousel">
+            <!--TODO  Сделать карусель-->
+          </div>
+        </div>
+        <div class="info-box">
+          <table class="additional">
+            <!--TODO Модель доп-описание-->
+            <caption class="title">Дополнительное описание</caption>
+            <tbody>
+            <tr>
+              <td>item 1</td>
+              <td>item 2</td>
+            </tr>
+            </tbody>
+            <tbody>
+            <tr>
+              <td>item 1</td>
+              <td>item 2</td>
+            </tr>
+            </tbody>
+            <tbody>
+            <tr>
+              <td>item 1</td>
+              <td>item 2</td>
+            </tr>
+            </tbody>
+            <tbody>
+            <tr>
+              <td>item 1</td>
+              <td>item 2</td>
+            </tr>
+            </tbody>
+            <tbody>
+            <tr>
+              <td>item 1</td>
+              <td>item 2</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
 <%= link_to 'Edit', edit_product_path(@product) %> |
 <%= link_to 'Back', products_path %>
+<div class="fix"></div>
