@@ -11,6 +11,8 @@ class CategoriesController < ApplicationController
   # GET /categories/1
   # GET /categories/1.json
   def show
+
+
     if cookies[:page_size]
       @cat_products = @category.products.page(params[:page]).per(cookies[:page_size])
     else
