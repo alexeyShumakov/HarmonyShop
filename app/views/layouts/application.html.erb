@@ -5,6 +5,7 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <%= yield(:head) %>
 </head>
 <body>
 
@@ -65,9 +66,49 @@
   <div id="content" class="<%= controller.controller_name  %>">
     <%= yield %>
   </div>
-
 </div>
 
+<div class="footer-wrapper">
+  <div class="footer">
+    <ul class="footer-nav">
+      <li class="footer-help">
+        <h5>Сервис и помощь</h5>
+        <ul class="services">
+          <li>Как сделать заказ</li>
+          <li>Возврат</li>
+          <li>Публичная оферта</li>
+          <li>Доставка</li>
+          <li>Способы оплаты</li>
+          <li>Правила продажи</li>
+          <li>Ткани и уход за ними</li>
+          <li>Вопросы и ответы </li>
+        </ul>
+      </li>
+      <li class="footer-about">
+        <h5>О компании</h5>
+        <ul class="about">
+          <li>О нас</li>
+          <li>Контакты</li>
+          <li>Преимущества</li>
+          <li>Вакансии</li>
+          <li>Сертификаты</li>
+          <li>Партнерам</li>
+          <li>Наши скидки</li>
+        </ul>
+      </li>
+    </ul>
+    <div class="fix"></div>
+    <ul class="social">
+      <li class="head">Следуй за нами</li>
+      <li>V</li>
+      <li>t</li>
+      <li>f</li>
+      <li>y</li>
+    </ul>
+    <div class="fix"></div>
+  </div>
+</div>
+<div class="go-top"></div>
 
 </body>
 </html>

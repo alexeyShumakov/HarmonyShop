@@ -5,7 +5,7 @@ class CategoriesController < ApplicationController
   # GET /categories
   # GET /categories.json
   def index
-      @products = Product.first(33)
+      @products = Product.first(75)
   end
 
   # GET /categories/1

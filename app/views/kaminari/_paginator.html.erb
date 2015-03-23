@@ -6,6 +6,10 @@
     remote:        data-remote
     paginator:     the paginator that renders the pagination tags inside
 -%>
+<% if current_page.last? && current_page.first? -%>
+  <%= current_page %>
+<% end -%>
+
 <%= paginator.render do -%>
   <nav class="pagination">
     <%= prev_page_tag unless current_page.first? %>
