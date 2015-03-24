@@ -7,46 +7,56 @@
       <div class="photo"></div>
       <div class="info">
         <div class="info-box">
-          <h1 class="name">Название товара</h1>
+          <h1 class="name"><%= @product.title %></h1>
           <div class="price">300 руб.</div>
         </div>
         <div class="info-box">
-          <p class="article">
-            Артикул:
-            <span>
-              1537456
-            </span>
-          </p>
-          <p class="color">
-            Цвет:
-            <span>
-              серый
-            </span>
-          </p>
-          <p class="description">
-            <%= @product.description %>
-          </p>
+          <p class="inf article">Артикул:<span>1537456</span></p>
+          <p class="inf color">Цвет:<span>серый</span></p>
+          <p class="inf composition">Состав<span>Хлопок 100%</span></p>
+          <p class="description"><%= @product.description %></p>
         </div>
 
         <div class="info-box">
-          <!--TODO сверстать выбор размера-->
-          выберете размер
-          <div class="select-size">
+          <p class="inf color"> Выберете цвет: </p>
+          <div class="select-color">
             <ul>
-              <li>=2=</li>
-              <li>=2=</li>
-              <li>=2=</li>
-              <li>=2=</li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
             </ul>
           </div>
           <div class="order">
-            <button>добавить в корзину</button>
+            <a href="#" class="myButton">Добавить в корзину</a>
+
           </div>
+          <div class="fix"></div>
+          <p class="inf size"> Выберете размер:</p>
+          <div class="select-size">
+              <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+              </ul>
+          </div>
+          <div class="fix"></div>
           <div class="table-of-sizes">
-            <a href="">Определите совй размер</a>
+            <a href="">Определите свой размер</a>
           </div>
+
+
           <div class="carousel">
             <!--TODO  Сделать карусель-->
+            <ul>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+            </ul>
           </div>
         </div>
         <div class="info-box">
@@ -58,26 +68,22 @@
               <td>item 1</td>
               <td>item 2</td>
             </tr>
-            </tbody>
-            <tbody>
+
             <tr>
               <td>item 1</td>
               <td>item 2</td>
             </tr>
-            </tbody>
-            <tbody>
+
             <tr>
               <td>item 1</td>
               <td>item 2</td>
             </tr>
-            </tbody>
-            <tbody>
+
             <tr>
               <td>item 1</td>
               <td>item 2</td>
             </tr>
-            </tbody>
-            <tbody>
+
             <tr>
               <td>item 1</td>
               <td>item 2</td>
