@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Product:</strong>
+  <%= @products_color.product %>
+</p>
+
+<p>
+  <strong>Color:</strong>
+  <%= @products_color.color %>
+</p>
+
+<%= link_to 'Edit', edit_products_color_path(@products_color) %> |
+<%= link_to 'Back', products_colors_path %>
