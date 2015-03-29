@@ -1,25 +1,5 @@
-<%= form_for(@products_color) do |f| %>
-  <% if @products_color.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@products_color.errors.count, "error") %> prohibited this products_color from being saved:</h2>
+<%= simple_form_for(@products_color) do |f| %>
+  <%= f.association :sizes, as: :check_boxes %>
+  <%= f.button :submit %>
 
-      <ul>
-      <% @products_color.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :product_id %><br>
-    <%= f.text_field :product_id %>
-  </div>
-  <div class="field">
-    <%= f.label :color_id %><br>
-    <%= f.text_field :color_id %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
 <% end %>

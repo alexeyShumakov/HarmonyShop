@@ -28,7 +28,7 @@ class ProductsColorsSizesController < ApplicationController
 
     respond_to do |format|
       if @products_colors_size.save
-        format.html { redirect_to @products_colors_size, notice: 'Products colors size was successfully created.' }
+        format.html { redirect_to products_path, notice: 'Products colors size was successfully created.' }
         format.json { render :show, status: :created, location: @products_colors_size }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class ProductsColorsSizesController < ApplicationController
   def update
     respond_to do |format|
       if @products_colors_size.update(products_colors_size_params)
-        format.html { redirect_to @products_colors_size, notice: 'Products colors size was successfully updated.' }
+        format.html { redirect_to products_path, notice: 'Products colors size was successfully updated.' }
         format.json { render :show, status: :ok, location: @products_colors_size }
       else
         format.html { render :edit }

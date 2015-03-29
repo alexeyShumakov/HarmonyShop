@@ -28,7 +28,7 @@ class ProductsColorsController < ApplicationController
 
     respond_to do |format|
       if @products_color.save
-        format.html { redirect_to @products_color, notice: 'Products color was successfully created.' }
+        format.html { redirect_to products_path, notice: 'Products color was successfully created.' }
         format.json { render :show, status: :created, location: @products_color }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class ProductsColorsController < ApplicationController
   def update
     respond_to do |format|
       if @products_color.update(products_color_params)
-        format.html { redirect_to @products_color, notice: 'Products color was successfully updated.' }
+        format.html { redirect_to products_path, notice: 'Products color was successfully updated.' }
         format.json { render :show, status: :ok, location: @products_color }
       else
         format.html { render :edit }
@@ -69,6 +69,6 @@ class ProductsColorsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def products_color_params
-      params.require(:products_color).permit(:product_id, :color_id)
+      params.require(:products_color).permit(:product_id, :color_id, :size_ids =>[] )
     end
 end
