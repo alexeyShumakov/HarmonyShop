@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :images
+
   resources :products_colors_sizes
 
   resources :sizes
