@@ -14,7 +14,7 @@
         </div>
         <div class="info-box">
           <p class="inf article">Артикул: <span>1537456</span></p>
-          <p class="inf color">Цвет: <span>серый</span></p>
+          <p class="inf color">Цвет: <span><%= @current_color.color.name if @current_color %></span></p>
           <p class="inf composition">Состав: <span>Хлопок 100%</span></p>
           <p class="description"><%= @product.description %></p>
         </div>
@@ -23,10 +23,15 @@
           <p class="inf color"> Выберете цвет: </p>
           <div class="select-color">
             <ul>
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
+              <% @product.products_colors.each do |color| %>
+                <%= link_to  product_path(@product, :color_id => color.color_id) do %>
+                  <li style="background-color: <%= color.color.code %>;"
+                    <% if color == @current_color %>
+                           class="current_color"
+                    <% end %>>
+                  </li>
+                <% end %>
+              <% end  %>
             </ul>
           </div>
           <div class="order">
@@ -37,11 +42,11 @@
           <p class="inf size"> Выберете размер:</p>
           <div class="select-size">
               <ul>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
+                <% if @current_color %>
+                  <% @current_color.products_colors_sizes.each do |c_size| %>
+                    <li><%= c_size.size.name %></li>
+                  <% end %>
+                <% end %>
               </ul>
           </div>
           <div class="fix"></div>
@@ -53,11 +58,9 @@
           <div class="carousel">
             <!--TODO  Сделать карусель-->
             <ul>
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
+              <% @current_color.images.each do |img| %>
+                <li><%= img.name %></li>
+              <% end %>
             </ul>
           </div>
         </div>
