@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Products Colors Sizes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Warehouse</th>
+      <th>Products color</th>
+      <th>Size</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @products_colors_sizes.each do |products_colors_size| %>
+      <tr>
+        <td><%= products_colors_size.warehouse %></td>
+        <td><%= products_colors_size.products_color %></td>
+        <td><%= products_colors_size.size %></td>
+        <td><%= link_to 'Show', products_colors_size %></td>
+        <td><%= link_to 'Edit', edit_products_colors_size_path(products_colors_size) %></td>
+        <td><%= link_to 'Destroy', products_colors_size, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Products colors size', new_products_colors_size_path %>

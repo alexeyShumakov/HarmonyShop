@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Warehouse:</strong>
+  <%= @products_colors_size.warehouse %>
+</p>
+
+<p>
+  <strong>Products color:</strong>
+  <%= @products_colors_size.products_color %>
+</p>
+
+<p>
+  <strong>Size:</strong>
+  <%= @products_colors_size.size %>
+</p>
+
+<%= link_to 'Edit', edit_products_colors_size_path(@products_colors_size) %> |
+<%= link_to 'Back', products_colors_sizes_path %>
