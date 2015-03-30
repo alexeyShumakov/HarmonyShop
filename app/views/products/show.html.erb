@@ -76,38 +76,17 @@
         </div>
         <div class="info-box">
           <table class="additional">
-            <!--TODO Модель доп-описание-->
             <caption class="title">Дополнительное описание</caption>
             <tbody>
-            <tr>
-              <td>item 1</td>
-              <td>item 2</td>
-            </tr>
-
-            <tr>
-              <td>item 1</td>
-              <td>item 2</td>
-            </tr>
-
-            <tr>
-              <td>item 1</td>
-              <td>item 2</td>
-            </tr>
-
-            <tr>
-              <td>item 1</td>
-              <td>item 2</td>
-            </tr>
-
-            <tr>
-              <td>item 1</td>
-              <td>item 2</td>
-            </tr>
+            <% @product.additional_descriptions.each do |addit_desc| %>
+              <tr>
+                <td><%= addit_desc.name %></td>
+                <td><%= addit_desc.description %></td>
+              </tr>
+            <% end %>
             </tbody>
           </table>
         </div>
       </div>
     </div>
-<%= link_to 'Edit', edit_product_path(@product) %> |
-<%= link_to 'Back', products_path %>
 <div class="fix"></div>

@@ -19,6 +19,13 @@
       <p><strong>Описание:</strong>
         <%= product.description %>
       </p>
+      <p>Дополнительное описание
+        <%= link_to 'Add addition description', new_product_additional_description_path(product) %> <br/>
+        <% product.additional_descriptions.each do |addit_desc| %>
+          <strong><%= addit_desc.name %></strong> <%= addit_desc.description %> <br/>
+        <% end %>
+      </p>
+
       <% if product.products_colors.present? %>
         <ul>Colors
           <li>

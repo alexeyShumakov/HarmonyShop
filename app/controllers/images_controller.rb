@@ -1,6 +1,5 @@
 class ImagesController < ApplicationController
   before_action :set_image, only: [:show, :edit, :update, :destroy]
-  #after_action :save_in_products_color, only: [:create]
 
   # GET /images
   # GET /images.json
