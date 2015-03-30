@@ -10,6 +10,11 @@ class ImagesController < ApplicationController
   # GET /images/1
   # GET /images/1.json
   def show
+    @products_color = ProductsColor.find(params[:products_color_id])
+    @image = @products_color.images.find(params[:id])
+    respond_to do |format|
+      format.js {}
+    end
   end
 
   # GET /images/new

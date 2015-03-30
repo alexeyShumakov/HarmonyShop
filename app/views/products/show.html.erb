@@ -68,7 +68,9 @@
             <% if @current_color %>
             <ul>
               <% @current_color.images.each do |img| %>
-                <li><%= image_tag img.photo.url(:small) %></li>
+                <%= link_to products_color_image_path(@current_color, img), remote: true do %>
+                  <%= image_tag img.photo.url(:small) %>
+                <% end %>
               <% end %>
             </ul>
               <% end %>
