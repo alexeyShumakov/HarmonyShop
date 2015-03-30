@@ -5,7 +5,15 @@
   </div>
     <div class="container">
       <div class="photo">
-        <%= image_tag 'default_product_average.png' %>
+        <% if @current_color %>
+          <% if @current_color.images.present? %>
+            <%= image_tag @current_color.images.first.photo.url(:large) %>
+          <% else %>
+            <%= image_tag 'default_product_average.png' %>
+          <% end %>
+        <% else %>
+          <%= image_tag 'default_product_average.png' %>
+        <% end %>
       </div>
       <div class="info">
         <div class="info-box">
@@ -60,7 +68,7 @@
             <% if @current_color %>
             <ul>
               <% @current_color.images.each do |img| %>
-                <li><%= img.name %></li>
+                <li><%= image_tag img.photo.url(:small) %></li>
               <% end %>
             </ul>
               <% end %>

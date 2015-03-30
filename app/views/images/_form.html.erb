@@ -1,5 +1,5 @@
 <%= simple_form_for([@products_color, @image] ) do |f| %>
   <%= f.input :name %>
-  <%= @products_color.id %>
+  <%= f.input :photo, as: :file %>
   <%= f.button :submit %>
 <% end %>

@@ -16,6 +16,9 @@
         <%= link_to 'Edit', edit_product_path(product) %>
         <%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %>
       </p>
+      <p><strong>Описание:</strong>
+        <%= product.description %>
+      </p>
       <% if product.products_colors.present? %>
         <ul>Colors
           <li>
@@ -36,7 +39,8 @@
               <ul>Images <%= link_to 'Add image', new_products_color_image_path(p_color) %>
                 <% p_color.images.each do |img| %>
                   <li>
-                    <%= img.name %>
+                    <%= img.name %> <%= link_to 'Edit', [:edit, p_color, img] %>
+                    <%= link_to 'Delete', [p_color, img], method: :delete, data: { confirm: 'Are you sure?' } %>
                   </li>
                 <% end %>
               </ul>

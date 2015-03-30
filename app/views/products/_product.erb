@@ -1,8 +1,12 @@
 <div class="product-item">
   <%= link_to product, {class: "image-link"} do %>
-    <%= image_tag "default_product.png" %>
+    <% if product.products_colors.present? %>
+      <%= image_tag product.products_colors.first.images.first.photo.url(:thumb) %>
+    <% else%>
+      <%= image_tag 'default_product.png' %>
+    <% end %>
     <%= content_tag :span, "Подробнее",{class: "more"} %>
-  <% end %>
+<% end %>
 
   <%= link_to product, {class: 'ref-product'} do %>
     <%= content_tag :strong, product.title, {class: "product-title"} %>
