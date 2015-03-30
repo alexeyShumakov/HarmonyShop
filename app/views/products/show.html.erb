@@ -57,11 +57,13 @@
 
           <div class="carousel">
             <!--TODO  Сделать карусель-->
+            <% if @current_color %>
             <ul>
               <% @current_color.images.each do |img| %>
                 <li><%= img.name %></li>
               <% end %>
             </ul>
+              <% end %>
           </div>
         </div>
         <div class="info-box">
