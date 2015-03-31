@@ -1,0 +1,7 @@
+<%= link_to  products_color_path(products_color), remote: true do %>
+  <li style="background-color: <%= products_color.color.code %>;"
+      <% if products_color == current_color %>
+      class="current_color"
+      <% end %>>
+  </li>
+<% end %>

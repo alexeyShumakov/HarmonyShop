@@ -10,6 +10,15 @@ class ProductsColorsController < ApplicationController
   # GET /products_colors/1
   # GET /products_colors/1.json
   def show
+    @products_color = ProductsColor.find(params[:id])
+    @product = @products_color.product
+    respond_to do |format|
+      if @products_color.images.present?
+        format.js {}
+      else
+        format.js { render 'products_colors/no_images' }
+      end
+    end
   end
 
   # GET /products_colors/new

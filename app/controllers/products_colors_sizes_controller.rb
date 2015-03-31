@@ -10,6 +10,11 @@ class ProductsColorsSizesController < ApplicationController
   # GET /products_colors_sizes/1
   # GET /products_colors_sizes/1.json
   def show
+    @products_color = @products_colors_size.products_color
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   # GET /products_colors_sizes/new

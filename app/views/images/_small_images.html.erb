@@ -1,0 +1,13 @@
+<ul>
+  <% current_color.images.each do |img| %>
+    <% if current_image == img %>
+      <%= link_to products_color_image_path(current_color, img), class: 'current', remote: true do %>
+        <%= image_tag img.photo.url(:small) %>
+      <% end %>
+    <% else %>
+      <%= link_to products_color_image_path(current_color, img), remote: true do %>
+        <%= image_tag img.photo.url(:small) %>
+      <% end %>
+    <% end  %>
+  <% end %>
+</ul>

@@ -31,15 +31,9 @@
           <p class="inf color"> Выберете цвет: </p>
           <div class="select-color">
             <ul>
-              <% @product.products_colors.each do |color| %>
-                <%= link_to  product_path(@product, :color_id => color.color_id) do %>
-                  <li style="background-color: <%= color.color.code %>;"
-                    <% if color == @current_color %>
-                           class="current_color"
-                    <% end %>>
-                  </li>
-                <% end %>
-              <% end  %>
+              <%= render :partial => 'products_colors/products_color',
+                         :collection => @product.products_colors,
+                         :locals => {:current_color => @current_color } %>
             </ul>
           </div>
           <div class="order">
@@ -51,9 +45,7 @@
           <div class="select-size">
               <ul>
                 <% if @current_color %>
-                  <% @current_color.products_colors_sizes.each do |c_size| %>
-                    <li><%= c_size.size.name %></li>
-                  <% end %>
+                  <%= render @current_color.products_colors_sizes %>
                 <% end %>
               </ul>
           </div>
@@ -64,16 +56,11 @@
 
 
           <div class="carousel">
-            <!--TODO  Сделать карусель-->
             <% if @current_color %>
-            <ul>
-              <% @current_color.images.each do |img| %>
-                <%= link_to products_color_image_path(@current_color, img), remote: true do %>
-                  <%= image_tag img.photo.url(:small) %>
-                <% end %>
-              <% end %>
-            </ul>
-              <% end %>
+              <%= render :partial => 'images/small_images',
+                         :locals => {:current_color => @current_color,
+                                     :current_image => @current_color.images.first} %>
+            <% end %>
           </div>
         </div>
         <div class="info-box">

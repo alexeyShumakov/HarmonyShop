@@ -1,0 +1,9 @@
+<%= link_to products_colors_size, remote: true  do %>
+  <% current_pcs = nil if local_assigns[:current_pcs].nil? %>
+  <% if products_colors_size == current_pcs %>
+    <li class="current">
+  <% else %>
+    <li>
+  <% end %>
+  <%= products_colors_size.size.name %></li>
+<% end %>
