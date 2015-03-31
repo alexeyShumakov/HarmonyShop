@@ -18,10 +18,10 @@
       <div class="info">
         <div class="info-box">
           <h1 class="name"><%= @product.title %></h1>
-          <div class="price">300 руб.</div>
+          <div class="price"><%= @product.price %> руб.</div>
         </div>
         <div class="info-box">
-          <p class="inf article">Артикул: <span>1537456</span></p>
+          <p class="inf article">Артикул: <span><%= @product.article %></span></p>
           <p class="inf color">Цвет: <span><%= @current_color.color.name if @current_color %></span></p>
           <p class="inf composition">Состав: <span>Хлопок 100%</span></p>
           <p class="description"><%= @product.description %></p>

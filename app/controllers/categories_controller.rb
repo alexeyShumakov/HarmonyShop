@@ -1,6 +1,6 @@
 class CategoriesController < ApplicationController
   before_action :set_category, only: [:show, :edit, :update, :destroy]
-  before_action :set_cookies, only: [:show, :index]
+  before_action :set_cookies, only: [:show]
 
   # GET /categories
   # GET /categories.json
@@ -77,11 +77,5 @@ class CategoriesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def category_params
       params.require(:category).permit(:name, :parent_id, :children_count, :page_title, :description)
-    end
-
-    def set_cookies
-      if params[:page_size]
-        cookies[:page_size] = params[:page_size]
-      end
     end
 end

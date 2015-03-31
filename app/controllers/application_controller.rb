@@ -5,6 +5,13 @@ class ApplicationController < ActionController::Base
   before_action :set_roots
 
   private
+    def set_cookies
+      if params[:page_size]
+        cookies[:page_size] = params[:page_size]
+      else
+        cookies[:page_size] = 9
+      end
+    end
 
     def set_roots
       @roots = Category.roots

@@ -9,15 +9,13 @@ class ProductsController < ApplicationController
   end
 
   def search
-    if params[:page_size]
-        cookies[:page_size] = params[:page_size]
-    end
+    set_cookies
     @products = Product.search do
       fulltext params[:search] do
         fields(:title)
       end
 
-      paginate page: params[:page], per_page: params[:page_size]
+      paginate page: params[:page], per_page: cookies[:page_size]
     end
   end
 
@@ -92,6 +90,6 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:title, :description, :price, :leaf_category_id, :color_ids => [])
+      params.require(:product).permit(:title, :description, :price, :leaf_category_id, :article, :color_ids => [])
     end
 end
