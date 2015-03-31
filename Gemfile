@@ -48,6 +48,7 @@ group :development, :test do
   gem 'byebug'
 
   gem 'meta_request'
+  gem 'progress_bar'
 
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'

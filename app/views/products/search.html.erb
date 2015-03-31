@@ -1,0 +1,20 @@
+
+<div class="catalog-sidebar">
+  <ul class="sidemenu">
+    <%=  render @roots  %>
+  </ul>
+</div>
+<div class="categories-wrapper">
+  <h1><%= params[:search] %></h1>
+
+  <%= render 'products/search_pagination', cat_products: @products %>
+
+  <div class="catalog">
+    <%= render @products.results %>
+  </div>
+
+  <%= render 'products/search_pagination', cat_products: @products %>
+
+</div>
+<div class="fix"></div>
+

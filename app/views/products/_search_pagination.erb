@@ -1,0 +1,15 @@
+<div class="pager">
+
+  <span class="total">Товаров: <strong><%= cat_products.total %> </strong></span>
+  <%= paginate cat_products.results, window: 2, left: 1, right: 1 %>
+  <div class="page_sizer">
+    <span>Показывать по </span>
+    <% [3, 6, 9].each do |size| %>
+      <% if cookies[:page_size] == size.to_s %>
+        <%= link_to size, search_path( page_size: size, search: params[:search]), class: 'current_size' %>
+      <% else %>
+        <%= link_to size, search_path( page_size: size, search: params[:search]) %>
+      <% end %>
+    <% end %>
+  </div>
+</div>

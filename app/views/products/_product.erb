@@ -1,7 +1,12 @@
 <div class="product-item">
   <%= link_to product, {class: "image-link"} do %>
     <% if product.products_colors.present? %>
-      <%= image_tag product.products_colors.first.images.first.photo.url(:thumb) %>
+      <% if  product.products_colors.first.images.present? %>
+        <%= image_tag product.products_colors.first.images.first.photo.url(:thumb) %>
+      <% else %>
+        <%= image_tag 'default_product.png' %>
+      <% end %>
+
     <% else%>
       <%= image_tag 'default_product.png' %>
     <% end %>

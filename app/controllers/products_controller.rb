@@ -8,6 +8,19 @@ class ProductsController < ApplicationController
     @products = Product.all.page(params[:page]).per(10)
   end
 
+  def search
+    if params[:page_size]
+        cookies[:page_size] = params[:page_size]
+    end
+    @products = Product.search do
+      fulltext params[:search] do
+        fields(:title)
+      end
+
+      paginate page: params[:page], per_page: params[:page_size]
+    end
+  end
+
   # GET /products/1
   # GET /products/1.json
   def show
@@ -68,6 +81,7 @@ class ProductsController < ApplicationController
   end
 
   private
+
     def assign_product_to_branch_category
       @product.assign_to_branch
     end

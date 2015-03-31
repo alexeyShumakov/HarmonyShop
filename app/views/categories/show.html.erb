@@ -18,22 +18,16 @@
 
   <h1><%= @category.page_title %></h1>
 
-  <%= render 'products/pagination', cat_products: @cat_products %>
+  <%= render 'products/pagination', cat_products: @cat_products, category: @category %>
 
   <div class="catalog">
     <%= render @cat_products %>
   </div>
 
-  <%= render 'products/pagination', cat_products: @cat_products %>
+  <%= render 'products/pagination', cat_products: @cat_products, category: @category %>
   <p>
     <%= @category.description %>
   </p>
-  <br/>
-    <%= link_to 'New Category', new_category_path %>
-  <br/>
-
-  <%= link_to 'Edit', edit_category_path(@category) %> |
-  <%= link_to 'Back', categories_path %>
   </div>
 
 <div class="fix"></div>
