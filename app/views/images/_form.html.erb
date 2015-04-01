@@ -1,4 +1,4 @@
-<%= simple_form_for([@products_color, @image] ) do |f| %>
+<%= simple_form_for([@products_color, @image], multipart: true ) do |f| %>
   <%= f.input :name %>
   <%= f.input :photo, as: :file %>
   <%= f.button :submit %>

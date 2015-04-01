@@ -1,4 +1,6 @@
 require 'rails_helper'
+require 'rack/test'
+
 
 
 RSpec.describe ImagesController, type: :controller do
@@ -7,7 +9,7 @@ RSpec.describe ImagesController, type: :controller do
   # Image. As you add validations to Image, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    {name: nil, photo: File.new(Rails.root + 'spec/fixtures/default_product_average.png'), products_color_id: 1}
+    {name: nil, photo: Rack::Test::UploadedFile.new(Rails.root + 'spec/fixtures/default_product_average.png', 'image/png'), products_color_id: 1}
   }
   let(:products_colors_attributes) {
     {product_id: 1, color_id: 1}
@@ -67,25 +69,29 @@ RSpec.describe ImagesController, type: :controller do
       end
 
       it "assigns a newly created image as @image" do
-        post :create, {:image => valid_attributes}, valid_session
+        products_color = ProductsColor.create! products_colors_attributes
+        post :create, {:products_color_id => products_color.id, :image => valid_attributes}, valid_session
         expect(assigns(:image)).to be_a(Image)
         expect(assigns(:image)).to be_persisted
       end
 
-      it "redirects to the created image" do
-        post :create, {:image => valid_attributes}, valid_session
-        expect(response).to redirect_to(Image.last)
+      it "redirects to the products index" do
+        products_color = ProductsColor.create! products_colors_attributes
+        post :create, {:products_color_id => products_color.id, :image => valid_attributes}, valid_session
+        expect(response).to redirect_to(products_path)
       end
     end
 
     context "with invalid params" do
       it "assigns a newly created but unsaved image as @image" do
-        post :create, {:image => invalid_attributes}, valid_session
+        products_color = ProductsColor.create! products_colors_attributes
+        post :create, {:products_color_id => products_color.id, :image => invalid_attributes}, valid_session
         expect(assigns(:image)).to be_a_new(Image)
       end
 
       it "re-renders the 'new' template" do
-        post :create, {:image => invalid_attributes}, valid_session
+        products_color = ProductsColor.create! products_colors_attributes
+        post :create, {:products_color_id => products_color.id, :image => invalid_attributes}, valid_session
         expect(response).to render_template("new")
       end
     end
@@ -94,39 +100,58 @@ RSpec.describe ImagesController, type: :controller do
   describe "PUT #update" do
     context "with valid params" do
       let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
+        {name: 'name',
+         photo: Rack::Test::UploadedFile.new(Rails.root + 'spec/fixtures/default_product_average.png', 'image/png'),
+         products_color_id: 2
+        }
       }
 
       it "updates the requested image" do
         image = Image.create! valid_attributes
-        put :update, {:id => image.to_param, :image => new_attributes}, valid_session
+        products_color = ProductsColor.create! products_colors_attributes
+        put :update, {:products_color_id => products_color.id,
+                      :id => image.to_param,
+                      :image => new_attributes}, valid_session
         image.reload
-        skip("Add assertions for updated state")
+        expect(assigns(:image)).to eq(image)
+        puts image.name
       end
 
       it "assigns the requested image as @image" do
         image = Image.create! valid_attributes
-        put :update, {:id => image.to_param, :image => valid_attributes}, valid_session
+        products_color = ProductsColor.create! products_colors_attributes
+        put :update, {:products_color_id => products_color.id,
+                      :id => image.to_param,
+                      :image => valid_attributes}, valid_session
         expect(assigns(:image)).to eq(image)
       end
 
-      it "redirects to the image" do
+      it "redirects to products path" do
         image = Image.create! valid_attributes
-        put :update, {:id => image.to_param, :image => valid_attributes}, valid_session
-        expect(response).to redirect_to(image)
+        products_color = ProductsColor.create! products_colors_attributes
+        put :update, {:products_color_id => products_color.id,
+                      :id => image.to_param,
+                      :image => valid_attributes}, valid_session
+        expect(response).to redirect_to(products_path)
       end
     end
 
     context "with invalid params" do
       it "assigns the image as @image" do
         image = Image.create! valid_attributes
-        put :update, {:id => image.to_param, :image => invalid_attributes}, valid_session
+        products_color = ProductsColor.create! products_colors_attributes
+        put :update, {:products_color_id => products_color.id,
+                      :id => image.to_param,
+                      :image => invalid_attributes}, valid_session
         expect(assigns(:image)).to eq(image)
       end
 
       it "re-renders the 'edit' template" do
         image = Image.create! valid_attributes
-        put :update, {:id => image.to_param, :image => invalid_attributes}, valid_session
+        products_color = ProductsColor.create! products_colors_attributes
+        put :update, {:products_color_id => products_color.id,
+                      :id => image.to_param,
+                      :image => invalid_attributes}, valid_session
         expect(response).to render_template("edit")
       end
     end
@@ -135,15 +160,19 @@ RSpec.describe ImagesController, type: :controller do
   describe "DELETE #destroy" do
     it "destroys the requested image" do
       image = Image.create! valid_attributes
+      products_color = ProductsColor.create! products_colors_attributes
       expect {
-        delete :destroy, {:id => image.to_param}, valid_session
+        delete :destroy, {:products_color_id => products_color.id,
+                          :id => image.to_param}, valid_session
       }.to change(Image, :count).by(-1)
     end
 
     it "redirects to the images list" do
       image = Image.create! valid_attributes
-      delete :destroy, {:id => image.to_param}, valid_session
-      expect(response).to redirect_to(images_url)
+      products_color = ProductsColor.create! products_colors_attributes
+      delete :destroy, {:products_color_id => products_color.id,
+                        :id => image.to_param}, valid_session
+      expect(response).to redirect_to(products_path)
     end
   end
 
