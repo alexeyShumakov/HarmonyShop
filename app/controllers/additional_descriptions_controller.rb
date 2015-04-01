@@ -1,5 +1,6 @@
 class AdditionalDescriptionsController < ApplicationController
   before_action :set_additional_description, only: [:show, :edit, :update, :destroy]
+  before_action :set_product, only: [:new, :edit, :create]
 
   # GET /additional_descriptions
   # GET /additional_descriptions.json
@@ -14,19 +15,16 @@ class AdditionalDescriptionsController < ApplicationController
 
   # GET /additional_descriptions/new
   def new
-    @product = Product.find(params[:product_id])
     @additional_description = @product.additional_descriptions.build
   end
 
   # GET /additional_descriptions/1/edit
   def edit
-    @product = Product.find(params[:product_id])
   end
 
   # POST /additional_descriptions
   # POST /additional_descriptions.json
   def create
-    @product = Product.find(params[:product_id])
     @additional_description = @product.additional_descriptions.build(additional_description_params)
 
     respond_to do |format|
@@ -65,6 +63,10 @@ class AdditionalDescriptionsController < ApplicationController
   end
 
   private
+
+    def set_product
+      @product = Product.find(params[:product_id])
+    end
     # Use callbacks to share common setup or constraints between actions.
     def set_additional_description
       @additional_description = AdditionalDescription.find(params[:id])
