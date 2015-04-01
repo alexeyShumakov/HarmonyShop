@@ -79,6 +79,6 @@ class ProductsColorsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def products_color_params
-      params.require(:products_color).permit(:product_id, :color_id, :size_ids =>[] )
+      params.require(:products_color).permit(:size_ids =>[] )
     end
 end

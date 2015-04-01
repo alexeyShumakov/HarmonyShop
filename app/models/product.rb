@@ -4,6 +4,11 @@ class Product < ActiveRecord::Base
 	has_many :colors, through: :products_colors
 	has_many :additional_descriptions
 
+	validates :title, presence: true
+	validates :description, presence: true
+	validates :price, numericality: true
+	validates :article, numericality: {only_integer: true}
+
 	default_scope ->{ order('updated_at DESC') }
 	paginates_per 6
 
