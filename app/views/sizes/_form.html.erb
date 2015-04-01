@@ -1,25 +1,10 @@
-<%= form_for(@size) do |f| %>
-  <% if @size.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@size.errors.count, "error") %> prohibited this size from being saved:</h2>
-
-      <ul>
-      <% @size.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+<%= simple_form_for(@size) do |f| %>
 
   <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :code %><br>
-    <%= f.text_field :code %>
+    <%= f.input :code %>
+    <%= f.input :name %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.button :submit %>
   </div>
 <% end %>

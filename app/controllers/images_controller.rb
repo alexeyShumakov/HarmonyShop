@@ -1,6 +1,6 @@
 class ImagesController < ApplicationController
   before_action :set_image, only: [:show, :edit, :update, :destroy]
-  before_action :set_product_color, only: [ :show, :new, :edit, :create]
+  before_action :set_product_color, only: [ :show, :new, :edit, :create, :update]
 
   # GET /images
   # GET /images.json
@@ -13,6 +13,7 @@ class ImagesController < ApplicationController
   def show
     @image = @products_color.images.find(params[:id])
     respond_to do |format|
+      format.html
       format.js {}
     end
   end
