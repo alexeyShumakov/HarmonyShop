@@ -5,19 +5,23 @@ Color.delete_all
 ProductsColor.delete_all
 Size.delete_all
 
-(10..20).to_a.each do |size|
+(10..13).to_a.each do |size|
   Size.create!(
            name: size,
            code: size
   )
 end
 
-%w(red green blue coral purple white).each do |color|
+%w(red green blue coral purple).each do |color|
   Color.create!(
            name: color,
            code: color
   )
 end
+
+colors = Color.all
+
+sizes = Size.all
 
 cat_1 = Category.create!(
     name: 'Для женщин',
@@ -44,7 +48,7 @@ cat_3 = Category.create!(
                 page_title: cat.page_title + ' : ' + sub_cat_name,
                 description: Faker::Lorem.paragraph(15)
     ).move_to_child_of(cat)
-    4.times do
+    3.times do
       sub_sub_cat_name = Faker::Commerce.department
       category = Category.create!(
                   name: sub_sub_cat_name,
@@ -52,13 +56,26 @@ cat_3 = Category.create!(
                   description: Faker::Lorem.paragraph(15)
       ).move_to_child_of(sub_cat)
 
-      4.times do
-        Product.create!(
+      2.times do
+        @product = Product.create(
             title: Faker::Commerce.product_name,
             description: Faker::Lorem.sentence,
             price: Faker::Commerce.price,
-            leaf_category_id: category.id
-        ).assign_to_branch
+            leaf_category_id: category.id,
+            article: Faker::Number.number(8)
+        )
+
+        colors.each do |color|
+          @product.colors << color
+        end
+
+        @product.products_colors.each do |prod_color|
+          sizes.each do |size|
+            prod_color.sizes << size
+          end
+        end
+
+        @product.assign_to_branch
       end
     end
   end

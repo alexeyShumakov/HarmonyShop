@@ -10,6 +10,8 @@ class ProductsColorsSizesController < ApplicationController
   # GET /products_colors_sizes/1
   # GET /products_colors_sizes/1.json
   def show
+    session[:size] = @products_colors_size.size.code
+
     @products_color = @products_colors_size.products_color
     respond_to do |format|
       format.html

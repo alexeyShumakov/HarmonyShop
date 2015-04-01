@@ -6,10 +6,10 @@ class ApplicationController < ActionController::Base
 
   private
     def set_cookies
-      if params[:page_size]
+      if params[:page_size].present?
         cookies[:page_size] = params[:page_size]
-      else
-        cookies[:page_size] = 9
+      elsif !cookies[:page_size].present?
+        cookies[:page_size] = 6
       end
     end
 

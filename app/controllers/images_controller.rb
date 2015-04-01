@@ -1,5 +1,6 @@
 class ImagesController < ApplicationController
   before_action :set_image, only: [:show, :edit, :update, :destroy]
+  before_action :set_product_color, only: [ :show, :new, :edit, :create]
 
   # GET /images
   # GET /images.json
@@ -10,7 +11,6 @@ class ImagesController < ApplicationController
   # GET /images/1
   # GET /images/1.json
   def show
-    @products_color = ProductsColor.find(params[:products_color_id])
     @image = @products_color.images.find(params[:id])
     respond_to do |format|
       format.js {}
@@ -19,19 +19,16 @@ class ImagesController < ApplicationController
 
   # GET /images/new
   def new
-    @products_color = ProductsColor.find(params[:products_color_id])
     @image = @products_color.images.build
   end
 
   # GET /images/1/edit
   def edit
-    @products_color = ProductsColor.find(params[:products_color_id])
   end
 
   # POST /images
   # POST /images.json
   def create
-    @products_color = ProductsColor.find(params[:products_color_id])
     @image = @products_color.images.build(image_params)
     respond_to do |format|
       if @image.save
@@ -70,6 +67,9 @@ class ImagesController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
+    def set_product_color
+      @products_color = ProductsColor.find(params[:products_color_id])
+    end
     def set_image
       @image = Image.find(params[:id])
     end

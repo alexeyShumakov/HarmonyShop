@@ -10,6 +10,7 @@ class ProductsColorsController < ApplicationController
   # GET /products_colors/1
   # GET /products_colors/1.json
   def show
+    session.delete(:size)
     @products_color = ProductsColor.find(params[:id])
     @product = @products_color.product
     respond_to do |format|

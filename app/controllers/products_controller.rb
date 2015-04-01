@@ -22,21 +22,13 @@ class ProductsController < ApplicationController
   # GET /products/1
   # GET /products/1.json
   def show
+    session.delete(:size)
     if params.has_key?(:color_id)
       @current_color = @product.products_colors.find_by_color_id(params[:color_id])
     else
       @current_color = @product.products_colors.first
     end
   end
-
-
-
-
-
-
-
-
-
 
   # GET /products/new
   def new
