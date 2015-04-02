@@ -17,4 +17,6 @@
 /tmp
 .idea/
 public/system/
-solr/development/
+solr/test
+solr/development
+solr/default/data
