@@ -43,7 +43,7 @@ class AdditionalDescriptionsController < ApplicationController
   def update
     respond_to do |format|
       if @additional_description.update(additional_description_params)
-        format.html { redirect_to @additional_description, notice: 'Additional description was successfully updated.' }
+        format.html { redirect_to products_path, notice: 'Additional description was successfully updated.' }
         format.json { render :show, status: :ok, location: @additional_description }
       else
         format.html { render :edit }
@@ -57,7 +57,7 @@ class AdditionalDescriptionsController < ApplicationController
   def destroy
     @additional_description.destroy
     respond_to do |format|
-      format.html { redirect_to additional_descriptions_url, notice: 'Additional description was successfully destroyed.' }
+      format.html { redirect_to products_path, notice: 'Additional description was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
