@@ -19,6 +19,7 @@ class ProductsColorsController < ApplicationController
       else
         format.js { render 'products_colors/no_images' }
       end
+      format.html
     end
   end
 
