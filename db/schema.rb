@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150402122545) do
+ActiveRecord::Schema.define(version: 20150403003916) do
 
   create_table "additional_descriptions", force: :cascade do |t|
     t.string   "name"
@@ -72,6 +72,18 @@ ActiveRecord::Schema.define(version: 20150402122545) do
   end
 
   add_index "images", ["products_color_id"], name: "index_images_on_products_color_id"
+
+  create_table "line_items", force: :cascade do |t|
+    t.integer  "products_id"
+    t.integer  "cart_id"
+    t.string   "size"
+    t.string   "color"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "line_items", ["cart_id"], name: "index_line_items_on_cart_id"
+  add_index "line_items", ["products_id"], name: "index_line_items_on_products_id"
 
   create_table "products", force: :cascade do |t|
     t.string   "title"
