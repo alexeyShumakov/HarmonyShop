@@ -37,12 +37,11 @@
             </ul>
           </div>
           <div class="order">
-            <%= link_to 'Добавить в корзину', cart_path,
+            <%= button_to 'Добавить в корзину', line_items_path(product_id: @product.id),
                         class: 'AddToCart',
-                        remote: true,
+                        #remote: true,
 
                         data: {
-                          product_id: @product.id,
                           size: nil,
                           color: @current_color.color.name
                         } %>

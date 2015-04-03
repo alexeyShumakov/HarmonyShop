@@ -3,6 +3,7 @@ class Product < ActiveRecord::Base
 	has_many :products_colors, dependent: :destroy
 	has_many :colors, through: :products_colors
 	has_many :additional_descriptions
+	has_many :line_items
 
 	validates :title, presence: true
 	validates :description, presence: true
