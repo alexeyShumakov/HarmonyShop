@@ -20,3 +20,4 @@ public/system/
 solr/test
 solr/development
 solr/default/data
+solr/pids
