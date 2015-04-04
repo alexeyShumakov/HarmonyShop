@@ -37,14 +37,12 @@
             </ul>
           </div>
           <div class="order">
-            <%= button_to 'Добавить в корзину', line_items_path(product_id: @product.id),
-                        class: 'AddToCart',
-                        #remote: true,
-
-                        data: {
-                          size: nil,
-                          color: @current_color.color.name
-                        } %>
+              <%= render partial: 'products/add_to_cart',
+                         locals: {
+                                 product_id: @product.id,
+                                 size: nil,
+                                 color: @current_color.color.name
+                         }%>
 
           </div>
           <div class="fix"></div>

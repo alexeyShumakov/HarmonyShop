@@ -1,0 +1,74 @@
+<div class="catalog-sidebar">
+  <ul class="sidemenu">
+    <li class="just-div">
+      <ul>
+        <li>hello man</li>
+        <li>hello man</li>
+        <li>hello man</li>
+        <li>hello man</li>
+      </ul>
+    </li>
+  </ul>
+</div>
+
+<div class="order-details">
+  <h1>Моя корзина</h1>
+
+  <table class="cart-items">
+    <thead>
+      <tr>
+        <th>Описание</th>
+        <th>Кол-во</th>
+        <th>Цена</th>
+        <th>Сумма</th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+    <% @cart.line_items.each do |line_item| %>
+    <tr id="line_item_<%= line_item.id %>">
+      <td>
+        <%= link_to product_path(line_item.product, color_id: line_item.get_color_id)  do %>
+          <% image_tag line_item.get_image %>
+        <% end %>
+        <div class="item-info">
+          <strong> <%= link_to line_item.product.title,
+                               product_path(line_item.product, color_id: line_item.get_color_id) %>
+          </strong> <br/>
+          <strong>Артикул:</strong> <%= line_item.product.article %> <br/>
+          <strong>Цвет:</strong> <%= line_item.color %> <br/>
+          <strong>Размер:</strong> <%= line_item.size %>
+        </div>
+      </td>
+
+      <td>
+        <%= line_item.quantity %>
+      </td>
+
+      <td>
+        <strong><%= number_to_currency(line_item.product.price,
+                                       separator: ",",
+                                       delimiter: " ",
+                                       format: "%n" ) %></strong>
+      </td>
+
+      <td>
+        <strong class="total-price"><%= number_to_currency(line_item.total_price,
+                                                           separator: ",",
+                                                           delimiter: " ",
+                                                           format: "%n" ) %></strong>
+      </td>
+      <td>
+        <%= link_to 'Удалить', line_item, method: :delete, remote: true %>
+      </td>
+    </tr>
+    <% end %>
+    </tbody>
+  </table>
+  <div class="cart-total-price">
+      Сумма заказа: <strong><%= rus_number_to_currency(@cart.total_price)%></strong>
+  </div>
+  <div class="fix"></div>
+</div>
+

@@ -1,3 +1,51 @@
 // Place all the styles related to the Carts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.cart-items {
+  margin: 1em 0;
+  min-width: 800px;
+  tbody {
+    border: 5px solid #9f5ecd;
+  }
+  img {
+    float: left;
+  }
+  td {
+    border-top: 1px solid #ddd;
+    display: block;
+    a {
+      text-decoration: none;
+    }
+
+    .total-price {
+      color: #d9198e;
+    }
+
+    &:first-child {
+      padding-top: .5em;
+    }
+    &:last-child {
+      padding-bottom: .5em;
+    }
+  }
+  th, td {
+    text-align: left;
+    display: table-cell;
+    padding: .25em .5em;
+
+  }
+
+
+}
+
+.cart-total-price {
+  float: right;
+  padding-right: 30px;
+  font-size: 23px;
+  margin-bottom: 80px;
+
+  strong {
+    color: #d9198e;
+  }
+}

@@ -10,3 +10,8 @@ $ ->
                                               :locals => {:current_color => @products_color })%>"
   $('.select-size').children('ul').html "<%= escape_javascript render(@products_color.products_colors_sizes) %>"
   $('.color').children('span').html '<%= @products_color.color.name %>'
+
+  $('.order').html "<%= escape_javascript render(:partial => 'products/add_to_cart',
+                                                 :locals => {:product_id => @products_color.product.id,
+                                                             :color => @products_color.color.name,
+                                                             :size  => nil})%>"

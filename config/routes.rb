@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 
   resources :carts
 
+  get 'cart', to: 'carts#custom_show', as: :cart_custom_show
+
   resources :products_colors_sizes
 
   resources :sizes

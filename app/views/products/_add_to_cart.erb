@@ -1,0 +1,7 @@
+<%= link_to 'Добавить в корзину',
+              line_items_path(product_id: product_id,
+                              size: size,
+                              color: color),
+              class: 'AddToCart',
+              method: 'post',
+              remote: true%>

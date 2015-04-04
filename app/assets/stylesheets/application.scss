@@ -13,13 +13,16 @@
  *= require_tree .
  *= require_self
  */
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700);
 ul {
   list-style-type: none;
 }
 body {
-  font-family: 'Open Sans', serif;
+  font-family: Geneva, Arial, Helvetica, sans-serif;
   margin: 0;
+
+  a {
+    color: #484848;
+  }
   #page {
     margin: 0 auto;
     width: 1000px;
@@ -71,7 +74,6 @@ body {
           margin:0;
           padding:0;
           list-style:none;
-          transform:skew(-$skew);
 
           .current a {
             color: #fff375;
@@ -105,7 +107,6 @@ body {
               padding:1em 2em;
               color:inherit;
               text-decoration:none;
-              transform:skew($skew);
             }
           }
         }
@@ -136,7 +137,7 @@ body {
             font-size: 22px;
           }
           strong:hover {
-            text-decoration: underline;
+            border-bottom: 1px solid #484848 ;
           }
         }
       }

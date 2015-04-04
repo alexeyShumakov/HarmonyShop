@@ -39,18 +39,18 @@
         <li><a href="">Зарегестрироваться</a></li>
       </ul>
       <div id="cart">
-        <a href="">
+        <%= link_to cart_custom_show_path do %>
           <i class="icon bag"> </i>
           <strong>Моя корзина</strong>
-        </a>
+        <% end %>
       </div>
       <div id="goods">
         <span class="counter">
-          1 товар
+          <%= @cart.total_quantity %> шт.
         </span>
         |
         <span class="total">
-          355 руб.
+          <%= rus_number_to_currency(@cart.total_price) %>
         </span>
 
       </div>

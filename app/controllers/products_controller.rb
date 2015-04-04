@@ -25,9 +25,11 @@ class ProductsController < ApplicationController
     session.delete(:size)
     if params.has_key?(:color_id)
       @current_color = @product.products_colors.find_by_color_id(params[:color_id])
+      @current_color = @product.products_colors.first unless @current_color
     else
       @current_color = @product.products_colors.first
     end
+
   end
 
   # GET /products/new

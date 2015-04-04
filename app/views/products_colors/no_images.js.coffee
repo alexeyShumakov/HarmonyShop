@@ -7,3 +7,8 @@ $ ->
                                               :locals => {:current_color => @products_color })%>"
   $('.carousel').html ''
   $('.photo'). html 'Нет изображения'
+
+  $('.order').html "<%= escape_javascript render(:partial => 'products/add_to_cart',
+                                                 :locals => {:product_id => @products_color.product.id,
+                                                             :color => @products_color.color.name,
+                                                             :size  => nil})%>"
