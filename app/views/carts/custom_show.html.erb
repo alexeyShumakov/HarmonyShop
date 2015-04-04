@@ -1,3 +1,7 @@
+<% content_for(:head) do %>
+  <%= javascript_include_tag 'carts', 'data-turbolinks-track' => true %>
+<% end %>
+
 <div class="catalog-sidebar">
   <ul class="sidemenu">
     <li class="just-div">
@@ -43,21 +47,32 @@
       </td>
 
       <td>
-        <%= line_item.quantity %>
+
+        <%= simple_form_for(line_item, remote: true) do |f| %>
+          <%= f.button :submit, style: 'display:none;' %>
+          <%= f.button :submit, '-', class: :minus %>
+          <%= f.input :quantity, as: :string, label: false, input_html: { class: 'quantity' } %>
+          <%= f.button :submit, '+', class: :plus %>
+        <% end %>
+
       </td>
 
       <td>
-        <strong><%= number_to_currency(line_item.product.price,
-                                       separator: ",",
-                                       delimiter: " ",
-                                       format: "%n" ) %></strong>
+        <strong>
+          <%= number_to_currency(line_item.product.price,
+                                 separator: ",",
+                                 delimiter: " ",
+                                 format: "%n" ) %>
+        </strong>
       </td>
 
       <td>
-        <strong class="total-price"><%= number_to_currency(line_item.total_price,
-                                                           separator: ",",
-                                                           delimiter: " ",
-                                                           format: "%n" ) %></strong>
+        <strong class="total-price">
+          <%= number_to_currency(line_item.total_price,
+                                 separator: ",",
+                                 delimiter: " ",
+                                 format: "%n" ) %>
+        </strong>
       </td>
       <td>
         <%= link_to 'Удалить', line_item, method: :delete, remote: true %>

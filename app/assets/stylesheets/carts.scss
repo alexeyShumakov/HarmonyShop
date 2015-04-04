@@ -17,7 +17,57 @@
     a {
       text-decoration: none;
     }
+    .line_item_quantity{
+      display: inline-block;
+      width: 20px;
+    }
+    .plus {
+      -moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
+      -webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
+      box-shadow:inset 0px 1px 0px 0px #ffffff;
+      background-color:#ffffff;
 
+      border-top-right-radius: 5px;
+      border-bottom-right-radius: 5px;
+      border:1px solid #dcdcdc;
+      display:inline-block;
+      cursor:pointer;
+      color:#666666;
+      font-size:12px;
+      font-weight:bold;
+      padding:3px 9px;
+      text-decoration:none;
+    }
+
+    .minus {
+      -moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
+      -webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
+      box-shadow:inset 0px 1px 0px 0px #ffffff;
+      background-color:#ffffff;
+      border-top-left-radius: 5px;
+      border-bottom-left-radius: 5px;
+      border:1px solid #dcdcdc;
+      display:inline-block;
+      cursor:pointer;
+      color:#666666;
+      font-size:12px;
+      font-weight:bold;
+      padding:3px 9px;
+      text-decoration:none;
+      margin-right: -4px;
+
+    }
+    input.quantity {
+
+      display: inline-block;
+      border-top: 1px solid #eaeaea;
+      border-bottom: 1px solid #eaeaea;
+      border-left: 0;
+      border-right: 0;
+      width: 24px;
+      font-size:12px;
+      padding:3px 1px;
+    }
     .total-price {
       color: #d9198e;
     }

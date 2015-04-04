@@ -5,6 +5,7 @@ class LineItem < ActiveRecord::Base
   validates :product_id, presence: true, numericality: {only_integer: true}
   validates :color, presence: true
   validates :size, presence: true
+  validates :quantity, presence: true, numericality: {only_integer: true, greater_than: 0}
 
 
   def total_price
