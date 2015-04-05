@@ -87,13 +87,9 @@
       <li class="footer-about">
         <h5>О компании</h5>
         <ul class="about">
-          <li>О нас</li>
-          <li>Контакты</li>
-          <li>Преимущества</li>
-          <li>Вакансии</li>
-          <li>Сертификаты</li>
-          <li>Партнерам</li>
-          <li>Наши скидки</li>
+          <% @services.each do |service| %>
+            <li class="a"><%= link_to service.title, service_path(service) %></li>
+          <% end %>
         </ul>
       </li>
     </ul>

@@ -31,6 +31,10 @@ gem 'simple_form'
 
 gem "paperclip", "~> 4.2"
 
+gem 'redcarpet'
+
+
+
 gem 'sunspot_rails'
 gem 'sunspot_solr'
 

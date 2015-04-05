@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   include CurrentCart
   protect_from_forgery with: :exception
-  before_action :set_roots, :set_cart
+  before_action :set_roots, :set_cart, :set_services
 
   private
     def set_cookies
@@ -12,6 +12,10 @@ class ApplicationController < ActionController::Base
       elsif !cookies[:page_size].present?
         cookies[:page_size] = 6
       end
+    end
+
+    def set_services
+      @services = Service.all
     end
 
     def set_roots
