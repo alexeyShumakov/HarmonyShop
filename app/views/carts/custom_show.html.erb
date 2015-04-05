@@ -17,6 +17,9 @@
 
 <div class="order-details">
   <h1>Моя корзина</h1>
+  <% if @cart.line_items.empty? %>
+    Ваша корзина пуста
+  <% else %>
 
   <table class="cart-items">
     <thead>
@@ -47,14 +50,14 @@
       </td>
 
       <td>
-
-        <%= simple_form_for(line_item, remote: true) do |f| %>
-          <%= f.button :submit, style: 'display:none;' %>
-          <%= f.button :submit, '-', class: :minus %>
-          <%= f.input :quantity, as: :string, label: false, input_html: { class: 'quantity' } %>
-          <%= f.button :submit, '+', class: :plus %>
-        <% end %>
-
+        <span class="line_item_quantity">
+            <%= simple_form_for(line_item, remote: true) do |f| %>
+            <%= f.button :submit, style: 'display:none;' %>
+            <%= f.button :submit, '-', class: :minus %>
+            <%= f.input :quantity, as: :string, label: false, input_html: { class: 'quantity', maxlength: 2} %>
+            <%= f.button :submit, '+', class: :plus %>
+          <% end %>
+        </span>
       </td>
 
       <td>
@@ -85,5 +88,11 @@
       Сумма заказа: <strong><%= rus_number_to_currency(@cart.total_price)%></strong>
   </div>
   <div class="fix"></div>
+  <div class="order-complete">
+    <a class="order-complete-btn" href="">Войти и заказать</a>
+    <a class="order-complete-btn" href="">Зарегестрироваться и заказать</a>
+  </div>
+  <div class="fix"></div>
+  <% end %>
 </div>
 

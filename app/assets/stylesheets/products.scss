@@ -193,6 +193,7 @@
         float: right;
 
         .AddToCart {
+          width: 150px;
           background-color:#824cac;
           -moz-border-radius:6px;
           -webkit-border-radius:6px;
@@ -202,11 +203,34 @@
           cursor:pointer;
           color:#ffffff;
           font-size:16px;
-          padding:12px 40px;
+          padding:12px 20px;
           text-decoration:none;
           text-shadow:0 1px 0 #dfd1eb;
           &:hover {
             background-color:#a375d2;
+          }
+          &:active {
+            position:relative;
+            top:1px;
+          }
+        }
+
+        .GoToCart {
+          width: 150px;
+          background-color: #d81394;
+          -moz-border-radius:6px;
+          -webkit-border-radius:6px;
+          border-radius:6px;
+          border:1px solid #a41070;
+          display:inline-block;
+          cursor:pointer;
+          color:#ffffff;
+          font-size:16px;
+          padding:12px 20px;
+          text-decoration:none;
+          text-shadow:0 1px 0 #dfd1eb;
+          &:hover {
+            background-color: #d967a3;
           }
           &:active {
             position:relative;

@@ -17,56 +17,45 @@
     a {
       text-decoration: none;
     }
-    .line_item_quantity{
+
+
+    span.line_item_quantity {
       display: inline-block;
-      width: 20px;
-    }
-    .plus {
-      -moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
-      -webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
-      box-shadow:inset 0px 1px 0px 0px #ffffff;
-      background-color:#ffffff;
+      border: 1px solid #eaeaea;
+      border-radius: 2px;
+      height: 22px;
 
-      border-top-right-radius: 5px;
-      border-bottom-right-radius: 5px;
-      border:1px solid #dcdcdc;
-      display:inline-block;
-      cursor:pointer;
-      color:#666666;
-      font-size:12px;
-      font-weight:bold;
-      padding:3px 9px;
-      text-decoration:none;
-    }
+      .minus, .plus {
+        display: inline-block;
+        width: 22px;
+        height: 22px;
+        text-shadow: 1px 1px 0px #e3e3e3;
+        color: #8f8f8f;
+        font-size: 14px;
+        background: #ffffff;
+        text-decoration: none;
+        border: none;
+        cursor: pointer;
+      }
 
-    .minus {
-      -moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
-      -webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
-      box-shadow:inset 0px 1px 0px 0px #ffffff;
-      background-color:#ffffff;
-      border-top-left-radius: 5px;
-      border-bottom-left-radius: 5px;
-      border:1px solid #dcdcdc;
-      display:inline-block;
-      cursor:pointer;
-      color:#666666;
-      font-size:12px;
-      font-weight:bold;
-      padding:3px 9px;
-      text-decoration:none;
-      margin-right: -4px;
+      .minus:hover, .plus:hover {
+        background: #e0e0e0;
+        text-decoration: none;
+      }
+      input.quantity {
+        text-align: right;
+        width: 15px;
+        font-size:13px;
+        border: 1px;
+        padding: 0;
 
-    }
-    input.quantity {
 
-      display: inline-block;
-      border-top: 1px solid #eaeaea;
-      border-bottom: 1px solid #eaeaea;
-      border-left: 0;
-      border-right: 0;
-      width: 24px;
-      font-size:12px;
-      padding:3px 1px;
+      }
+
+      .line_item_quantity{
+        display: inline-block;
+        width: 18px;
+      }
     }
     .total-price {
       color: #d9198e;
@@ -93,9 +82,31 @@
   float: right;
   padding-right: 30px;
   font-size: 23px;
-  margin-bottom: 80px;
+  margin-bottom: 50px;
 
   strong {
     color: #d9198e;
+  }
+}
+
+.order-complete {
+  float: right;
+  margin-bottom: 50px;
+  .order-complete-btn {
+    -webkit-border-radius: 7;
+    -moz-border-radius: 7;
+    border-radius: 7px;
+    text-shadow: 0px 1px 1px #d1d1d1;
+    color: #ffffff;
+    font-size: 18px;
+    background: #d9198e;
+    padding: 10px;
+    border: solid #b4117a 1px;
+    text-decoration: none;
+  }
+
+  .order-complete-btn:hover {
+    background: #d967a3;
+    text-decoration: none;
   }
 }
