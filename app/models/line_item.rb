@@ -26,4 +26,8 @@ class LineItem < ActiveRecord::Base
   def get_color_id
     Color.find_by(name: color)
   end
+
+  def set_price
+    self.price = product.price
+  end
 end

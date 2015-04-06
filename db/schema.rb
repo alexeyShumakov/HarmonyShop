@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150406125557) do
+ActiveRecord::Schema.define(version: 20150406220451) do
 
   create_table "additional_descriptions", force: :cascade do |t|
     t.string   "name"
@@ -78,9 +78,10 @@ ActiveRecord::Schema.define(version: 20150406125557) do
     t.integer  "cart_id"
     t.string   "size"
     t.string   "color"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-    t.integer  "quantity",   default: 1
+    t.datetime "created_at",                                     null: false
+    t.datetime "updated_at",                                     null: false
+    t.integer  "quantity",                           default: 1
+    t.decimal  "price",      precision: 8, scale: 2
   end
 
   add_index "line_items", ["cart_id"], name: "index_line_items_on_cart_id"

@@ -56,7 +56,9 @@
           </div>
           <div class="fix"></div>
           <div class="table-of-sizes">
+            <% if @product.size_helper.present? %>
             <%= link_to 'Определите свой размер', size_helper_path(@product.size_helper), remote: true %>
+            <% end %>
           </div>
 
 
