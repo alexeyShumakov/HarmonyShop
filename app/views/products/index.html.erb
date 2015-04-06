@@ -25,6 +25,10 @@
           <strong><%= addit_desc.name %></strong> <%= addit_desc.description %> <br/>
         <% end %>
       </p>
+      <p>
+        <strong>Вспомогательная таблица размеров:</strong>
+        <%= product.size_helper.title if product.size_helper.present? %>
+      </p>
 
       <% if product.products_colors.present? %>
         <ul>Colors

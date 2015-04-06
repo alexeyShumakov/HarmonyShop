@@ -4,6 +4,7 @@ class Product < ActiveRecord::Base
 	has_many :colors, through: :products_colors
 	has_many :additional_descriptions
 	has_many :line_items
+	belongs_to :size_helper
 
 	validates :title, presence: true
 	validates :description, presence: true

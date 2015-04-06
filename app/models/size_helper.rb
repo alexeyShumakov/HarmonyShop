@@ -1,3 +1,3 @@
 class SizeHelper < ActiveRecord::Base
-	belongs_to :product
+	has_many :product
 end

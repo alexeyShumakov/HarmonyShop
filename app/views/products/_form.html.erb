@@ -5,6 +5,7 @@
   <%= f.input :article %>
   <%= f.input :description %>
   <%= f.association :colors, as: :check_boxes %>
+  <%= f.association :size_helper %>
   <%= f.label "Category:" %>
   <%= f.select :leaf_category_id,nested_set_options(Category, @category) {|i| "#{'-' * i.level} #{i.name}" } %>
   <div class="actions">

@@ -10,6 +10,10 @@ class SizeHelpersController < ApplicationController
   # GET /size_helpers/1
   # GET /size_helpers/1.json
   def show
+    respond_to do |format|
+      format.js
+      format.html
+    end
   end
 
   # GET /size_helpers/new

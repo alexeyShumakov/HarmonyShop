@@ -7,7 +7,7 @@
 
 <p>
   <strong>Body:</strong>
-  <%= @size_helper.body %>
+  <%= markdown(@size_helper.body) %>
 </p>
 
 <%= link_to 'Edit', edit_size_helper_path(@size_helper) %> |
