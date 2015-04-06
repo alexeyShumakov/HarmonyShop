@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :size_helpers
+
   resources :services_groups
 
   resources :services
