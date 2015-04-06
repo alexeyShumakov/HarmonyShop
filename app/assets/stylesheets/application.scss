@@ -170,61 +170,46 @@ body {
     width: 1000px;
     height: 350px;
     overflow: hidden;
-
-    h5 {
-      margin: 15px 5px 5px 0;
-      font-size: 17px;
+    .footer-nav {
       display: block;
-      width: 100%;
-    }
-
-    ul {
+      float: left;
       margin-top: 0;
-      .footer-help{
-        margin-left: 55px;
-        width: 460px;
-        float: left;
-        >ul {
 
-          float: left;
+      .subscribe {
+        width: 300px;
+        height: 100px;
+        margin: 20px;
+        background-color: #e8d5ff;
+        border-radius: 5px;
+      }
+
+      a {
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+
+      >li {
+        margin-left: 55px;
+        width: 180px;
+        float: left;
+        h5 {
+          margin: 15px 5px 0 0;
+          font-size: 17px;
+          display: block;
+          width: 100%;
         }
 
         .services {
-          padding: 10px;
+          padding: 5px;
           margin-left: 5px;
           display: block;
-          width: 450px;
-          height: 100px;
+          height: 60px;
 
           li {
             line-height: 20px;
             display: list-item;
-            width: 140px;
-            float: left;
-          }
-        }
-      }
-
-      .footer-about {
-        width: 350px;
-        margin-left: 80px;
-        float: left;
-        >ul {
-
-          float: left;
-        }
-        .about {
-          padding: 10px;
-          margin-left: 5px;
-          display: block;
-          width: 250px;
-          height: 100px;
-
-          li {
-            line-height: 20px;
-            display: list-item;
-            width: 125px;
-            float: left;
           }
         }
       }
@@ -232,6 +217,7 @@ body {
 
     .social {
       text-align: center;
+      margin-top: 30px;
       .head {
         cursor: auto;
         font-size: 16px;

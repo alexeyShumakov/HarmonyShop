@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :services_groups
+
   resources :services
 
   resources :line_items

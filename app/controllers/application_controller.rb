@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
     end
 
     def set_services
-      @services = Service.all
+      @services_groups = ServicesGroup.all
     end
 
     def set_roots

@@ -1,0 +1,27 @@
+<div class="services-sidebar">
+  <ul class="sidemenu">
+    <% @services_groups.each do | group| %>
+      <li>
+        <span><%= group.title %></span>
+        <ul>
+          <% group.services.each do |service| %>
+            <% if service == @service %>
+              <li class="current">>
+            <% else %>
+              <li>
+            <% end %>
+              <%= link_to service.title, service_path(service) %>
+            </li>
+          <% end %>
+        </ul>
+      </li>
+    <% end %>
+  </ul>
+</div>
+
+
+<div class="service-content"><%= markdown(@service.body) %></div>
+
+<%= link_to 'Edit', edit_service_path(@service) %> |
+<%= link_to 'Back', services_path %>
+<div class="fix"></div>

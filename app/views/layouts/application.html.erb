@@ -71,27 +71,23 @@
 <div class="footer-wrapper">
   <div class="footer">
     <ul class="footer-nav">
-      <li class="footer-help">
-        <h5>Сервис и помощь</h5>
-        <ul class="services">
-          <li>Как сделать заказ</li>
-          <li>Возврат</li>
-          <li>Публичная оферта</li>
-          <li>Доставка</li>
-          <li>Способы оплаты</li>
-          <li>Правила продажи</li>
-          <li>Ткани и уход за ними</li>
-          <li>Вопросы и ответы </li>
-        </ul>
+      <% @services_groups.each do |group|%>
+        <li class="<%= group.name %>">
+          <h5><%= group.title %></h5>
+          <ul class="services">
+            <% group.services.each do |service| %>
+              <li><%= link_to service.title, service %></li>
+            <% end %>
+          </ul>
+        </li>
+
+      <% end %>
+      <li>
+        <div class="subscribe">
+          подписаться
+        </div>
       </li>
-      <li class="footer-about">
-        <h5>О компании</h5>
-        <ul class="about">
-          <% @services.each do |service| %>
-            <li class="a"><%= link_to service.title, service_path(service) %></li>
-          <% end %>
-        </ul>
-      </li>
+      <li class="fix"></li>
     </ul>
     <div class="fix"></div>
     <ul class="social">

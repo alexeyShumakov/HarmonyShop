@@ -1,0 +1,50 @@
+// Place all the styles related to the Services controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.service-content {
+  float: right;
+  margin: 10px;
+  width: 780px;
+}
+
+.services-sidebar {
+  float: left;
+  width: 200px;
+  padding: 2px 0 0;
+  ul {
+    padding: 0;
+  }
+
+  .sidemenu {
+    float: left;
+    clear: both;
+    margin: 0;
+    padding: 5px 10px 15px 20px;
+    span {
+      font-weight: bold;
+      color: #824cac;
+    }
+    a {
+      color: #484848;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    ul {
+      padding: 3px 0 15px 0;
+    }
+
+    .current {
+      >a {
+        font-weight: bold;
+        color: #824cac;
+      }
+
+    }
+
+  }
+}
