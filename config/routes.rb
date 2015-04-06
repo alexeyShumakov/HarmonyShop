@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  devise_for :users
+  resources :users
+
   resources :size_helpers
 
   resources :services_groups

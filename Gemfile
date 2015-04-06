@@ -33,6 +33,8 @@ gem "paperclip", "~> 4.2"
 
 gem 'redcarpet'
 
+gem 'devise'
+
 
 
 gem 'sunspot_rails'
