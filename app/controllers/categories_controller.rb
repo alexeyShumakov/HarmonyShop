@@ -5,7 +5,8 @@ class CategoriesController < ApplicationController
   # GET /categories
   # GET /categories.json
   def index
-      @products = Product.first(21)
+    UserMailer.welcome_email('recpqq@gmail.com').deliver_later
+    @products = Product.first(21)
   end
 
   # GET /categories/1

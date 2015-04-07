@@ -1,7 +1,6 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
   after_action :assign_product_to_branch_category, only: [:create, :edit, :update]
-
   # GET /products
   # GET /products.json
   def index

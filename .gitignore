@@ -14,6 +14,7 @@
 # Ignore all logfiles and tempfiles.
 /log/*
 !/log/.keep
+config/initializers/app_env_vars.rb
 /tmp
 .idea/
 public/system/

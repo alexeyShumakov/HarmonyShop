@@ -1,3 +1,6 @@
+app_env_vars = File.join(Rails.root, 'config', 'initializers', 'app_env_vars.rb')
+load(app_env_vars) if File.exists?(app_env_vars)
+
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -35,6 +38,18 @@ Rails.application.configure do
   # Checks for improperly declared sprockets dependencies.
   # Raises helpful error messages.
   config.assets.raise_runtime_errors = true
+
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+
+  ActionMailer::Base.smtp_settings = {
+      :port           => 587,
+      :address        => 'smtp.mailgun.org',
+      :user_name      => ENV['USER_NAME'],
+      :password       => ENV['PASSWORD'],
+      :domain         => 'sandboxd4c2a039b41c4e5692b4f044db3ddf51.mailgun.org',
+      :authentication => :plain,
+  }
+  ActionMailer::Base.delivery_method = :smtp
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true

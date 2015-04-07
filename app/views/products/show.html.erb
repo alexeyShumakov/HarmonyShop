@@ -18,7 +18,7 @@
       <div class="info">
         <div class="info-box">
           <h1 class="name"><%= @product.title %></h1>
-          <div class="price"><%= @product.price %> руб.</div>
+          <div class="price"><%= rus_number_to_currency(@product.price) %></div>
         </div>
         <div class="info-box">
           <p class="inf article">Артикул: <span><%= @product.article %></span></p>

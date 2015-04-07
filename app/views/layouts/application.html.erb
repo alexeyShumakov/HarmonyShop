@@ -34,10 +34,17 @@
     </div>
 
     <div id="basket-block">
-      <ul>
-        <li><a href="">Войти</a></li> |
-        <li><a href="">Зарегестрироваться</a></li>
-      </ul>
+      <% if user_signed_in? %>
+        <ul>
+          <li><%= current_user.email %></li>
+          <li><%= link_to 'Выйти', destroy_user_session_path, method: :delete %></li>
+        </ul>
+      <% else %>
+        <ul>
+          <li><%= link_to 'Войти', new_user_session_path %></li> |
+          <li><%= link_to 'Зарегестрироваться', new_user_registration_path %></li>
+        </ul>
+      <% end %>
       <div id="cart">
         <%= link_to cart_custom_show_path do %>
           <i class="icon bag"> </i>
