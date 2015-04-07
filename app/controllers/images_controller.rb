@@ -1,4 +1,5 @@
 class ImagesController < ApplicationController
+  before_action :current_user_admin?
   before_action :set_image, only: [:show, :edit, :update, :destroy]
   before_action :set_product_color, only: [ :show, :new, :edit, :create, :update]
 

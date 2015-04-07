@@ -1,4 +1,5 @@
 class AdditionalDescriptionsController < ApplicationController
+  before_action :current_user_admin?
   before_action :set_additional_description, only: [:show, :edit, :update, :destroy]
   before_action :set_product, only: [:new, :edit, :create]
 

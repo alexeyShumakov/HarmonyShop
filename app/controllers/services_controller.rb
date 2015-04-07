@@ -1,4 +1,5 @@
 class ServicesController < ApplicationController
+  before_action :current_user_admin?, except: [:show]
   before_action :set_service, only: [:show, :edit, :update, :destroy]
 
   # GET /services

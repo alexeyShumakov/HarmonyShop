@@ -1,4 +1,5 @@
 class ColorsController < ApplicationController
+  before_action :current_user_admin?
   before_action :set_color, only: [:show, :edit, :update, :destroy]
 
   # GET /colors

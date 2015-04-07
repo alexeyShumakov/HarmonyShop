@@ -1,4 +1,5 @@
 class ProductsColorsSizesController < ApplicationController
+  before_action :current_user_admin?, except: [:show]
   before_action :set_products_colors_size, only: [:show, :edit, :update, :destroy]
 
   # GET /products_colors_sizes

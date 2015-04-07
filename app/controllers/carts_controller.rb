@@ -1,4 +1,5 @@
 class CartsController < ApplicationController
+  before_action :current_user_admin?, except: [:custom_show]
   include CurrentCart
   before_action :set_cart, only: [:custom_show]
 

@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :current_user_admin?, except: [:show]
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   # GET /users

@@ -1,4 +1,5 @@
 class SizeHelpersController < ApplicationController
+  before_action :current_user_admin?, except: [:show]
   before_action :set_size_helper, only: [:show, :edit, :update, :destroy]
 
   # GET /size_helpers

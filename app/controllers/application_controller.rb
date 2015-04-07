@@ -21,4 +21,10 @@ class ApplicationController < ActionController::Base
     def set_roots
       @roots = Category.roots
     end
+
+  def current_user_admin?
+    unless current_user.try(:admin?)
+      raise ActionController::RoutingError.new('Not Found')
+    end
+  end
 end

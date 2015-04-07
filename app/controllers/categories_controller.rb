@@ -1,11 +1,12 @@
 class CategoriesController < ApplicationController
+  before_action :current_user_admin?, except: [:show, :index]
   before_action :set_category, only: [:show, :edit, :update, :destroy]
   before_action :set_cookies, only: [:show]
 
   # GET /categories
   # GET /categories.json
   def index
-    UserMailer.welcome_email('recpqq@gmail.com').deliver_later
+    #UserMailer.welcome_email('recpqq@gmail.com').deliver_later
     @products = Product.first(21)
   end
 

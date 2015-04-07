@@ -1,4 +1,5 @@
 class ServicesGroupsController < ApplicationController
+  before_action :current_user_admin?
   before_action :set_services_group, only: [:show, :edit, :update, :destroy]
 
   # GET /services_groups

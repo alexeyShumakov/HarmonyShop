@@ -1,4 +1,5 @@
 class ProductsColorsController < ApplicationController
+  before_action :current_user_admin?, except: [:show]
   before_action :set_products_color, only: [:show, :edit, :update, :destroy]
 
   # GET /products_colors
