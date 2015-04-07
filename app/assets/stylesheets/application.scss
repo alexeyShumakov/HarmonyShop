@@ -57,9 +57,36 @@ body {
       #search-block {
         float: left;
 
-        width: 350px;
-        height: 60px;
-        margin: 15px 0 0 20px;
+
+        margin: 15px 0 0 -15px;
+        #search {
+          border: 1px solid #dedede;
+          border-radius: 3px;
+          width: 200px;
+          height: 24px;
+          margin: 0;
+          padding: 0 0 0 5px;
+          font-size: 12px;
+          background: #fff;
+        }
+        .submit-button {
+          width: 16px;
+          height: 16px;
+        }
+      }
+      .phone {
+        margin-left: 30px;
+        float: left;
+        font-size: 15px;
+        color: #777;
+        margin-top: 12px;
+        img {
+          float: left;
+        }
+        span {
+          margin-top: 5px;
+          float: left;
+        }
       }
 
       #nav-bar {

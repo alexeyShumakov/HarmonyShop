@@ -20,9 +20,12 @@
 
     <div id="search-block">
       <%= form_tag search_path, method: :get do %>
-        <%= search_field_tag :search, params[:search] %>
-        <%= submit_tag "Search", :name => nil %>
+        <%= search_field_tag :search, params[:search], placeholder: 'Поиск по товарам' %>
       <% end %>
+    </div>
+
+    <div class="phone">
+      <%= image_tag('phone.png') %> <span>8-909-082-70-23</span>
     </div>
 
     <div id="nav-bar">
