@@ -110,3 +110,32 @@
     text-decoration: none;
   }
 }
+
+.reg-sidebar {
+  float: left;
+  width: 200px;
+  padding: 2px 0 0;
+  ul {
+    padding: 0;
+  }
+
+  .sidemenu {
+    font-weight: bold;
+    color: #824cac;
+    float: left;
+    clear: both;
+    margin: 0;
+    padding: 5px 10px 15px 20px;
+    a {
+      font-weight: normal;
+      color: #484848;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+
+  }
+}

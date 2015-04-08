@@ -2,18 +2,7 @@
   <%= javascript_include_tag 'carts', 'data-turbolinks-track' => true %>
 <% end %>
 
-<div class="catalog-sidebar">
-  <ul class="sidemenu">
-    <li class="just-div">
-      <ul>
-        <li>hello man</li>
-        <li>hello man</li>
-        <li>hello man</li>
-        <li>hello man</li>
-      </ul>
-    </li>
-  </ul>
-</div>
+  <%= render 'carts/reg_sidebar' %>
 
 <div class="order-details">
   <h1>Моя корзина</h1>
@@ -88,13 +77,14 @@
       Сумма заказа: <strong><%= rus_number_to_currency(@cart.total_price)%></strong>
   </div>
   <div class="fix"></div>
-    <% if user_signed_in? %>
-    <% else  %>
-      <div class="order-complete">
+    <div class="order-complete">
+      <% if user_signed_in? %>
+        <a href="#" class="order-complete-btn">Заказать</a>
+      <% else  %>
         <%= link_to 'Войти и заказать', new_user_session_path, class: 'order-complete-btn' %>
         <%= link_to 'Зарегестрироваться и заказать', new_user_registration_path, class: 'order-complete-btn' %>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
   <div class="fix"></div>
   <% end %>
 </div>

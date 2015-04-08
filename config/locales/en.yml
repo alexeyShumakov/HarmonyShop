@@ -20,6 +20,27 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              blank: "Заполните поле"
+              taken: "Такой email уже зарегистрирован"
+              invalid: "Неверный формат e-mail адреса"
+            password:
+              blank: "Заполните поле"
+              too_short: "Слишком мало символов (минимум %{count})"
+              too_long: "Слишком много символов"
+              confirmation: "Пароли не совпадают"
+            password_confirmation:
+              blank: "Заполните поле"
+              confirmation: "Пароли не совпадают"
+            name:
+              too_short: "Слишком мало символов (минимум %{count})"
+              too_long: "Слишком много символов"
+              blank: "Заполните поле"
   views:
     pagination:
       first: "1"

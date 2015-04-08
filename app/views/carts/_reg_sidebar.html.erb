@@ -1,0 +1,19 @@
+<div class="reg-sidebar">
+  <ul class="sidemenu">
+    <% if user_signed_in? %>
+      Личный кабинет
+      <li><%= link_to 'Корзина', cart_custom_show_path %></li>
+      <li><%= link_to 'Изменить данные', edit_user_registration_path %></li>
+      <li><a href="#">Мои заказы</a></li>
+      <li><a href="#">Отследить заказ</a></li>
+    <% else %>
+      Вход в личный кабинет
+      <li><%= link_to 'Войти', new_user_session_path %></li>
+      <li><%= link_to 'Зарегестрироваться', new_user_registration_path %></li>
+      <li><%= link_to 'Восстановление пароля', new_user_password_path %></li>
+      <li><%= link_to 'Письмо не пришло?', new_user_confirmation_path %></li>
+
+      <li><%= link_to 'Корзина', cart_custom_show_path %></li>
+    <% end %>
+  </ul>
+</div>

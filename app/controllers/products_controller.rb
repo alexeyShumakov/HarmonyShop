@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :current_user_admin?, except: [:show]
+  before_action :current_user_admin?, except: [:show, :search]
   before_action :set_product, only: [:show, :edit, :update, :destroy]
   after_action :assign_product_to_branch_category, only: [:create, :edit, :update]
   # GET /products

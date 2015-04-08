@@ -1,16 +1,21 @@
-<h2>Sign up</h2>
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= f.error_notification %>
+<%= render 'carts/reg_sidebar' %>
+<h1>Регистрация</h1>
+<div class="registration_block">
+    <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
 
-  <div class="form-inputs">
-    <%= f.input :email, required: true, autofocus: true %>
-    <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @validatable) %>
-    <%= f.input :password_confirmation, required: true %>
-  </div>
+    <div class="form-inputs">
+      <%= f.input :name, required: true, autofocus: true, label: 'Ваше Имя' %>
+      <%= f.input :email, required: true, label: 'Ваша почта' %>
+      <%= f.input :password, required: true,
+                  label: 'Пароль' %>
+      <%= f.input :password_confirmation, required: true, label: 'Повторите пароль' %>
+    </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
-  </div>
-<% end %>
+    <div class="form-actions">
+      <%= f.button :submit, "Зарегестрироваться" %>
+    </div>
+  <% end %>
 
-<%= render "devise/shared/links" %>
+</div>
+
+<div class="fix"></div>

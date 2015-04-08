@@ -1,10 +1,13 @@
 class UsersController < ApplicationController
-  before_action :current_user_admin?, except: [:show]
+  before_action :current_user_admin?, except: [:show, :create, :index]
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   # GET /users
   # GET /users.json
   def index
+    unless current_user.try(:admin?)
+      redirect_to new_user_session_path
+    end
     @users = User.all
   end
 
