@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   devise_for :admins
-  devise_for :users, :controllers => { :registrations => 'registrations' }
+  devise_for :users
   resources :users
 
   resources :size_helpers
@@ -33,7 +33,7 @@ Rails.application.routes.draw do
   end
   get '/search', to: 'products#search', as: :search
 
-   root 'categories#index'
+  root 'categories#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

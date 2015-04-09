@@ -9,6 +9,10 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:sign_up) << :name
   end
 
+  def after_sign_in_path_for(resource)
+    cart_custom_show_path
+  end
+
   include CurrentCart
   protect_from_forgery with: :exception
   before_action :set_roots, :set_cart, :set_services
