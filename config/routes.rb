@@ -1,13 +1,13 @@
 Rails.application.routes.draw do
 
-
-
   devise_for :admins
   devise_for :users
 
   resources :users do
     resources :orders, shallow: true
   end
+
+  get 'private_office', to: 'users#private_office', as: :private_office
 
   resources :size_helpers
 

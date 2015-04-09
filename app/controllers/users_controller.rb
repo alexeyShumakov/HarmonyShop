@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  before_action :current_user_admin?, except: [:show, :create, :index]
+  before_action :current_user_admin?, except: [:create, :index, :private_office]
+  before_action :authenticate_user!, only: [:private_office, :edit]
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   # GET /users
@@ -14,6 +15,9 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+  end
+
+  def private_office
   end
   
   # GET /users/new
