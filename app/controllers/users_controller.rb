@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :current_user_admin?, except: [:create, :index, :private_office]
-  before_action :authenticate_user!, only: [:private_office, :edit]
+  before_action :authenticate_user!, only: [:private_office]
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   # GET /users

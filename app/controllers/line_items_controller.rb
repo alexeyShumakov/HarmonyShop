@@ -61,7 +61,9 @@ class LineItemsController < ApplicationController
   # DELETE /line_items/1
   # DELETE /line_items/1.json
   def destroy
-    @line_item.destroy
+    unless @line_item.order_id
+      @line_item.destroy
+    end
     respond_to do |format|
       format.js
       format.html { redirect_to cart_custom_show_path }

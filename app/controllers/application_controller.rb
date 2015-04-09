@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    cart_custom_show_path
+    private_office_path
   end
 
   include CurrentCart

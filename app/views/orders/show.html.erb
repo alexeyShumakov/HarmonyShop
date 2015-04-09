@@ -1,41 +1,67 @@
-<p id="notice"><%= notice %></p>
+<%= render 'carts/reg_sidebar' %>
 
-<p><strong>id: <%= @order.id %></strong></p>
-<p>
-  <strong>Line item:<%= @order.line_items.count %> шт.</strong><br/>
-  <% @order.line_items.each do |line_item| %>
-    <%= line_item.product.title %> --<%= line_item.quantity %> шт.<br/>
-  <%  end %>
-</p>
+<div class="order-details">
 
-<p>
-  <strong>total price:</strong>
-  <%= @order.total_price %>
-</p>
+  <% if @order %>
+    <table class="cart-items">
+      <thead>
+      <tr>
+        <th>Описание</th>
+        <th>Кол-во</th>
+        <th>Цена</th>
+        <th>Сумма</th>
+      </tr>
+      </thead>
 
-<p>
-  <strong>User:</strong>
-  <%= @order.user.email%>
-</p>
+      <tbody>
+      <% @order.line_items.each do |line_item| %>
+        <tr id="line_item_<%= line_item.id %>">
+          <td>
+            <%= link_to product_path(line_item.product, color_id: line_item.get_color_id)  do %>
+              <% image_tag line_item.get_image %>
+            <% end %>
+            <div class="item-info">
+              <strong> <%= link_to line_item.product.title,
+                                   product_path(line_item.product, color_id: line_item.get_color_id) %>
+              </strong> <br/>
+              <strong>Артикул:</strong> <%= line_item.product.article %> <br/>
+              <strong>Цвет:</strong> <%= line_item.color %> <br/>
+              <strong>Размер:</strong> <%= line_item.size %>
+            </div>
+          </td>
 
-<p>
-  <strong>Pay type:</strong>
-  <%= @order.pay_type %>
-</p>
+          <td>
+            <%= line_item.quantity %>
+          </td>
 
-<p>
-  <strong>Address:</strong>
-  <%= @order.address %>
-</p>
+          <td>
+            <strong>
+              <%= number_to_currency(line_item.product.price,
+                                     separator: ",",
+                                     delimiter: " ",
+                                     format: "%n" ) %>
+            </strong>
+          </td>
 
-<p>
-  <strong>Phone:</strong>
-  <%= @order.phone %>
-</p>
+          <td>
+            <strong class="total-price">
+              <%= number_to_currency(line_item.total_price,
+                                     separator: ",",
+                                     delimiter: " ",
+                                     format: "%n" ) %>
+            </strong>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+    <div class="cart-total-price">
+      Сумма заказа: <strong><%= rus_number_to_currency(@order.total_price)%></strong>
+    </div>
+    <div class="fix"></div>
+  <% else %>
+    <p>Заказ не найден</p>
+  <% end %>
+</div>
 
-<p>
-  <strong>Delivery type:</strong>
-  <%= @order.delivery_type %>
-</p>
-
-<%= link_to 'Edit', edit_order_path(@order) %> |
+<div class="fix"></div>

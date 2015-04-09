@@ -1,6 +1,8 @@
 class OrdersController < ApplicationController
-  before_action :set_order, only: [:show, :edit, :update, :destroy]
+  before_action :current_user_admin?, except: [:new, :create, :show, :index]
+  before_action :set_order, only: [:edit, :update, :destroy]
   before_action :set_user, only: [:index, :create, :new, :create]
+  before_action :authenticate_user!
 
   # GET /orders
   # GET /orders.json
@@ -11,6 +13,10 @@ class OrdersController < ApplicationController
   # GET /orders/1
   # GET /orders/1.json
   def show
+    @order = current_user.orders.find(params[:id])
+
+    rescue ActiveRecord::RecordNotFound
+      @order = false
   end
 
   # GET /orders/new
@@ -32,7 +38,7 @@ class OrdersController < ApplicationController
 
     respond_to do |format|
       if @order.save
-        format.html { redirect_to @order, notice: 'Order was successfully created.' }
+        format.html { redirect_to private_office_path, notice: 'Order was successfully created.' }
         format.json { render :show, status: :created, location: @order }
       else
         format.html { render :new }
