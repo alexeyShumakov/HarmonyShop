@@ -79,7 +79,7 @@
   <div class="fix"></div>
     <div class="order-complete">
       <% if user_signed_in? %>
-        <a href="#" class="order-complete-btn">Заказать</a>
+        <%= link_to 'Заказать', new_order_path, class: 'order-complete-btn' %>
       <% else  %>
         <%= link_to 'Войти и заказать', new_user_session_path, class: 'order-complete-btn' %>
         <%= link_to 'Зарегестрироваться и заказать', new_user_registration_path, class: 'order-complete-btn' %>
