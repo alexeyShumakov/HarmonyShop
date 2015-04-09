@@ -1,10 +1,13 @@
 Rails.application.routes.draw do
 
-  resources :orders
+
 
   devise_for :admins
   devise_for :users
-  resources :users
+
+  resources :users do
+    resources :orders, shallow: true
+  end
 
   resources :size_helpers
 

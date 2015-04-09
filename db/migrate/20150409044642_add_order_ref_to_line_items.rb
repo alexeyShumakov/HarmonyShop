@@ -1,4 +1,4 @@
-class AddToLineItemsReferencesToOrder < ActiveRecord::Migration
+class AddOrderRefToLineItems < ActiveRecord::Migration
   def change
     add_reference :line_items, :order, index: true
     add_foreign_key :line_items, :orders

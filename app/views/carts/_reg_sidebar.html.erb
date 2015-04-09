@@ -4,7 +4,7 @@
       Личный кабинет
       <li><%= link_to 'Корзина', cart_custom_show_path %></li>
       <li><%= link_to 'Изменить данные', edit_user_registration_path %></li>
-      <li><a href="#">Мои заказы</a></li>
+      <li><%= link_to 'Мои заказы', user_orders_path(user_id: current_user.id) %></li>
       <li><a href="#">Отследить заказ</a></li>
     <% else %>
       Вход в личный кабинет

@@ -1,13 +1,21 @@
 <p id="notice"><%= notice %></p>
 
+<p><strong>id: <%= @order.id %></strong></p>
 <p>
-  <strong>Line item:</strong>
-  <%= @order.line_item %>
+  <strong>Line item:<%= @order.line_items.count %> шт.</strong><br/>
+  <% @order.line_items.each do |line_item| %>
+    <%= line_item.product.title %> --<%= line_item.quantity %> шт.<br/>
+  <%  end %>
+</p>
+
+<p>
+  <strong>total price:</strong>
+  <%= @order.total_price %>
 </p>
 
 <p>
   <strong>User:</strong>
-  <%= @order.user %>
+  <%= @order.user.email%>
 </p>
 
 <p>
@@ -31,4 +39,3 @@
 </p>
 
 <%= link_to 'Edit', edit_order_path(@order) %> |
-<%= link_to 'Back', orders_path %>
