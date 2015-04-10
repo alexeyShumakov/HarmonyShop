@@ -1,31 +1,37 @@
 class ColorsController < ApplicationController
-  before_action :current_user_admin?
+  before_filter :authenticate_user!
+  after_action :verify_authorized
   before_action :set_color, only: [:show, :edit, :update, :destroy]
 
   # GET /colors
   # GET /colors.json
   def index
     @colors = Color.all
+    authorize @colors
   end
 
   # GET /colors/1
   # GET /colors/1.json
   def show
+    authorize @color
   end
 
   # GET /colors/new
   def new
     @color = Color.new
+    authorize @color
   end
 
   # GET /colors/1/edit
   def edit
+    authorize @color
   end
 
   # POST /colors
   # POST /colors.json
   def create
     @color = Color.new(color_params)
+    authorize @color
 
     respond_to do |format|
       if @color.save
@@ -41,6 +47,7 @@ class ColorsController < ApplicationController
   # PATCH/PUT /colors/1
   # PATCH/PUT /colors/1.json
   def update
+    authorize @color
     respond_to do |format|
       if @color.update(color_params)
         format.html { redirect_to @color, notice: 'Color was successfully updated.' }
@@ -55,6 +62,7 @@ class ColorsController < ApplicationController
   # DELETE /colors/1
   # DELETE /colors/1.json
   def destroy
+    authorize @color
     @color.destroy
     respond_to do |format|
       format.html { redirect_to colors_url, notice: 'Color was successfully destroyed.' }
