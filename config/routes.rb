@@ -33,7 +33,7 @@ Rails.application.routes.draw do
   resources :categories
 
   resources :products do
-    resources :additional_descriptions
+    resources :additional_descriptions, shallow: true
   end
   get '/search', to: 'products#search', as: :search
 
