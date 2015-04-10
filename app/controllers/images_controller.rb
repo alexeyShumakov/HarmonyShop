@@ -1,5 +1,6 @@
 class ImagesController < ApplicationController
-  before_action :current_user_admin?
+  before_filter :authenticate_user!, except: [:show]
+  after_action :verify_authorized, except: [:show]
   before_action :set_image, only: [:show, :edit, :update, :destroy]
   before_action :set_product_color, only: [ :show, :new, :edit, :create, :update]
 
@@ -7,14 +8,17 @@ class ImagesController < ApplicationController
   # GET /images.json
   def index
     @images = Image.all
+    authorize @images
   end
 
   # GET /images/1
   # GET /images/1.json
   def show
     @image = @products_color.images.find(params[:id])
+    puts request.format
     respond_to do |format|
-      format.html
+      # TODO исправить
+      format.html {redirect_to root_path}
       format.js {}
     end
   end
@@ -22,16 +26,19 @@ class ImagesController < ApplicationController
   # GET /images/new
   def new
     @image = @products_color.images.build
+    authorize @image
   end
 
   # GET /images/1/edit
   def edit
+    authorize @image
   end
 
   # POST /images
   # POST /images.json
   def create
     @image = @products_color.images.build(image_params)
+    authorize @image
     respond_to do |format|
       if @image.save
         format.html { redirect_to products_path, notice: 'Image was successfully created.' }
@@ -46,6 +53,7 @@ class ImagesController < ApplicationController
   # PATCH/PUT /images/1
   # PATCH/PUT /images/1.json
   def update
+    authorize @image
     respond_to do |format|
       if @image.update(image_params)
         format.html { redirect_to products_path, notice: 'Image was successfully updated.' }
@@ -60,6 +68,7 @@ class ImagesController < ApplicationController
   # DELETE /images/1
   # DELETE /images/1.json
   def destroy
+    authorize @image
     @image.destroy
     respond_to do |format|
       format.html { redirect_to products_path, notice: 'Image was successfully destroyed.' }

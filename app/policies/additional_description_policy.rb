@@ -1,0 +1,2 @@
+class AdditionalDescriptionPolicy < ApplicationPolicy
+end
