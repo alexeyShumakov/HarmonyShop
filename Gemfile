@@ -35,7 +35,7 @@ gem 'redcarpet'
 
 gem 'devise'
 
-
+gem "pundit"
 
 gem 'sunspot_rails'
 gem 'sunspot_solr'
