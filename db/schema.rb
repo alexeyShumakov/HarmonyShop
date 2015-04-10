@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150409044642) do
+ActiveRecord::Schema.define(version: 20150410022110) do
 
   create_table "additional_descriptions", force: :cascade do |t|
     t.string   "name"
@@ -201,6 +201,7 @@ ActiveRecord::Schema.define(version: 20150409044642) do
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
     t.boolean  "admin",                  default: false
+    t.integer  "role"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
