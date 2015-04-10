@@ -17,7 +17,6 @@ Rails.application.routes.draw do
 
   resources :line_items
 
-  resources :carts
 
   get 'cart', to: 'carts#custom_show', as: :cart_custom_show
 
