@@ -7,6 +7,8 @@ Rails.application.routes.draw do
     resources :orders, shallow: true
   end
 
+  get 'my_orders', to: 'orders#my_orders', as: :my_orders
+
   get 'private_office', to: 'users#private_office', as: :private_office
 
   resources :size_helpers

@@ -1,22 +1,24 @@
 class OrdersController < ApplicationController
-  before_action :current_user_admin?, except: [:new, :create, :show, :index]
-  before_action :set_order, only: [:edit, :update, :destroy]
+  before_action :set_order, only: [:edit, :update, :destroy, :show]
   before_action :set_user, only: [:index, :create, :new, :create]
   before_action :authenticate_user!
+  after_action :verify_authorized, except: [:my_orders, :new, :create]
 
   # GET /orders
   # GET /orders.json
+  def my_orders
+    @orders = current_user.orders.all
+  end
+
   def index
     @orders = @user.orders.all
+    authorize @orders
   end
 
   # GET /orders/1
   # GET /orders/1.json
   def show
-    @order = current_user.orders.find(params[:id])
-
-    rescue ActiveRecord::RecordNotFound
-      @order = false
+    authorize @order
   end
 
   # GET /orders/new
@@ -26,13 +28,14 @@ class OrdersController < ApplicationController
 
   # GET /orders/1/edit
   def edit
+    authorize @order
   end
 
   # POST /orders
   # POST /orders.json
   def create
     @order = Order.new(order_params)
-    @user = User.find(current_user.id)
+    @user = current_user
     @user.orders << @order
     @order.add_item_from_cart(@cart)
 
@@ -50,6 +53,7 @@ class OrdersController < ApplicationController
   # PATCH/PUT /orders/1
   # PATCH/PUT /orders/1.json
   def update
+    authorize @order
     respond_to do |format|
       if @order.update(order_params)
         format.html { redirect_to @order, notice: 'Order was successfully updated.' }
@@ -64,6 +68,7 @@ class OrdersController < ApplicationController
   # DELETE /orders/1
   # DELETE /orders/1.json
   def destroy
+    authorize @order
     @order.destroy
     respond_to do |format|
       format.html { redirect_to orders_url, notice: 'Order was successfully destroyed.' }
