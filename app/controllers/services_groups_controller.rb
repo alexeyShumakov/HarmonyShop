@@ -13,6 +13,7 @@ class ServicesGroupsController < ApplicationController
   # GET /services_groups/1
   # GET /services_groups/1.json
   def show
+    authorize @services_group
   end
 
   # GET /services_groups/new
@@ -23,6 +24,7 @@ class ServicesGroupsController < ApplicationController
 
   # GET /services_groups/1/edit
   def edit
+    authorize @services_group
   end
 
   # POST /services_groups
