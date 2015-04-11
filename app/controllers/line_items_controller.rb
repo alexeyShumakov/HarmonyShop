@@ -1,6 +1,8 @@
 class LineItemsController < ApplicationController
-  before_action :current_user_admin?, except: [:create, :destroy, :update]
   include CurrentCart
+
+  before_filter :authenticate_user!, only: [:index, :show, :new, :edit]
+  after_action :verify_authorized, only: [:index, :show, :new, :edit]
   before_action :set_cart, only:  [:create, :update]
   before_action :set_line_item, only: [:show, :edit, :update, :destroy]
 
@@ -8,20 +10,24 @@ class LineItemsController < ApplicationController
   # GET /line_items.json
   def index
     @line_items = LineItem.all
+    authorize @line_items
   end
 
   # GET /line_items/1
   # GET /line_items/1.json
   def show
+    authorize @line_item
   end
 
   # GET /line_items/new
   def new
     @line_item = LineItem.new
+    authorize @line_item
   end
 
   # GET /line_items/1/edit
   def edit
+    authorize @line_item
   end
 
   # POST /line_items
