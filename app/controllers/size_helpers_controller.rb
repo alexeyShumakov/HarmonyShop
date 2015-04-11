@@ -1,11 +1,13 @@
 class SizeHelpersController < ApplicationController
-  before_action :current_user_admin?, except: [:show]
+  before_filter :authenticate_user!, except: [:show]
+  after_action :verify_authorized, except: [:show]
   before_action :set_size_helper, only: [:show, :edit, :update, :destroy]
 
   # GET /size_helpers
   # GET /size_helpers.json
   def index
     @size_helpers = SizeHelper.all
+    authorize SizeHelper
   end
 
   # GET /size_helpers/1
@@ -20,10 +22,12 @@ class SizeHelpersController < ApplicationController
   # GET /size_helpers/new
   def new
     @size_helper = SizeHelper.new
+    authorize @size_helper
   end
 
   # GET /size_helpers/1/edit
   def edit
+    authorize @size_helper
   end
 
   # POST /size_helpers
@@ -31,6 +35,7 @@ class SizeHelpersController < ApplicationController
   def create
     @size_helper = SizeHelper.new(size_helper_params)
 
+    authorize @size_helper
     respond_to do |format|
       if @size_helper.save
         format.html { redirect_to @size_helper, notice: 'Size helper was successfully created.' }
@@ -45,6 +50,8 @@ class SizeHelpersController < ApplicationController
   # PATCH/PUT /size_helpers/1
   # PATCH/PUT /size_helpers/1.json
   def update
+    authorize @size_helper
+
     respond_to do |format|
       if @size_helper.update(size_helper_params)
         format.html { redirect_to @size_helper, notice: 'Size helper was successfully updated.' }
@@ -59,6 +66,8 @@ class SizeHelpersController < ApplicationController
   # DELETE /size_helpers/1
   # DELETE /size_helpers/1.json
   def destroy
+    authorize @size_helper
+
     @size_helper.destroy
     respond_to do |format|
       format.html { redirect_to size_helpers_url, notice: 'Size helper was successfully destroyed.' }
