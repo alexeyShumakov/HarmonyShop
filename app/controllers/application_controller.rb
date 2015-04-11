@@ -2,7 +2,10 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   include Pundit
+  include CurrentCart
   protect_from_forgery with: :exception
+  protect_from_forgery with: :exception
+  before_action :set_roots, :set_cart, :set_services
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   protected
@@ -17,9 +20,6 @@ class ApplicationController < ActionController::Base
     private_office_path
   end
 
-  include CurrentCart
-  protect_from_forgery with: :exception
-  before_action :set_roots, :set_cart, :set_services
 
   private
     def set_cookies

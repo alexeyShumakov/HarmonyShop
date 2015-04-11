@@ -19,6 +19,6 @@ config/initializers/app_env_vars.rb
 .idea/
 /public/system/
 /solr/test
-/solr/development
+/solr/development/
 /solr/default/data
 /solr/pids
