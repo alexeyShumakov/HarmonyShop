@@ -12,7 +12,7 @@ class OrdersController < ApplicationController
 
   def index
     @orders = @user.orders.all
-    authorize @orders
+    authorize Order
   end
 
   # GET /orders/1

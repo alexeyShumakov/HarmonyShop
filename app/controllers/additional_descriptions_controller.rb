@@ -8,7 +8,7 @@ class AdditionalDescriptionsController < ApplicationController
   # GET /additional_descriptions.json
   def index
     @additional_descriptions = @product.additional_descriptions
-    authorize @additional_descriptions
+    authorize AdditionalDescription
   end
 
   # GET /additional_descriptions/1

@@ -10,7 +10,7 @@ class LineItemsController < ApplicationController
   # GET /line_items.json
   def index
     @line_items = LineItem.all
-    authorize @line_items
+    authorize LineItem
   end
 
   # GET /line_items/1

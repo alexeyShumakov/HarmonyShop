@@ -7,7 +7,7 @@ class ColorsController < ApplicationController
   # GET /colors.json
   def index
     @colors = Color.all
-    authorize @colors
+    authorize Color
   end
 
   # GET /colors/1

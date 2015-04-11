@@ -8,7 +8,7 @@ class ImagesController < ApplicationController
   # GET /images.json
   def index
     @images = Image.all
-    authorize @images
+    authorize Image
   end
 
   # GET /images/1
