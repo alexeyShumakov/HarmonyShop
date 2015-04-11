@@ -1,30 +1,37 @@
 class SizesController < ApplicationController
-  before_action :current_user_admin?
+  before_filter :authenticate_user!
+  after_action :verify_authorized
   before_action :set_size, only: [:show, :edit, :update, :destroy]
 
   # GET /sizes
   # GET /sizes.json
   def index
     @sizes = Size.all
+    authorize Size
   end
 
   # GET /sizes/1
   # GET /sizes/1.json
   def show
+    authorize @size
   end
 
   # GET /sizes/new
   def new
     @size = Size.new
+    authorize @size
   end
 
   # GET /sizes/1/edit
   def edit
+    authorize @size
   end
 
   # POST /sizes
   # POST /sizes.json
   def create
+    authorize @size
+
     @size = Size.new(size_params)
 
     respond_to do |format|
@@ -41,6 +48,8 @@ class SizesController < ApplicationController
   # PATCH/PUT /sizes/1
   # PATCH/PUT /sizes/1.json
   def update
+    authorize @size
+
     respond_to do |format|
       if @size.update(size_params)
         format.html { redirect_to @size, notice: 'Size was successfully updated.' }
@@ -55,6 +64,8 @@ class SizesController < ApplicationController
   # DELETE /sizes/1
   # DELETE /sizes/1.json
   def destroy
+    authorize @size
+
     @size.destroy
     respond_to do |format|
       format.html { redirect_to sizes_url, notice: 'Size was successfully destroyed.' }
