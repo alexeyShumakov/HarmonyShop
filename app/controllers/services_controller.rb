@@ -1,11 +1,13 @@
 class ServicesController < ApplicationController
-  before_action :current_user_admin?, except: [:show]
+  before_filter :authenticate_user!, except: [:show]
+  after_action :verify_authorized, except: [:show]
   before_action :set_service, only: [:show, :edit, :update, :destroy]
 
   # GET /services
   # GET /services.json
   def index
     @services = Service.all
+    authorize Service
   end
 
   # GET /services/1
@@ -16,16 +18,19 @@ class ServicesController < ApplicationController
   # GET /services/new
   def new
     @service = Service.new
+    authorize @service
   end
 
   # GET /services/1/edit
   def edit
+    authorize @service
   end
 
   # POST /services
   # POST /services.json
   def create
     @service = Service.new(service_params)
+    authorize @service
 
     respond_to do |format|
       if @service.save
@@ -41,6 +46,7 @@ class ServicesController < ApplicationController
   # PATCH/PUT /services/1
   # PATCH/PUT /services/1.json
   def update
+    authorize @service
     respond_to do |format|
       if @service.update(service_params)
         format.html { redirect_to @service, notice: 'Service was successfully updated.' }
@@ -55,6 +61,7 @@ class ServicesController < ApplicationController
   # DELETE /services/1
   # DELETE /services/1.json
   def destroy
+    authorize @service
     @service.destroy
     respond_to do |format|
       format.html { redirect_to services_url, notice: 'Service was successfully destroyed.' }

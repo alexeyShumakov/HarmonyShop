@@ -16,7 +16,7 @@
   <%= link_to product, {class: 'ref-product'} do %>
     <%= content_tag :strong, product.title, {class: "product-title"} %>
     <%= content_tag :span, {class: "product-price"} do %>
-      <%= product.price %> руб.
+      <%= rus_number_to_currency(product.price) %>
     <% end %>
   <% end %>
 </div>
