@@ -1,11 +1,13 @@
 class ProductsColorsSizesController < ApplicationController
-  before_action :current_user_admin?, except: [:show]
+  before_filter :authenticate_user!, except: [:show]
+  after_action :verify_authorized, except: [:show]
   before_action :set_products_colors_size, only: [:show, :edit, :update, :destroy]
 
   # GET /products_colors_sizes
   # GET /products_colors_sizes.json
   def index
     @products_colors_sizes = ProductsColorsSize.all
+    authorize ProductsColorsSize
   end
 
   # GET /products_colors_sizes/1
@@ -23,6 +25,7 @@ class ProductsColorsSizesController < ApplicationController
   # GET /products_colors_sizes/new
   def new
     @products_colors_size = ProductsColorsSize.new
+    authorize @products_colors_size
   end
 
   # GET /products_colors_sizes/1/edit
@@ -33,6 +36,7 @@ class ProductsColorsSizesController < ApplicationController
   # POST /products_colors_sizes.json
   def create
     @products_colors_size = ProductsColorsSize.new(products_colors_size_params)
+    authorize @products_colors_size
 
     respond_to do |format|
       if @products_colors_size.save
@@ -48,6 +52,7 @@ class ProductsColorsSizesController < ApplicationController
   # PATCH/PUT /products_colors_sizes/1
   # PATCH/PUT /products_colors_sizes/1.json
   def update
+    authorize @products_colors_size
     respond_to do |format|
       if @products_colors_size.update(products_colors_size_params)
         format.html { redirect_to products_path, notice: 'Products colors size was successfully updated.' }
@@ -62,6 +67,7 @@ class ProductsColorsSizesController < ApplicationController
   # DELETE /products_colors_sizes/1
   # DELETE /products_colors_sizes/1.json
   def destroy
+    authorize @products_colors_size
     @products_colors_size.destroy
     respond_to do |format|
       format.html { redirect_to products_colors_sizes_url, notice: 'Products colors size was successfully destroyed.' }
