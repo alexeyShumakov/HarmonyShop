@@ -23,6 +23,7 @@ class OrdersController < ApplicationController
 
   # GET /orders/new
   def new
+    @user == current_user
     @order = Order.new
   end
 
