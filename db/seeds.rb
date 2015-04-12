@@ -4,7 +4,20 @@ Category.delete_all
 Color.delete_all
 ProductsColor.delete_all
 Size.delete_all
+Service.delete_all
+ServicesGroup.delete_all
+LineItem.delete_all
+Cart.delete_all
+SizeHelper.delete_all
+User.delete_all
 
+admin = User.new( :name => 'John Doe',
+              :email => 'example@gmail.com',
+              :password => 'topsecret',
+              :password_confirmation => 'topsecret',
+              :role => 1)
+admin.skip_confirmation!
+admin.save!
 (10..13).to_a.each do |size|
   Size.create!(
            name: size,
@@ -17,6 +30,33 @@ end
            name: color,
            code: color
   )
+end
+
+about = ServicesGroup.create!(
+   title: 'About',
+   name: 'About'
+)
+help = ServicesGroup.create!(
+  title: 'Help',
+  name: 'Help'
+)
+
+@size_helper = SizeHelper.create!(
+    title: Faker::Name.first_name,
+    body: Faker::Lorem.paragraph
+)
+
+5.times do
+  service = Service.create!(
+     title: Faker::Name.first_name,
+     body: Faker::Lorem.paragraph(6)
+  )
+  service1 = Service.create!(
+      title: Faker::Name.first_name,
+      body: Faker::Lorem.paragraph(6)
+  )
+  help.services << service
+  about.services << service1
 end
 
 colors = Color.all
@@ -65,7 +105,9 @@ cat_3 = Category.create!(
             article: Faker::Number.number(8)
         )
 
-        colors.each do |color|
+        @size_helper.product << @product
+
+            colors.each do |color|
           @product.colors << color
         end
 
