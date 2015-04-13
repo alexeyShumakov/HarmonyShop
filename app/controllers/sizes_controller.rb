@@ -30,9 +30,9 @@ class SizesController < ApplicationController
   # POST /sizes
   # POST /sizes.json
   def create
-    authorize @size
 
     @size = Size.new(size_params)
+    authorize @size
 
     respond_to do |format|
       if @size.save

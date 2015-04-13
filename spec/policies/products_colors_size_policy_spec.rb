@@ -1,10 +1,10 @@
 require 'spec_helper'
 
-describe ProductsColorsSizesPolicy do
+describe ProductsColorsSizePolicy do
 
   let(:user) { User.new }
 
-  subject { ProductsColorsSizesPolicy }
+  subject { ProductsColorsSizePolicy }
 
   permissions ".scope" do
     pending "add some examples to (or delete) #{__FILE__}"

@@ -1,6 +1,6 @@
 class SizeHelpersController < ApplicationController
   before_filter :authenticate_user!, except: [:show]
-  after_action :verify_authorized, except: [:show]
+  after_action :verify_authorized
   before_action :set_size_helper, only: [:show, :edit, :update, :destroy]
 
   # GET /size_helpers
@@ -15,7 +15,10 @@ class SizeHelpersController < ApplicationController
   def show
     respond_to do |format|
       format.js
-      format.html
+       if format.html
+         authenticate_user!
+         authorize @size_helper
+       end
     end
   end
 

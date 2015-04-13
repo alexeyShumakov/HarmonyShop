@@ -30,6 +30,7 @@ class ProductsColorsSizesController < ApplicationController
 
   # GET /products_colors_sizes/1/edit
   def edit
+    authorize @products_colors_size
   end
 
   # POST /products_colors_sizes
