@@ -17,8 +17,12 @@ class ProductsColorsSizesController < ApplicationController
 
     @products_color = @products_colors_size.products_color
     respond_to do |format|
-      format.html
       format.js
+      if user_signed_in?
+        format.html {authorize @products_colors_size}
+      else
+        format.html {authenticate_user!}
+      end
     end
   end
 
