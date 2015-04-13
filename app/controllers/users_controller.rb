@@ -52,9 +52,8 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1.json
   def update
     authorize @user
-
     respond_to do |format|
-      if @user.update(user_params)
+      if @user.skip_reconfirmation_update(user_params)
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
         format.json { render :show, status: :ok, location: @user }
       else

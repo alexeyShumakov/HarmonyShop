@@ -18,6 +18,14 @@ admin = User.new( :name => 'John Doe',
               :role => 1)
 admin.skip_confirmation!
 admin.save!
+
+user = User.new( :name => 'John Doe',
+                  :email => 'example1@gmail.com',
+                  :password => 'topsecret',
+                  :password_confirmation => 'topsecret',
+                  :role => 0)
+user.skip_confirmation!
+user.save!
 (10..13).to_a.each do |size|
   Size.create!(
            name: size,

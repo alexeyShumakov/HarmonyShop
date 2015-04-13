@@ -12,4 +12,9 @@ class User < ActiveRecord::Base
     self.role ||= :user
   end
 
+	def skip_reconfirmation_update(params)
+		self.skip_reconfirmation!
+		self.update(params)
+	end
+
 end
