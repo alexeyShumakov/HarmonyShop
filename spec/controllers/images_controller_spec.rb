@@ -4,6 +4,7 @@ require 'rack/test'
 
 
 RSpec.describe ImagesController, type: :controller do
+  login_admin
 
   # This should return the minimal set of attributes required to create a valid
   # Image. As you add validations to Image, be sure to

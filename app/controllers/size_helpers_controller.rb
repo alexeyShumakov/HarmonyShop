@@ -13,7 +13,7 @@ class SizeHelpersController < ApplicationController
   # GET /size_helpers/1
   # GET /size_helpers/1.json
   def show
-
+    # TODO testing
     respond_to do |format|
       format.js
       if user_signed_in?

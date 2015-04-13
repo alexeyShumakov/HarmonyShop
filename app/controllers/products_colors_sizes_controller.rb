@@ -16,6 +16,7 @@ class ProductsColorsSizesController < ApplicationController
     session[:size] = @products_colors_size.size.code
 
     @products_color = @products_colors_size.products_color
+    # TODO testing
     respond_to do |format|
       format.js
       if user_signed_in?

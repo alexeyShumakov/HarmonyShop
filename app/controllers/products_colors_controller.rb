@@ -16,13 +16,20 @@ class ProductsColorsController < ApplicationController
     session.delete(:size)
     @products_color = ProductsColor.find(params[:id])
     @product = @products_color.product
+    # TODO testing
     respond_to do |format|
+      if user_signed_in?
+        format.html {authorize @products_color}
+      else
+        format.html {authenticate_user!}
+      end
+      # TODO fix it
       if @products_color.images.present?
         format.js {}
       else
         format.js { render 'products_colors/no_images' }
       end
-      format.html
+
     end
   end
 

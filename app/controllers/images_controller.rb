@@ -1,6 +1,6 @@
 class ImagesController < ApplicationController
   before_filter :authenticate_user!, except: [:show]
-  after_action :verify_authorized, except: [:show]
+  after_action :verify_authorized
   before_action :set_image, only: [:show, :edit, :update, :destroy]
   before_action :set_product_color, only: [ :show, :new, :edit, :create, :update]
 
@@ -17,8 +17,11 @@ class ImagesController < ApplicationController
     @image = @products_color.images.find(params[:id])
     puts request.format
     respond_to do |format|
-      # TODO исправить
-      format.html {redirect_to root_path}
+      if user_signed_in?
+        format.html {authorize @image}
+      else
+        format.html {authenticate_user!}
+      end
       format.js {}
     end
   end
