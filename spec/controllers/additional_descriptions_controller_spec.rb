@@ -26,10 +26,10 @@ RSpec.describe AdditionalDescriptionsController, type: :controller do
 
   describe "GET #index" do
     it "assigns all additional_descriptions as @additional_descriptions" do
-      product = create(:product)
-      additional_description = create(:additional_description)
+      # see --> factories/products
+      product = create(:product_with_add_desc)
       get :index, {product_id: product.id}, valid_session
-      expect(assigns(:additional_descriptions)).to eq([additional_description])
+      expect(assigns(:additional_descriptions)).to eq(product.additional_descriptions)
     end
   end
 

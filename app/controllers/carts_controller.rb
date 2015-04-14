@@ -5,9 +5,4 @@ class CartsController < ApplicationController
   def custom_show
   end
 
-  private
-
-    def cart_params
-      params[:cart]
-    end
 end
