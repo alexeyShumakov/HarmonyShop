@@ -3,7 +3,7 @@ class LineItemsController < ApplicationController
 
   before_filter :authenticate_user!, only: [:index, :show, :new, :edit]
   after_action :verify_authorized, only: [:index, :show, :new, :edit]
-  before_action :set_cart, only:  [:create, :update]
+  before_action :set_cart, only:  [:create, :update, :destroy]
   before_action :set_line_item, only: [:show, :edit, :update, :destroy]
 
   # GET /line_items
@@ -38,7 +38,7 @@ class LineItemsController < ApplicationController
     respond_to do |format|
       if @line_item.save
         format.js
-        format.html { redirect_to @line_item.cart, notice: 'Line item was successfully created.' }
+        format.html { redirect_to products_url, notice: 'Line item was successfully created.' }
         format.json { render :show, status: :created, location: @line_item }
       else
         format.js { render partial: 'bad_params' }
@@ -51,29 +51,35 @@ class LineItemsController < ApplicationController
   # PATCH/PUT /line_items/1
   # PATCH/PUT /line_items/1.json
   def update
-    respond_to do |format|
-      if @line_item.update(line_item_params)
-        format.js
-        format.html { redirect_to cart_custom_show_path, notice: 'Line item was successfully updated.' }
-        format.json { render :show, status: :ok, location: @line_item }
-      else
-        format.js {render nothing: true}
-        format.html { render :edit }
-        format.json { render json: @line_item.errors, status: :unprocessable_entity }
+      if @line_item.cart == @cart
+      respond_to do |format|
+        if @line_item.update(line_item_params)
+          format.js
+          format.html { redirect_to products_url, notice: 'Line item was successfully updated.' }
+          format.json { render :show, status: :ok, location: @line_item }
+        else
+          format.js {render nothing: true}
+          format.html { render :edit }
+          format.json { render json: @line_item.errors, status: :unprocessable_entity }
+        end
       end
+    else
+      redirect_to categories_url
     end
   end
 
   # DELETE /line_items/1
   # DELETE /line_items/1.json
   def destroy
-    unless @line_item.order_id
-      @line_item.destroy
-    end
-    respond_to do |format|
-      format.js
-      format.html { redirect_to cart_custom_show_path }
-      format.json { head :no_content }
+    if @line_item.cart == @cart
+      unless @line_item.order_id
+        @line_item.destroy
+      end
+      respond_to do |format|
+        format.js
+        format.html { redirect_to cart_custom_show_path }
+        format.json { head :no_content }
+      end
     end
   end
 

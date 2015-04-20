@@ -72,7 +72,7 @@ class OrdersController < ApplicationController
     authorize @order
     @order.destroy
     respond_to do |format|
-      format.html { redirect_to orders_url, notice: 'Order was successfully destroyed.' }
+      format.html { redirect_to products_url, notice: 'Order was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -88,6 +88,6 @@ class OrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:line_item, :user_id, :pay_type, :address, :phone, :delivery_type, :user_id)
+      params.require(:order).permit(:line_item, :pay_type, :address, :phone, :delivery_type, :user_id)
     end
 end
