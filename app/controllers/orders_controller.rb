@@ -2,7 +2,7 @@ class OrdersController < ApplicationController
   before_action :set_order, only: [:edit, :update, :destroy, :show]
   before_action :set_user, only: [:index, :create, :new, :create]
   before_action :authenticate_user!
-  after_action :verify_authorized, except: [:my_orders, :new, :create]
+  after_action :verify_authorized, except: [:my_orders, :new, :create, :delivery_price]
 
   # GET /orders
   # GET /orders.json
@@ -25,6 +25,32 @@ class OrdersController < ApplicationController
   def new
     @user == current_user
     @order = Order.new
+  end
+
+  def delivery_price
+    url = "http://api.edostavka.ru/calculator/calculate_price_by_json.php"
+    puts params
+    @response = HTTParty.post(url.to_s,
+                              body: {
+                                version: '1.0',
+                                dateExecute: Date.tomorrow,
+                                senderCityId: 259,
+                                receiverCityId:  params[:city_id],
+                                tariffId: 1,
+                                goods: [
+                                  {
+                                      weight:0.1,
+                                      length:5,
+                                      width:5,
+                                      height:1
+                                  },
+                                  {
+                                      weight: 0.1,
+                                      volume: 0.1
+                                  }
+                                ]
+                              }.to_json,
+                              :headers => { 'Content-Type' => 'application/json' })
   end
 
   # GET /orders/1/edit
@@ -88,6 +114,6 @@ class OrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:line_item, :pay_type, :address, :phone, :delivery_type, :user_id)
+      params.require(:order).permit(:city_id, :line_item, :pay_type, :address, :phone, :delivery_type, :user_id)
     end
 end

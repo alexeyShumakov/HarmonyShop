@@ -1,3 +1,7 @@
+<% content_for(:head) do %>
+  <%= javascript_include_tag 'orders', 'data-turbolinks-track' => true %>
+<% end %>
 <h1>New Order</h1>
 <%= render 'form' %>
 
+<div id="receiverCityId"></div>

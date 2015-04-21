@@ -2,7 +2,7 @@
 
 # Version of your assets, change this if you want to expire all your assets.
 Rails.application.config.assets.version = '1.0'
-%w(categories products carts).each do |controller|
+%w(categories products carts orders).each do |controller|
 	Rails.application.config.assets.precompile += ["#{controller}.js", "#{controller}.css"]
 end
 # Add additional assets to the asset load path

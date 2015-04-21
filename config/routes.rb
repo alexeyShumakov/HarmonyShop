@@ -7,6 +7,8 @@ Rails.application.routes.draw do
     resources :orders, shallow: true
   end
 
+  get 'delivery_price', to: 'orders#delivery_price', as: :delivery_price
+
   get 'my_orders', to: 'orders#my_orders', as: :my_orders
 
   get 'private_office', to: 'users#private_office', as: :private_office
@@ -19,7 +21,7 @@ Rails.application.routes.draw do
 
   resources :line_items
 
-
+  get 'test_json', to: 'products#test_json'
   get 'cart', to: 'carts#custom_show', as: :cart_custom_show
 
   resources :products_colors_sizes
