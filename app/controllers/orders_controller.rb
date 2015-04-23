@@ -1,4 +1,7 @@
 class OrdersController < ApplicationController
+
+  include DeliveryInfo
+
   before_action :set_order, only: [:edit, :update, :destroy, :show]
   before_action :set_user, only: [:index, :create, :new, :create]
   before_action :authenticate_user!
@@ -23,36 +26,20 @@ class OrdersController < ApplicationController
 
   # GET /orders/new
   def new
-    @user == current_user
-    @order = Order.new
+    if @cart.total_quantity == 0
+      redirect_to root_path
+    else
+      @user == current_user
+      @order = Order.new
+    end
   end
 
   def delivery_price
-    url = "http://api.edostavka.ru/calculator/calculate_price_by_json.php"
-    puts params
-    @response = HTTParty.post(url.to_s,
-                              body: {
-                                version: '1.0',
-                                dateExecute: Date.tomorrow,
-                                senderCityId: 259,
-                                receiverCityId:  params[:city_id],
-                                tariffId: 1,
-                                goods: [
-                                  {
-                                      weight:0.1,
-                                      length:5,
-                                      width:5,
-                                      height:1
-                                  },
-                                  {
-                                      weight: 0.1,
-                                      volume: 0.1
-                                  }
-                                ]
-                              }.to_json,
-                              :headers => { 'Content-Type' => 'application/json' })
+    # see DeliveryInfo
+    @response = delivery_info
+    set_delivery_session
+    @delivery_and_products_price = session[:delivery_price] + @cart.total_price
   end
-
   # GET /orders/1/edit
   def edit
     authorize @order
@@ -62,12 +49,19 @@ class OrdersController < ApplicationController
   # POST /orders.json
   def create
     @order = Order.new(order_params)
+
+    # delivery_price get from session, not from hidden input
+    @order.delivery_price = session[:delivery_price]
+    @order.total_price = @cart.total_price
+
     @user = current_user
-    @user.orders << @order
-    @order.add_item_from_cart(@cart)
 
     respond_to do |format|
       if @order.save
+        # delete session data
+        clear_delivery_session
+        @user.orders << @order
+        @order.add_item_from_cart(@cart)
         format.html { redirect_to private_office_path, notice: 'Order was successfully created.' }
         format.json { render :show, status: :created, location: @order }
       else
@@ -114,6 +108,6 @@ class OrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:city_id, :line_item, :pay_type, :address, :phone, :delivery_type, :user_id)
+      params.require(:order).permit(:city, :city_id, :line_item, :pay_type, :address, :phone, :user_id)
     end
 end

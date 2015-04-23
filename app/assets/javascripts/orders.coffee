@@ -3,17 +3,22 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $ ->
-  $('#order_address').autocomplete
+  $('#order_phone').mask("+7(999) 999-99-99")
+  $('#order_city').autocomplete
+    # TODO слишком долго подключается по запросу "Москва", исправить.
     source: (request, response) ->
       $.ajax
         url : "http://api.cdek.ru/city/getListByTerm/jsonp.php?callback=?",
         dataType : "jsonp"
         data:
           q: ->
-            $('#order_address').val()
+            $('#order_city').val()
           name_startsWith: ->
-            $('#order_address').val()
+            $('#order_city').val()
         success: (data)->
+          data.geonames = $.grep(data.geonames, (element, index)->
+            element.countryId is '1'
+          )
           response($.map(data.geonames, (item) ->
             label : item.name,
             value : item.name,
@@ -22,7 +27,7 @@ $ ->
           return
       return
 
-    minLength: 1
+    minLength: 2
 
     select: (event, ui) ->
       $.ajax
@@ -30,27 +35,11 @@ $ ->
         method: 'get'
         dataType: 'json'
         data:
+          city: ui.item.value,
           city_id: ui.item.id
+
         success: (data)->
-          $('#receiverCityId').html(
-            """
-            <div class='delivery'>
-              <h3>Курьерская служба </h3>
-              <div class='price'>
-                Цена:
-                #{data.result.price}
-              </div>
-              <div class='period'>
-                Вермя доставки:
-            """ +
-              if (data.result.deliveryPeriodMin is data.result.deliveryPeriodMax)
-                " #{data.result.deliveryPeriodMin} дня(ей) "
-              else
-                " #{data.result.deliveryPeriodMin} - #{data.result.deliveryPeriodMax} дня(ей) "
-            +
-            """
-              </div>
-            </div>
-            """
-          )
+          $('.total_price').children('span').html(data.total_price)
+          $('.price').children('span').html(data.delivery_price)
+          $('.period').children('span').html(data.delivery_time)
           return

@@ -22,6 +22,18 @@ class ApplicationController < ActionController::Base
 
 
   private
+    def delivery_time(min, max)
+      if min == max
+        if min == '1'
+          min + ' день'
+        else
+          min + ' дня(ей)'
+        end
+      else
+        min + ' - ' + max + ' дня(ей)'
+      end
+    end
+
     def set_cookies
       if params[:page_size].present?
         cookies[:page_size] = params[:page_size]

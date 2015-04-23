@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150410022110) do
+ActiveRecord::Schema.define(version: 20150422054407) do
 
   create_table "additional_descriptions", force: :cascade do |t|
     t.string   "name"
@@ -106,12 +106,15 @@ ActiveRecord::Schema.define(version: 20150410022110) do
 
   create_table "orders", force: :cascade do |t|
     t.integer  "user_id"
-    t.string   "pay_type"
+    t.integer  "pay_type"
     t.string   "address"
     t.string   "phone"
     t.string   "delivery_type"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+    t.string   "city"
+    t.decimal  "total_price",    precision: 8, scale: 2
+    t.decimal  "delivery_price", precision: 8, scale: 2
   end
 
   add_index "orders", ["user_id"], name: "index_orders_on_user_id"

@@ -8,10 +8,12 @@ RSpec.describe OrdersController, type: :controller do
   # adjust the attributes here as well.
   let(:valid_attributes) {
     {
-     :pay_type => 'card',
+     :pay_type => 'Онлайн',
      :address => 'address',
      :phone => 3451303,
-     :delivery_type => 'couriers' }
+     :delivery_type => 'couriers',
+     :city => 'Moscow'
+    }
   }
 
   let(:invalid_attributes) {
@@ -60,6 +62,23 @@ RSpec.describe OrdersController, type: :controller do
     end
   end
 
+  describe "GET #delivery_price" do
+    let(:delivery_params) {
+      {city: 'Челябинск', city_id: 259}
+    }
+    it "should return delivery info from 'edostavka' " do
+      xhr :get, :delivery_price, delivery_params, valid_session
+      expect(assigns(:response)).not_to be_nil
+    end
+
+    it "should set session variables" do
+      xhr :get, :delivery_price, delivery_params, valid_session
+      expect(session[:city]).to eq(delivery_params[:city])
+      expect(session[:delivery_time]).not_to be_nil
+      expect(session[:delivery_price]).not_to be_nil
+    end
+  end
+
   describe "POST #create" do
     context "with valid params" do
       it "creates a new Order" do
@@ -74,6 +93,15 @@ RSpec.describe OrdersController, type: :controller do
         post :create, {:order => valid_attributes, :user_id => user.id}, valid_session
         expect(assigns(:order)).to be_a(Order)
         expect(assigns(:order)).to be_persisted
+      end
+
+      it "should clear session" do
+        delivery_session = {city: 'city', delivery_price: 'price', delivery_time: 'time'}
+        user = create(:user)
+        post :create, {:order => valid_attributes, :user_id => user.id}, delivery_session
+        expect(session[:city]).to be_nil
+        expect(session[:delivery_time]).to be_nil
+        expect(session[:delivery_price]).to be_nil
       end
 
       it "redirects to the created order" do
@@ -102,7 +130,7 @@ RSpec.describe OrdersController, type: :controller do
     context "with valid params" do
       let(:new_attributes) {
         {
-          :pay_type => 'cache',
+          :pay_type => 'Онлайн',
           :address => 'address',
           :phone => 3451303,
           :delivery_type => 'couriers'

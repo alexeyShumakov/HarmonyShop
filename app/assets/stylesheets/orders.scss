@@ -19,3 +19,164 @@
     margin-left: 220px;
   }
 }
+
+.order_accept {
+
+  .order_price {
+    span {
+      color: #8732c8;
+      font-size: 17px;
+    }
+  }
+
+  h2 {
+    color: #8732c8;
+    margin-top: 5px;
+  }
+  float: right;
+  width: 400px;
+  min-height: 200px;
+  margin-bottom: 200px;
+  margin-right: 50px;
+
+  .edit_cart {
+    margin-top: 5px;
+    float: right;
+  }
+
+  .delivery {
+    float: left;
+    width: 380px;
+    height: 100px;
+    padding: 10px;
+    h3 {
+      margin: 5px;
+    }
+    .price {
+      margin: 5px 0;
+    }
+    img {
+      margin: 5px;
+      float:left;
+    }
+  }
+
+  .order_details {
+
+    ul {
+      margin: 0;
+      padding: 0;
+      max-height: 240px;
+      overflow: hidden;
+      overflow-y: auto;
+
+      li {
+        width: 100%;
+        float: left;
+        border-bottom: 1px dashed #b6b6b6;
+        display: block;
+        padding: 10px 0;
+        img {
+          float: left;
+        }
+        margin: 0;
+        .order_info {
+          float: left;
+          width: 250px;
+        }
+      }
+    }
+    margin: 30px 0;
+    float: left;
+    width: 400px;
+    min-height: 100px;
+    border-radius: 5px;
+    border: 1px solid #d5d5d5;
+    padding: 10px;
+  }
+  .total_price {
+    margin: 30px 10px 30px 20px;
+    float: left;
+    width: 400px;
+    span {
+      color: #d9198e;
+      font-size: 22px;
+      margin-left: 10px;
+    }
+  }
+}
+
+.order_block {
+  float: left;
+  width: 500px;
+
+  #flash_alert {
+    color: #ff2348;
+  }
+  .user_data {
+    margin-top: 10px;
+    width: 406px;
+
+    padding: 0 0 0 5px;
+    font-size: 15px;
+  }
+  .form-actions {
+
+    input {
+      margin-top: 10px;
+      border: 1px solid #6d2aa6;
+      border-radius: 3px;
+      width: 406px;
+      height: 30px;
+      cursor: pointer;
+
+      padding: 0 0 0 5px;
+      font-size: 15px;
+      background: #752db0;
+      color: #fff;
+    }
+  }
+  .form-inputs {
+    .input {
+      margin-top: 10px;
+      input {
+        border: 1px solid #dedede;
+        border-radius: 3px;
+        width: 400px;
+        height: 24px;
+        margin: 0;
+        padding: 0 0 0 5px;
+        font-size: 15px;
+        background: #fff;
+      }
+
+      input.radio_buttons {
+        vertical-align: middle;
+        width: 15px;
+        height: 15px;
+        margin-right: 10px;
+      }
+      .boolean {
+        background-color: transparent;
+        border: 0 none;
+        cursor: pointer;
+        height: auto;
+        line-height: normal;
+        margin: 3px;
+        padding: 0;
+        width: auto;
+      }
+      label {
+        display: block;
+      }
+      .error {
+        display: block;
+        font-weight: bold;
+        color: #752db0;
+        margin-left: 10px;
+      }
+    }
+
+  }
+
+}

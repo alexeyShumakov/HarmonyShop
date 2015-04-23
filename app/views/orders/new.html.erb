@@ -1,7 +1,54 @@
 <% content_for(:head) do %>
   <%= javascript_include_tag 'orders', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'jquery.maskedinput.min', 'data-turbolinks-track' => true %>
 <% end %>
-<h1>New Order</h1>
-<%= render 'form' %>
+<div class="order_block">
+  <h1>Оформление заказа</h1>
+  <%= render 'form' %>
+</div>
+<div class="order_accept">
+  <div class="order_details">
+    <%= link_to 'Изменить заказ ', cart_custom_show_path, class: :edit_cart %>
+    <h2>Ваш заказ</h2>
+    <div class="order_price"><strong>Цена заказа:</strong> <span><%= rus_number_to_currency(@cart.total_price )%></span></div>
+    <div class="order_quantity"><strong>Кол-во товаров:</strong> <span><%= @cart.total_quantity%> шт.</span></div>
+    <ul>
+      <% @cart.line_items.each do |line_item| %>
+        <li>
+          <%= image_tag line_item.get_image %>
+          <div class="order_info">
+            <%= line_item.product.title %> <br/>
+            <%= line_item.quantity %> x <%= rus_number_to_currency(line_item.product.price) %> =
+            <%= rus_number_to_currency(line_item.total_price) %> <br/>
+            <strong>цвет:</strong><%= line_item.color %> <br/>
+            <strong>размер:</strong><%= line_item.size %>
+          </div>
+        </li>
+      <% end %>
+    </ul>
 
-<div id="receiverCityId"></div>
+    <div id="delivery_type">
+      <div class='delivery'>
+        <h3>Доставка: Курьерская служба </h3>
+        <img src='http://www.edostavka.ru/img/general2010/logo.png' />
+        <div class='price'>
+          <strong>Цена:</strong>
+      <span>
+        <%= rus_number_to_currency(session[:delivery_price]) or 'выберете ваш город.' %>
+      </span>
+        </div>
+        <div class='period'>
+          <strong>Вермя доставки:</strong>
+          <span><%= session[:delivery_time] or 'выберете ваш город.' %></span>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="total_price">
+      <strong>Итого:</strong><span><%= rus_number_to_currency(@cart.total_price + (session[:delivery_price] or 0)) %></span>
+    </div>
+  </div>
+</div>
+<div class="fix"></div>
+

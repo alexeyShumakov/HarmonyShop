@@ -2,7 +2,12 @@ class Order < ActiveRecord::Base
   belongs_to :user
   has_many :line_items, dependent: :destroy
 
+  enum pay_type: ['Онлайн', 'При получении']
+
   validates :pay_type, :presence => true
+  validates :phone, presence: true
+  validates :address, presence: true
+  validates :city, presence: true
 
   def total_price
     line_items.to_a.sum {|item| item.total_price}

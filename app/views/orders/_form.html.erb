@@ -1,14 +1,22 @@
 <%= simple_form_for([@user,@order]) do |f| %>
-  <%= f.error_notification %>
+
+  <div class="user_data">
+    <strong>Имя:</strong><span> <%= current_user.name %></span>
+  </div>
+  <div class="user_data">
+    <strong>Email:</strong><span> <%= current_user.email %></span>
+  </div>
 
   <div class="form-inputs">
-    <%= f.input :pay_type %>
-    <%= f.input :address %>
-    <%= f.input :phone %>
-    <%= f.input :delivery_type %>
+    <%= f.input :city, label: 'Город', placeholder: 'Челябинск', input_html: { value: session[:city]} %>
+    <%= f.input :address, label: 'Адрес', placeholder: 'пр. Мира д.23 кв.42'%>
+    <%= f.input :phone, label: 'Телефон', placeholder: '+7(909) 082-70-23' %>
+    <%= f.input :pay_type, label: 'Способ оплаты' do %>
+      <%= f.select  :pay_type, options_for_select(Order.pay_types.keys) %>
+    <% end %>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit %>
+    <%= f.button :submit, 'Заказать' %>
   </div>
 <% end %>
