@@ -2,6 +2,11 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.order-details {
+  float: left;
+  min-width: 800px;
+}
+
 .cart-items {
   margin: 1em 0;
   min-width: 800px;

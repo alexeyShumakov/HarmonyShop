@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe ColorsController, type: :controller do
+  login_admin
 
   # This should return the minimal set of attributes required to create a valid
   # Color. As you add validations to Color, be sure to

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150407041346) do
+ActiveRecord::Schema.define(version: 20150422054407) do
 
   create_table "additional_descriptions", force: :cascade do |t|
     t.string   "name"
@@ -97,10 +97,27 @@ ActiveRecord::Schema.define(version: 20150407041346) do
     t.datetime "updated_at",                                     null: false
     t.integer  "quantity",                           default: 1
     t.decimal  "price",      precision: 8, scale: 2
+    t.integer  "order_id"
   end
 
   add_index "line_items", ["cart_id"], name: "index_line_items_on_cart_id"
+  add_index "line_items", ["order_id"], name: "index_line_items_on_order_id"
   add_index "line_items", ["product_id"], name: "index_line_items_on_product_id"
+
+  create_table "orders", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "pay_type"
+    t.string   "address"
+    t.string   "phone"
+    t.string   "delivery_type"
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+    t.string   "city"
+    t.decimal  "total_price",    precision: 8, scale: 2
+    t.decimal  "delivery_price", precision: 8, scale: 2
+  end
+
+  add_index "orders", ["user_id"], name: "index_orders_on_user_id"
 
   create_table "products", force: :cascade do |t|
     t.string   "title"
@@ -187,6 +204,7 @@ ActiveRecord::Schema.define(version: 20150407041346) do
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
     t.boolean  "admin",                  default: false
+    t.integer  "role"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

@@ -1,39 +1,37 @@
 class CategoriesController < ApplicationController
-  before_action :current_user_admin?, except: [:show, :index]
+  before_filter :authenticate_user!, except: [:index, :show]
+  after_action :verify_authorized, except: [:index, :show]
   before_action :set_category, only: [:show, :edit, :update, :destroy]
   before_action :set_cookies, only: [:show]
 
   # GET /categories
   # GET /categories.json
   def index
-    #UserMailer.welcome_email('recpqq@gmail.com').deliver_later
     @products = Product.first(21)
   end
 
   # GET /categories/1
   # GET /categories/1.json
   def show
-    if cookies[:page_size]
       @cat_products = @category.products.page(params[:page]).per(cookies[:page_size])
-    else
-      @cat_products = @category.products.page(params[:page])
-    end
   end
 
   # GET /categories/new
   def new
     @category = Category.new
+    authorize @category
   end
 
   # GET /categories/1/edit
   def edit
+    authorize @category
   end
 
   # POST /categories
   # POST /categories.json
   def create
     @category = Category.new(category_params)
-
+    authorize @category
     respond_to do |format|
       if @category.save
         format.html { redirect_to @category, notice: 'Category was successfully created.' }
@@ -48,6 +46,7 @@ class CategoriesController < ApplicationController
   # PATCH/PUT /categories/1
   # PATCH/PUT /categories/1.json
   def update
+    authorize @category
     respond_to do |format|
       if @category.update(category_params)
         format.html { redirect_to @category, notice: 'Category was successfully updated.' }
@@ -62,6 +61,7 @@ class CategoriesController < ApplicationController
   # DELETE /categories/1
   # DELETE /categories/1.json
   def destroy
+    authorize @category
     @category.destroy
     respond_to do |format|
       format.html { redirect_to categories_url, notice: 'Category was successfully destroyed.' }

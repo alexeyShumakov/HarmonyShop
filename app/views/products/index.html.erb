@@ -22,7 +22,10 @@
       <p>Дополнительное описание
         <%= link_to 'Add addition description', new_product_additional_description_path(product) %> <br/>
         <% product.additional_descriptions.each do |addit_desc| %>
-          <strong><%= addit_desc.name %></strong> <%= addit_desc.description %> <br/>
+          <strong><%= addit_desc.name %></strong> <%= addit_desc.description %>
+          <%= link_to 'Show', addit_desc %>
+          <%= link_to 'Edit', edit_additional_description_path(addit_desc) %>
+          <%= link_to 'Destroy', addit_desc, method: :delete, data: { confirm: 'Are you sure?' } %> <br/>
         <% end %>
       </p>
       <p>

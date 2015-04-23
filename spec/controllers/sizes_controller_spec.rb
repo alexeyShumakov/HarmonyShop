@@ -2,6 +2,7 @@ require 'rails_helper'
 
 
 RSpec.describe SizesController, type: :controller do
+  login_admin
 
   # This should return the minimal set of attributes required to create a valid
   # Size. As you add validations to Size, be sure to

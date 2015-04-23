@@ -1,11 +1,13 @@
 class ProductsColorsController < ApplicationController
-  before_action :current_user_admin?, except: [:show]
+  before_filter :authenticate_user!, except: [:show]
+  after_action :verify_authorized, except: [:show]
   before_action :set_products_color, only: [:show, :edit, :update, :destroy]
 
   # GET /products_colors
   # GET /products_colors.json
   def index
     @products_colors = ProductsColor.all
+    authorize ProductsColor
   end
 
   # GET /products_colors/1
@@ -14,29 +16,39 @@ class ProductsColorsController < ApplicationController
     session.delete(:size)
     @products_color = ProductsColor.find(params[:id])
     @product = @products_color.product
+    # TODO testing
     respond_to do |format|
+      if user_signed_in?
+        format.html {authorize @products_color}
+      else
+        format.html {authenticate_user!}
+      end
+      # TODO fix it
       if @products_color.images.present?
         format.js {}
       else
         format.js { render 'products_colors/no_images' }
       end
-      format.html
+
     end
   end
 
   # GET /products_colors/new
   def new
     @products_color = ProductsColor.new
+    authorize @products_color
   end
 
   # GET /products_colors/1/edit
   def edit
+    authorize @products_color
   end
 
   # POST /products_colors
   # POST /products_colors.json
   def create
     @products_color = ProductsColor.new(products_color_params)
+    authorize @products_color
 
     respond_to do |format|
       if @products_color.save
@@ -52,6 +64,7 @@ class ProductsColorsController < ApplicationController
   # PATCH/PUT /products_colors/1
   # PATCH/PUT /products_colors/1.json
   def update
+    authorize @products_color
     respond_to do |format|
       if @products_color.update(products_color_params)
         format.html { redirect_to products_path, notice: 'Products color was successfully updated.' }
@@ -66,6 +79,7 @@ class ProductsColorsController < ApplicationController
   # DELETE /products_colors/1
   # DELETE /products_colors/1.json
   def destroy
+    authorize @products_color
     @products_color.destroy
     respond_to do |format|
       format.html { redirect_to products_colors_url, notice: 'Products color was successfully destroyed.' }

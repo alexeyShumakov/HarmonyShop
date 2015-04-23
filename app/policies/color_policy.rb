@@ -1,0 +1,3 @@
+class ColorPolicy < ApplicationPolicy
+
+end

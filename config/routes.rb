@@ -2,7 +2,16 @@ Rails.application.routes.draw do
 
   devise_for :admins
   devise_for :users
-  resources :users
+
+  resources :users do
+    resources :orders, shallow: true
+  end
+
+  get 'delivery_price', to: 'orders#delivery_price', as: :delivery_price
+
+  get 'my_orders', to: 'orders#my_orders', as: :my_orders
+
+  get 'private_office', to: 'users#private_office', as: :private_office
 
   resources :size_helpers
 
@@ -12,8 +21,7 @@ Rails.application.routes.draw do
 
   resources :line_items
 
-  resources :carts
-
+  get 'test_json', to: 'products#test_json'
   get 'cart', to: 'carts#custom_show', as: :cart_custom_show
 
   resources :products_colors_sizes
@@ -29,7 +37,7 @@ Rails.application.routes.draw do
   resources :categories
 
   resources :products do
-    resources :additional_descriptions
+    resources :additional_descriptions, shallow: true
   end
   get '/search', to: 'products#search', as: :search
 

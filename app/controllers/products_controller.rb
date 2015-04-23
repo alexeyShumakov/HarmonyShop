@@ -1,11 +1,13 @@
 class ProductsController < ApplicationController
-  before_action :current_user_admin?, except: [:show, :search]
+  before_filter :authenticate_user!, except: [:show, :search]
+  after_action :verify_authorized, except: [:show, :search]
   before_action :set_product, only: [:show, :edit, :update, :destroy]
-  after_action :assign_product_to_branch_category, only: [:create, :edit, :update]
+  after_action :assign_product_to_branch_category, only: [:create, :update]
   # GET /products
   # GET /products.json
   def index
     @products = Product.all.page(params[:page]).per(10)
+    authorize Product
   end
 
   def search
@@ -35,17 +37,19 @@ class ProductsController < ApplicationController
   # GET /products/new
   def new
     @product = Product.new
+    authorize @product
   end
 
   # GET /products/1/edit
   def edit
+    authorize @product
   end
 
   # POST /products
   # POST /products.json
   def create
     @product = Product.new(product_params)
-
+    authorize @product
     respond_to do |format|
       if @product.save
         format.html { redirect_to  products_path, notice: 'Product was successfully created.' }
@@ -60,6 +64,7 @@ class ProductsController < ApplicationController
   # PATCH/PUT /products/1
   # PATCH/PUT /products/1.json
   def update
+    authorize @product
     respond_to do |format|
       if @product.update(product_params)
         format.html { redirect_to products_path, notice: 'Product was successfully updated.' }
@@ -74,6 +79,7 @@ class ProductsController < ApplicationController
   # DELETE /products/1
   # DELETE /products/1.json
   def destroy
+    authorize @product
     @product.destroy
     respond_to do |format|
       format.html { redirect_to products_url, notice: 'Product was successfully destroyed.' }

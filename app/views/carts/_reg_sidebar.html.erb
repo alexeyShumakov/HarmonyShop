@@ -3,9 +3,9 @@
     <% if user_signed_in? %>
       Личный кабинет
       <li><%= link_to 'Корзина', cart_custom_show_path %></li>
-      <li><%= link_to 'Изменить данные', edit_user_registration_path %></li>
-      <li><a href="#">Мои заказы</a></li>
+      <li><%= link_to 'Мои заказы', my_orders_path %></li>
       <li><a href="#">Отследить заказ</a></li>
+      <li><%= link_to 'Изменить данные', edit_user_registration_path %></li>
     <% else %>
       Вход в личный кабинет
       <li><%= link_to 'Войти', new_user_session_path %></li>

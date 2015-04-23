@@ -39,7 +39,7 @@
     <div id="basket-block">
       <% if user_signed_in? %>
         <ul>
-          <li><%= current_user.email %></li>
+          <li><%= link_to current_user.email, private_office_path %></li>
           <li><%= link_to 'Выйти', destroy_user_session_path, method: :delete %></li>
         </ul>
       <% else %>

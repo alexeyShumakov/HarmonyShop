@@ -1,0 +1,2 @@
+class ProductsColorPolicy < ApplicationPolicy
+end

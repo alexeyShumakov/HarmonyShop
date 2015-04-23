@@ -1,0 +1,16 @@
+<%= render 'carts/reg_sidebar' %>
+
+<div class="order-details">
+  <p id="notice"><%= notice %></p>
+
+  <h1>Мои заказы</h1>
+  <% @orders.each do |order| %>
+    <div class="order-item">
+      <%= link_to "Заказ №#{order.id}", order_path(order) %>
+      <span>от <%= order.created_at.strftime("%F %H:%M") %></span>
+      <span>Статус такой-то.</span>
+    </div>
+  <% end %>
+</div>
+
+<div class="fix"></div>

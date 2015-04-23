@@ -6,7 +6,7 @@ $ ->
                                               :collection => @product.products_colors,
                                               :locals => {:current_color => @products_color })%>"
   $('.carousel').html ''
-  $('.photo'). html 'Нет изображения'
+  $('.photo'). html '<%= image_tag('default_product_average.png') %>'
 
   $('.order').html "<%= escape_javascript render(:partial => 'products/add_to_cart',
                                                  :locals => {:product_id => @products_color.product.id,

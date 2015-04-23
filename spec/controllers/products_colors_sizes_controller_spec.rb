@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe ProductsColorsSizesController, type: :controller do
+  login_admin
 
   # This should return the minimal set of attributes required to create a valid
   # ProductsColorsSize. As you add validations to ProductsColorsSize, be sure to

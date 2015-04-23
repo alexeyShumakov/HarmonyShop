@@ -2,6 +2,7 @@ require 'rails_helper'
 
 
 RSpec.describe AdditionalDescriptionsController, type: :controller do
+  login_admin
 
   # This should return the minimal set of attributes required to create a valid
   # AdditionalDescription. As you add validations to AdditionalDescription, be sure to
@@ -25,9 +26,10 @@ RSpec.describe AdditionalDescriptionsController, type: :controller do
 
   describe "GET #index" do
     it "assigns all additional_descriptions as @additional_descriptions" do
-      additional_description = AdditionalDescription.create! valid_attributes
-      get :index, {product_id: 1}, valid_session
-      expect(assigns(:additional_descriptions)).to eq([additional_description])
+      # see --> factories/products
+      product = create(:product_with_add_desc)
+      get :index, {product_id: product.id}, valid_session
+      expect(assigns(:additional_descriptions)).to eq(product.additional_descriptions)
     end
   end
 

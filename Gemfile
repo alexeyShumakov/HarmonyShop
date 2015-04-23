@@ -16,6 +16,7 @@ gem 'coffee-rails', '~> 4.1.0'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -24,6 +25,8 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'awesome_nested_set'
+
+gem 'httparty'
 
 gem 'kaminari', '~> 0.16.3'
 
@@ -35,7 +38,7 @@ gem 'redcarpet'
 
 gem 'devise'
 
-
+gem "pundit"
 
 gem 'sunspot_rails'
 gem 'sunspot_solr'
@@ -49,6 +52,11 @@ gem 'sunspot_solr'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+group :development do
+  gem "better_errors"
+  gem "binding_of_caller"
+  gem 'quiet_assets'
+end
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
@@ -60,7 +68,6 @@ group :development, :test do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
-
   gem "rspec-rails"
   gem "factory_girl_rails"
 end
