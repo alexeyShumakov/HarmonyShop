@@ -27,8 +27,8 @@ RSpec.describe ImagesController, type: :controller do
 
   describe "GET #index" do
     it "assigns all images as @images" do
-      products_color = ProductsColor.create! products_colors_attributes
-      image = Image.create! valid_attributes
+      products_color = create(:products_color)
+      image = create(:image)
       get :index, {products_color_id: products_color.id}, valid_session
       expect(assigns(:images)).to eq([image])
     end
@@ -36,16 +36,15 @@ RSpec.describe ImagesController, type: :controller do
 
   describe "GET #show" do
     it "assigns the requested image as @image" do
-      products_color = ProductsColor.create! products_colors_attributes
-      image = Image.create! valid_attributes
-      get :show, {id:  image.to_param, products_color_id: products_color.id }, valid_session
+      image = create(:image)
+      get :show, {id:  image.to_param, products_color_id: image.products_color.id }, valid_session
       expect(assigns(:image)).to eq(image)
     end
   end
 
   describe "GET #new" do
     it "assigns a new image as @image" do
-      products_color = ProductsColor.create! products_colors_attributes
+      products_color = create(:products_color)
       get :new, {products_color_id: products_color.id}, valid_session
       expect(assigns(:image)).to be_a_new(Image)
     end
@@ -53,8 +52,8 @@ RSpec.describe ImagesController, type: :controller do
 
   describe "GET #edit" do
     it "assigns the requested image as @image" do
-      products_color = ProductsColor.create! products_colors_attributes
-      image = Image.create! valid_attributes
+      products_color = create(:products_color)
+      image = create(:image)
       get :edit, {id:image.to_param, products_color_id: products_color.id}, valid_session
       expect(assigns(:image)).to eq(image)
     end
@@ -63,21 +62,21 @@ RSpec.describe ImagesController, type: :controller do
   describe "POST #create" do
     context "with valid params" do
       it "creates a new Image" do
-        products_color = ProductsColor.create! products_colors_attributes
+        products_color = create(:products_color)
         expect {
           post :create, {:products_color_id => products_color.id, :image => valid_attributes}, valid_session
         }.to change(Image, :count).by(1)
       end
 
       it "assigns a newly created image as @image" do
-        products_color = ProductsColor.create! products_colors_attributes
+        products_color = create(:products_color)
         post :create, {:products_color_id => products_color.id, :image => valid_attributes}, valid_session
         expect(assigns(:image)).to be_a(Image)
         expect(assigns(:image)).to be_persisted
       end
 
       it "redirects to the products index" do
-        products_color = ProductsColor.create! products_colors_attributes
+        products_color = create(:products_color)
         post :create, {:products_color_id => products_color.id, :image => valid_attributes}, valid_session
         expect(response).to redirect_to(products_path)
       end
@@ -85,13 +84,13 @@ RSpec.describe ImagesController, type: :controller do
 
     context "with invalid params" do
       it "assigns a newly created but unsaved image as @image" do
-        products_color = ProductsColor.create! products_colors_attributes
+        products_color = create(:products_color)
         post :create, {:products_color_id => products_color.id, :image => invalid_attributes}, valid_session
         expect(assigns(:image)).to be_a_new(Image)
       end
 
       it "re-renders the 'new' template" do
-        products_color = ProductsColor.create! products_colors_attributes
+        products_color = create(:products_color)
         post :create, {:products_color_id => products_color.id, :image => invalid_attributes}, valid_session
         expect(response).to render_template("new")
       end
@@ -108,39 +107,37 @@ RSpec.describe ImagesController, type: :controller do
       }
 
       it "updates the requested image" do
-        image = Image.create! valid_attributes
-        products_color = ProductsColor.create! products_colors_attributes
+        products_color = create(:products_color)
+        image = create(:image)
         put :update, {:products_color_id => products_color.id,
                       :id => image.to_param,
-                      :image => new_attributes}, valid_session
+                      :image => attributes_for(:new_image)}, valid_session
         image.reload
         expect(assigns(:image)).to eq(image)
-        puts image.name
       end
 
       it "assigns the requested image as @image" do
-        image = Image.create! valid_attributes
-        products_color = ProductsColor.create! products_colors_attributes
+        products_color = create(:products_color)
+        image = create(:image)
         put :update, {:products_color_id => products_color.id,
                       :id => image.to_param,
-                      :image => valid_attributes}, valid_session
+                      :image => attributes_for(:image)}, valid_session
         expect(assigns(:image)).to eq(image)
       end
 
       it "redirects to products path" do
-        image = Image.create! valid_attributes
-        products_color = ProductsColor.create! products_colors_attributes
-        put :update, {:products_color_id => products_color.id,
+        image = create(:image)
+        put :update, {:products_color_id => image.products_color.id,
                       :id => image.to_param,
-                      :image => valid_attributes}, valid_session
+                      :image => attributes_for(:image)}, valid_session
         expect(response).to redirect_to(products_path)
       end
     end
 
     context "with invalid params" do
       it "assigns the image as @image" do
-        image = Image.create! valid_attributes
-        products_color = ProductsColor.create! products_colors_attributes
+        products_color = create(:products_color)
+        image = create(:image)
         put :update, {:products_color_id => products_color.id,
                       :id => image.to_param,
                       :image => invalid_attributes}, valid_session
@@ -148,8 +145,8 @@ RSpec.describe ImagesController, type: :controller do
       end
 
       it "re-renders the 'edit' template" do
-        image = Image.create! valid_attributes
-        products_color = ProductsColor.create! products_colors_attributes
+        products_color = create(:products_color)
+        image = create(:image)
         put :update, {:products_color_id => products_color.id,
                       :id => image.to_param,
                       :image => invalid_attributes}, valid_session
@@ -160,8 +157,8 @@ RSpec.describe ImagesController, type: :controller do
 
   describe "DELETE #destroy" do
     it "destroys the requested image" do
-      image = Image.create! valid_attributes
-      products_color = ProductsColor.create! products_colors_attributes
+      products_color = create(:products_color)
+      image = create(:image)
       expect {
         delete :destroy, {:products_color_id => products_color.id,
                           :id => image.to_param}, valid_session
@@ -169,8 +166,8 @@ RSpec.describe ImagesController, type: :controller do
     end
 
     it "redirects to the images list" do
-      image = Image.create! valid_attributes
-      products_color = ProductsColor.create! products_colors_attributes
+      products_color = create(:products_color)
+      image = create(:image)
       delete :destroy, {:products_color_id => products_color.id,
                         :id => image.to_param}, valid_session
       expect(response).to redirect_to(products_path)

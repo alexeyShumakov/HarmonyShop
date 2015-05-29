@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :color do
     name "MyString"
-code "MyString"
+    code "MyString"
   end
 
 end

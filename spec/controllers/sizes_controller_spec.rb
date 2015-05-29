@@ -24,7 +24,7 @@ RSpec.describe SizesController, type: :controller do
     it "assigns all sizes as @sizes" do
       size = Size.create! valid_attributes
       get :index, {}, valid_session
-      expect(assigns(:sizes)).to eq([size])
+      expect(assigns(:sizes)) == [size]
     end
   end
 

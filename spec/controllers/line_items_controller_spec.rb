@@ -20,7 +20,7 @@ RSpec.describe LineItemsController, type: :controller do
 
   describe "GET #index" do
     it "assigns all line_items as @line_items" do
-      line_item = LineItem.create! valid_attributes
+      line_item = create(:line_item)
       get :index, {}, valid_session
       expect(assigns(:line_items)).to eq([line_item])
     end
@@ -28,7 +28,7 @@ RSpec.describe LineItemsController, type: :controller do
 
   describe "GET #show" do
     it "assigns the requested line_item as @line_item" do
-      line_item = LineItem.create! valid_attributes
+      line_item = create(:line_item)
       get :show, {:id => line_item.to_param}, valid_session
       expect(assigns(:line_item)).to eq(line_item)
     end
@@ -43,7 +43,7 @@ RSpec.describe LineItemsController, type: :controller do
 
   describe "GET #edit" do
     it "assigns the requested line_item as @line_item" do
-      line_item = LineItem.create! valid_attributes
+      line_item = create(:line_item)
       get :edit, {:id => line_item.to_param}, valid_session
       expect(assigns(:line_item)).to eq(line_item)
     end
@@ -99,23 +99,24 @@ RSpec.describe LineItemsController, type: :controller do
   describe "PUT #update" do
     context "with valid params" do
       let(:new_attributes) {
-        {product_id: 1, color: 'green', size: 2, quantity: 20}
+        {color: 'green', size: 2, quantity: 20}
       }
 
       it "updates the requested line_item" do
         cart = create(:cart)
         product = create(:product)
-        line_item = LineItem.create! valid_attributes
+        line_item = create(:line_item)
+        new_attr = attributes_for(:new_line_item)
         cart.line_items << line_item
         put :update, {:id => line_item.to_param,
-                      :line_item => new_attributes,
+                      :line_item => new_attr,
                       :product_id => product.id }, {cart_id: cart.id}
         line_item.reload
-        expect(line_item.color).to eq(new_attributes[:color])
+        expect(line_item.color).to eq(new_attr[:color])
       end
 
       it "assigns the requested line_item as @line_item" do
-        line_item = LineItem.create! valid_attributes
+        line_item = create(:line_item)
         put :update, {:id => line_item.to_param, :line_item => valid_attributes}, valid_session
         expect(assigns(:line_item)).to eq(line_item)
       end
@@ -123,10 +124,10 @@ RSpec.describe LineItemsController, type: :controller do
       it "redirects to the products_url" do
         cart = create(:cart)
         product = create(:product)
-        line_item = LineItem.create! valid_attributes
+        line_item = create(:line_item)
         cart.line_items << line_item
         put :update, {:id => line_item.to_param,
-                      :line_item => valid_attributes,
+                      :line_item => attributes_for(:line_item),
                       :product_id => product.id }, {cart_id: cart.id}
         expect(response).to redirect_to(products_url)
       end
@@ -134,7 +135,7 @@ RSpec.describe LineItemsController, type: :controller do
 
     context "with invalid params" do
       it "assigns the line_item as @line_item" do
-        line_item = LineItem.create! valid_attributes
+        line_item = create(:line_item)
         put :update, {:id => line_item.to_param, :line_item => invalid_attributes}, valid_session
         expect(assigns(:line_item)).to eq(line_item)
       end
@@ -142,7 +143,7 @@ RSpec.describe LineItemsController, type: :controller do
       it "re-renders the 'edit' template" do
         cart = create(:cart)
         product = create(:product)
-        line_item = LineItem.create! valid_attributes
+        line_item = create(:line_item)
         cart.line_items << line_item
         put :update, {:id => line_item.to_param,
                       :line_item => invalid_attributes,
@@ -155,7 +156,7 @@ RSpec.describe LineItemsController, type: :controller do
   describe "DELETE #destroy" do
     it "destroys the requested line_item" do
       cart = create(:cart)
-      line_item = LineItem.create! valid_attributes
+      line_item = create(:line_item)
       cart.line_items << line_item
       expect {
         delete :destroy, {:id => line_item.to_param}, {cart_id: cart.id}
@@ -164,7 +165,7 @@ RSpec.describe LineItemsController, type: :controller do
 
     it "redirects to the line_items list" do
       cart = create(:cart)
-      line_item = LineItem.create! valid_attributes
+      line_item = create(:line_item)
       cart.line_items << line_item
       delete :destroy, {:id => line_item.to_param}, {cart_id: cart.id}
       expect(response).to redirect_to(cart_custom_show_path)

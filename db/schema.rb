@@ -11,7 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150422054407) do
+ActiveRecord::Schema.define(version: 20150423105917) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "additional_descriptions", force: :cascade do |t|
     t.string   "name"
@@ -21,7 +24,7 @@ ActiveRecord::Schema.define(version: 20150422054407) do
     t.datetime "updated_at",  null: false
   end
 
-  add_index "additional_descriptions", ["product_id"], name: "index_additional_descriptions_on_product_id"
+  add_index "additional_descriptions", ["product_id"], name: "index_additional_descriptions_on_product_id", using: :btree
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",              default: "", null: false
@@ -56,17 +59,17 @@ ActiveRecord::Schema.define(version: 20150422054407) do
     t.text     "description"
   end
 
-  add_index "categories", ["lft"], name: "index_categories_on_lft"
-  add_index "categories", ["parent_id"], name: "index_categories_on_parent_id"
-  add_index "categories", ["rgt"], name: "index_categories_on_rgt"
+  add_index "categories", ["lft"], name: "index_categories_on_lft", using: :btree
+  add_index "categories", ["parent_id"], name: "index_categories_on_parent_id", using: :btree
+  add_index "categories", ["rgt"], name: "index_categories_on_rgt", using: :btree
 
   create_table "categories_products", id: false, force: :cascade do |t|
     t.integer "product_id",  null: false
     t.integer "category_id", null: false
   end
 
-  add_index "categories_products", ["category_id"], name: "index_categories_products_on_category_id"
-  add_index "categories_products", ["product_id"], name: "index_categories_products_on_product_id"
+  add_index "categories_products", ["category_id"], name: "index_categories_products_on_category_id", using: :btree
+  add_index "categories_products", ["product_id"], name: "index_categories_products_on_product_id", using: :btree
 
   create_table "colors", force: :cascade do |t|
     t.string   "name"
@@ -86,7 +89,7 @@ ActiveRecord::Schema.define(version: 20150422054407) do
     t.datetime "photo_updated_at"
   end
 
-  add_index "images", ["products_color_id"], name: "index_images_on_products_color_id"
+  add_index "images", ["products_color_id"], name: "index_images_on_products_color_id", using: :btree
 
   create_table "line_items", force: :cascade do |t|
     t.integer  "product_id"
@@ -100,9 +103,9 @@ ActiveRecord::Schema.define(version: 20150422054407) do
     t.integer  "order_id"
   end
 
-  add_index "line_items", ["cart_id"], name: "index_line_items_on_cart_id"
-  add_index "line_items", ["order_id"], name: "index_line_items_on_order_id"
-  add_index "line_items", ["product_id"], name: "index_line_items_on_product_id"
+  add_index "line_items", ["cart_id"], name: "index_line_items_on_cart_id", using: :btree
+  add_index "line_items", ["order_id"], name: "index_line_items_on_order_id", using: :btree
+  add_index "line_items", ["product_id"], name: "index_line_items_on_product_id", using: :btree
 
   create_table "orders", force: :cascade do |t|
     t.integer  "user_id"
@@ -115,9 +118,10 @@ ActiveRecord::Schema.define(version: 20150422054407) do
     t.string   "city"
     t.decimal  "total_price",    precision: 8, scale: 2
     t.decimal  "delivery_price", precision: 8, scale: 2
+    t.integer  "status"
   end
 
-  add_index "orders", ["user_id"], name: "index_orders_on_user_id"
+  add_index "orders", ["user_id"], name: "index_orders_on_user_id", using: :btree
 
   create_table "products", force: :cascade do |t|
     t.string   "title"
@@ -130,7 +134,7 @@ ActiveRecord::Schema.define(version: 20150422054407) do
     t.integer  "size_helper_id"
   end
 
-  add_index "products", ["size_helper_id"], name: "index_products_on_size_helper_id"
+  add_index "products", ["size_helper_id"], name: "index_products_on_size_helper_id", using: :btree
 
   create_table "products_colors", force: :cascade do |t|
     t.integer  "product_id"
@@ -139,8 +143,8 @@ ActiveRecord::Schema.define(version: 20150422054407) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "products_colors", ["color_id"], name: "index_products_colors_on_color_id"
-  add_index "products_colors", ["product_id"], name: "index_products_colors_on_product_id"
+  add_index "products_colors", ["color_id"], name: "index_products_colors_on_color_id", using: :btree
+  add_index "products_colors", ["product_id"], name: "index_products_colors_on_product_id", using: :btree
 
   create_table "products_colors_sizes", force: :cascade do |t|
     t.integer  "warehouse"
@@ -150,8 +154,8 @@ ActiveRecord::Schema.define(version: 20150422054407) do
     t.datetime "updated_at",        null: false
   end
 
-  add_index "products_colors_sizes", ["products_color_id"], name: "index_products_colors_sizes_on_products_color_id"
-  add_index "products_colors_sizes", ["size_id"], name: "index_products_colors_sizes_on_size_id"
+  add_index "products_colors_sizes", ["products_color_id"], name: "index_products_colors_sizes_on_products_color_id", using: :btree
+  add_index "products_colors_sizes", ["size_id"], name: "index_products_colors_sizes_on_size_id", using: :btree
 
   create_table "services", force: :cascade do |t|
     t.string   "title"
@@ -162,7 +166,7 @@ ActiveRecord::Schema.define(version: 20150422054407) do
     t.string   "name"
   end
 
-  add_index "services", ["services_group_id"], name: "index_services_on_services_group_id"
+  add_index "services", ["services_group_id"], name: "index_services_on_services_group_id", using: :btree
 
   create_table "services_groups", force: :cascade do |t|
     t.string   "title"
@@ -207,7 +211,19 @@ ActiveRecord::Schema.define(version: 20150422054407) do
     t.integer  "role"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "additional_descriptions", "products"
+  add_foreign_key "images", "products_colors"
+  add_foreign_key "line_items", "carts"
+  add_foreign_key "line_items", "orders"
+  add_foreign_key "line_items", "products"
+  add_foreign_key "orders", "users"
+  add_foreign_key "products", "size_helpers"
+  add_foreign_key "products_colors", "colors"
+  add_foreign_key "products_colors", "products"
+  add_foreign_key "products_colors_sizes", "products_colors"
+  add_foreign_key "products_colors_sizes", "sizes"
+  add_foreign_key "services", "services_groups"
 end

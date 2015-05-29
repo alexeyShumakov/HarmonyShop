@@ -26,11 +26,11 @@ class OrdersController < ApplicationController
 
   # GET /orders/new
   def new
+    @order = Order.new
     if @cart.total_quantity == 0
       redirect_to root_path
     else
       @user == current_user
-      @order = Order.new
     end
   end
 

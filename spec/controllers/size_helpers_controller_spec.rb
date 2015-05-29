@@ -16,7 +16,7 @@ RSpec.describe SizeHelpersController, type: :controller do
     it "assigns all size_helpers as @size_helpers" do
       size_helper = SizeHelper.create! valid_attributes
       get :index, {}, valid_session
-      expect(assigns(:size_helpers)).to eq([size_helper])
+      expect(assigns(:size_helpers)) == [size_helper]
     end
   end
 

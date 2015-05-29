@@ -21,7 +21,7 @@ RSpec.describe ProductsColorsController, type: :controller do
 
   describe "GET #index" do
     it "assigns all products_colors as @products_colors" do
-      products_color = ProductsColor.create! valid_attributes
+      products_color = create(:products_color)
       get :index, {}, valid_session
       expect(assigns(:products_colors)).to eq([products_color])
     end
@@ -30,13 +30,13 @@ RSpec.describe ProductsColorsController, type: :controller do
 
   describe "GET #show" do
     it "assigns the requested products_color as @products_color" do
-      products_color = ProductsColor.create! valid_attributes
+      products_color = create(:products_color)
       get :show, {:id => products_color.to_param}, valid_session
       expect(assigns(:products_color)).to eq(products_color)
     end
 
     it "delete session variable 'size'" do
-      products_color = ProductsColor.create! valid_attributes
+      products_color = create(:products_color)
       get :show, {:id => products_color.to_param}, {size: 14}
       expect(session[:size]).to eq(nil)
     end
@@ -51,7 +51,7 @@ RSpec.describe ProductsColorsController, type: :controller do
 
   describe "GET #edit" do
     it "assigns the requested products_color as @products_color" do
-      products_color = ProductsColor.create! valid_attributes
+      products_color = create(:products_color)
       get :edit, {:id => products_color.to_param}, valid_session
       expect(assigns(:products_color)).to eq(products_color)
     end
@@ -86,20 +86,20 @@ RSpec.describe ProductsColorsController, type: :controller do
       }
 
       it "updates the requested products_color" do
-        products_color = ProductsColor.create! valid_attributes
+        products_color = create(:products_color)
         put :update, {:id => products_color.to_param, :products_color => new_attributes}, valid_session
         products_color.reload
         expect(assigns(:products_color)).to eq(products_color)
       end
 
       it "assigns the requested products_color as @products_color" do
-        products_color = ProductsColor.create! valid_attributes
+        products_color = create(:products_color)
         put :update, {:id => products_color.to_param, :products_color => valid_attributes}, valid_session
         expect(assigns(:products_color)).to eq(products_color)
       end
 
       it "redirects to the products" do
-        products_color = ProductsColor.create! valid_attributes
+        products_color = create(:products_color)
         put :update, {:id => products_color.to_param, :products_color => valid_attributes}, valid_session
         expect(response).to redirect_to(products_path)
       end
@@ -109,14 +109,14 @@ RSpec.describe ProductsColorsController, type: :controller do
 
   describe "DELETE #destroy" do
     it "destroys the requested products_color" do
-      products_color = ProductsColor.create! valid_attributes
+      products_color = create(:products_color)
       expect {
         delete :destroy, {:id => products_color.to_param}, valid_session
       }.to change(ProductsColor, :count).by(-1)
     end
 
     it "redirects to the products_colors list" do
-      products_color = ProductsColor.create! valid_attributes
+      products_color = create(:products_color)
       delete :destroy, {:id => products_color.to_param}, valid_session
       expect(response).to redirect_to(products_colors_url)
     end

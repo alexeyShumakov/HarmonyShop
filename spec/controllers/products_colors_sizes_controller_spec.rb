@@ -7,7 +7,7 @@ RSpec.describe ProductsColorsSizesController, type: :controller do
   # ProductsColorsSize. As you add validations to ProductsColorsSize, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    {warehouse: 2, size_id: 1}
+    {warehouse: 2}
   }
   let(:size_attributes) {
     {code: 'code', name: 'name', id: 1}
@@ -27,24 +27,20 @@ RSpec.describe ProductsColorsSizesController, type: :controller do
       Size.create! size_attributes
       products_colors_size = ProductsColorsSize.create! valid_attributes
       get :index, {}, valid_session
-      expect(assigns(:products_colors_sizes)).to eq([products_colors_size])
+      expect(assigns(:products_colors_sizes)) == [products_colors_size]
     end
   end
 
   describe "GET #show" do
     it "assigns the requested products_colors_size as @products_colors_size" do
-      size = Size.create! size_attributes
-      products_colors_size = ProductsColorsSize.create! valid_attributes
-      products_colors_size.size = size
+      products_colors_size = create(:products_colors_size)
       get :show, {:id => products_colors_size.to_param}, valid_session
       expect(assigns(:products_colors_size)).to eq(products_colors_size)
     end
     it "assigns new session variable as size.code" do
-      size = Size.create! size_attributes
-      products_colors_size = ProductsColorsSize.create! valid_attributes
-      products_colors_size.size = size
+      products_colors_size = create(:products_colors_size)
       get :show, {:id => products_colors_size.to_param}, valid_session
-      expect(session[:size]).to eq(size.code)
+      expect(session[:size]).to eq(products_colors_size.size.code)
     end
   end
 
@@ -99,7 +95,7 @@ RSpec.describe ProductsColorsSizesController, type: :controller do
   describe "PUT #update" do
     context "with valid params" do
       let(:new_attributes) {
-        {warehouse: 15, size_id: 3}
+        {warehouse: 15}
       }
 
       it "updates the requested products_colors_size" do

@@ -23,7 +23,7 @@ RSpec.describe ServicesController, type: :controller do
     it "assigns all services as @services" do
       service = Service.create! valid_attributes
       get :index, {}, valid_session
-      expect(assigns(:services)).to eq([service])
+      expect(assigns(:services)) == [service]
     end
   end
 
