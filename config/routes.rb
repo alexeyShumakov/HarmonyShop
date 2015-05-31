@@ -1,11 +1,19 @@
 Rails.application.routes.draw do
-
   devise_for :admins
   devise_for :users
 
   resources :users do
     resources :orders, shallow: true
   end
+
+
+
+  get 'admin', to: 'admin/admin#index', as: :admin
+  namespace :admin do
+
+  end
+
+
 
   get 'delivery_price', to: 'orders#delivery_price', as: :delivery_price
 

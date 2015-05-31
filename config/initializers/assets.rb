@@ -5,6 +5,7 @@ Rails.application.config.assets.version = '1.0'
 %w(categories products carts orders jquery.maskedinput.min).each do |controller|
 	Rails.application.config.assets.precompile += ["#{controller}.js", "#{controller}.css"]
 end
+Rails.application.config.assets.precompile += %w( admin/admin.css )
 # Add additional assets to the asset load path
 # Rails.application.config.assets.paths << Emoji.images_path
 
