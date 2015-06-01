@@ -1,0 +1,29 @@
+<h1>Listing Admin Colors</h1>
+
+<table class="table table-striped table-bordered table-hover">
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>name</th>
+      <th>code</th>
+      <th colspan="3">edit</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @admin_colors.each do |admin_color| %>
+      <tr>
+        <td><%= admin_color.id %></td>
+        <td><%= admin_color.name %></td>
+        <td><%= admin_color.code %></td>
+        <td><%= link_to 'Show', admin_color %></td>
+        <td><%= link_to 'Edit', edit_admin_color_path(admin_color) %></td>
+        <td><%= link_to 'Destroy', admin_color, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Color', new_admin_color_path %>

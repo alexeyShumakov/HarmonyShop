@@ -19,7 +19,7 @@
     <% @admin_products.each do |admin_product| %>
       <tr>
         <td><%= admin_product.id %></td>
-        <th><%= admin_product.article %></th>
+        <td><%= admin_product.article %></td>
         <td><%= admin_product.title %></td>
         <td><%= admin_product.description %></td>
         <td>
@@ -27,7 +27,7 @@
               <%= color.color.code %>
           <% end %>
         </td>
-        <th><%= admin_product.price %></th>
+        <td><%= admin_product.price %></td>
         <td><%= link_to 'Show', admin_product %></td>
         <td><%= link_to 'Edit', edit_admin_product_path(admin_product) %></td>
         <td><%= link_to 'Destroy', admin_product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
