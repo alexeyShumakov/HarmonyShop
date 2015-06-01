@@ -1,0 +1,11 @@
+<%= simple_form_for [:admin, @admin_products_color], :wrapper => :vertical_form do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.association :sizes, as: :check_boxes %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

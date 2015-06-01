@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <h1>Listing Admin Products</h1>
 
 <table class="table table-striped table-bordered table-hover">
@@ -9,6 +7,7 @@
       <th>article</th>
       <th>title</th>
       <th>description</th>
+      <th>size helper</th>
       <th>colors</th>
       <th>price</th>
       <th colspan="3">action</th>
@@ -22,9 +21,10 @@
         <td><%= admin_product.article %></td>
         <td><%= admin_product.title %></td>
         <td><%= admin_product.description %></td>
+        <td><%= admin_product.size_helper.title %></td>
         <td>
           <% admin_product.products_colors.each do |color| %>
-              <%= color.color.code %>
+              <%= link_to  color.color.code, edit_admin_products_color_path(color) %>
           <% end %>
         </td>
         <td><%= admin_product.price %></td>

@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Admin Products Colors</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @admin_products_colors.each do |admin_products_color| %>
+      <tr>
+        <td><%= link_to 'Show', admin_products_color %></td>
+        <td><%= link_to 'Edit', edit_admin_products_color_path(admin_products_color) %></td>
+        <td><%= link_to 'Destroy', admin_products_color, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Products color', new_admin_products_color_path %>
