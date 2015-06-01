@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     resources :colors
     resources :products_colors
     resources :size_helpers
+    resources :categories
   end
 
 
