@@ -4,6 +4,20 @@
   <div class="form-inputs">
     <%= f.association :sizes, as: :check_boxes %>
   </div>
+  <ul class="list-group">
+    <li class="list-group-item list-group-item-info">
+      Images <%= link_to 'Add image', new_admin_products_color_image_path(@admin_products_color) %>
+    </li>
+
+    <% @admin_products_color.images.each do |img| %>
+      <li class="list-group-item">
+        <%= image_tag img.photo(:small) %>
+        <%= img.name %> <%= link_to 'Edit', edit_admin_products_color_image_path(@admin_products_color, img) %>
+        <%= link_to 'Delete', admin_products_color_image_path(@admin_products_color, img),
+                    method: :delete, data: { confirm: 'Are you sure?' } %>
+      </li>
+    <% end %>
+  </ul>
 
   <div class="form-actions">
     <%= f.button :submit %>

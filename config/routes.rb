@@ -12,7 +12,9 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :products
     resources :colors
-    resources :products_colors
+    resources :products_colors do
+      resources :images
+    end
     resources :size_helpers
     resources :categories
   end
