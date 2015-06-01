@@ -29,7 +29,7 @@ class Admin::ProductsController < ApplicationController
 
     respond_to do |format|
       if @admin_product.save
-        format.html { redirect_to @admin_product, notice: 'Product was successfully created.' }
+        format.html { redirect_to admin_products_path, notice: 'Product was successfully created.' }
         format.json { render :show, status: :created, location: @admin_product }
       else
         format.html { render :new }
@@ -43,7 +43,7 @@ class Admin::ProductsController < ApplicationController
   def update
     respond_to do |format|
       if @admin_product.update(admin_product_params)
-        format.html { redirect_to @admin_product, notice: 'Product was successfully updated.' }
+        format.html { redirect_to admin_products_path, notice: 'Product was successfully updated.' }
         format.json { render :show, status: :ok, location: @admin_product }
       else
         format.html { render :edit }
@@ -70,6 +70,6 @@ class Admin::ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def admin_product_params
-      params[:admin_product]
+      params.require(:product).permit(:title, :description, :price, :leaf_category_id, :article, :size_helper_id, :color_ids => [])
     end
 end
