@@ -1,0 +1,27 @@
+<h1>Listing Admin Size Helpers</h1>
+
+<table class="table table-striped table-bordered table-hover">
+  <thead>
+    <tr>
+      <th>title</th>
+      <th>body</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @admin_size_helpers.each do |admin_size_helper| %>
+      <tr>
+        <td><%= admin_size_helper.title %></td>
+        <td><%= markdown(admin_size_helper.body) %></td>
+        <td><%= link_to 'Show', admin_size_helper_path(admin_size_helper) %></td>
+        <td><%= link_to 'Edit', edit_admin_size_helper_path(admin_size_helper) %></td>
+        <td><%= link_to 'Destroy', admin_size_helper_path(admin_size_helper), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Size helper', new_admin_size_helper_path, class: ['btn', 'btn-default'] %>
