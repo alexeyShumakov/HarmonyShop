@@ -10,6 +10,8 @@ Rails.application.routes.draw do
 
   get 'admin', to: 'admin/admin#index', as: :admin
   namespace :admin do
+    resources :users
+    resources :orders
     resources :products do
       resources :additional_descriptions, shallow: true
     end
