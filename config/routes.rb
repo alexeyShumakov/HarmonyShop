@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     resources :products do
       resources :additional_descriptions, shallow: true
     end
+    resources :sizes
     resources :colors
     resources :products_colors do
       resources :images

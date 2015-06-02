@@ -1,0 +1,27 @@
+<h1>Listing Admin Sizes</h1>
+
+<table class="table table-striped table-bordered table-hover">
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Code</th>
+    <th colspan="3"></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @admin_sizes.each do |size| %>
+    <tr>
+      <td><%= size.name %></td>
+      <td><%= size.code %></td>
+      <td><%= link_to 'Show', admin_size_path(size) %></td>
+      <td><%= link_to 'Edit', edit_admin_size_path(size) %></td>
+      <td><%= link_to 'Destroy', admin_size_path(size), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Size', new_admin_size_path %>
