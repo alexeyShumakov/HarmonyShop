@@ -1,0 +1,20 @@
+<table class="table">
+  <thead>
+  <tr>
+    <th>title</th>
+    <th>name</th>
+    <th>body</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>
+      <%= @admin_service.title %>
+    </td>
+    <td><%= @admin_service.name %></td>
+    <td><%= @admin_service.body %></td>
+  </tr>
+  </tbody>
+</table>
+<%= link_to 'Edit', edit_admin_service_path(@admin_service) %> |
+<%= link_to 'Back', admin_services_path %>
