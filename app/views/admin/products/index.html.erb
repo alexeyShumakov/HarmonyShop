@@ -7,6 +7,7 @@
       <th>article</th>
       <th>title</th>
       <th>description</th>
+      <th>add.descript</th>
       <th>size helper</th>
       <th>colors</th>
       <th>price</th>
@@ -21,6 +22,20 @@
         <td><%= admin_product.article %></td>
         <td><%= admin_product.title %></td>
         <td><%= admin_product.description %></td>
+        <td>
+          <% admin_product.additional_descriptions.each do |descript| %>
+            <div class="list-group">
+             <div class="list-group-item">
+               <strong><%= descript.name %></strong> <%= descript.description %>
+               <%= link_to 'edit',
+                           edit_admin_additional_description_path(descript) %>
+               <%= link_to 'Destroy', admin_additional_description_path(descript),
+                           method: :delete, data: { confirm: 'Are you sure?' } %>
+             </div>
+            </div>
+          <% end %>
+          <%= link_to 'new', new_admin_product_additional_description_path(admin_product) %>
+        </td>
         <td><%= admin_product.size_helper.title %></td>
         <td>
           <% admin_product.products_colors.each do |color| %>
