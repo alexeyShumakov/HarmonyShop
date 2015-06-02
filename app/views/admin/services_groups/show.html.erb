@@ -1,0 +1,19 @@
+<h3><%= @admin_services_group.title %></h3>
+<table class="table"> services
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @admin_services_group.services.each do |service| %>
+      <tr>
+        <td><%= service.id %></td>
+        <td><%= link_to service.title, admin_service_path(service)%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= link_to 'Edit', edit_admin_services_group_path(@admin_services_group) %> |
+<%= link_to 'Back', admin_services_groups_path %>

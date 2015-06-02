@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Admin Services Groups</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>title</th>
+      <th>name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @admin_services_groups.each do |admin_services_group| %>
+      <tr>
+        <td><%=  admin_services_group.title %></td>
+        <td><%=  admin_services_group.name %></td>
+        <td><%= link_to 'Show', admin_services_group_path(admin_services_group) %></td>
+        <td><%= link_to 'Edit', edit_admin_services_group_path(admin_services_group) %></td>
+        <td><%= link_to 'Destroy', admin_services_group_path(admin_services_group),
+                        method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Services group', new_admin_services_group_path %>

@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :users
     resources :services
+    resources :services_groups
     resources :orders
     resources :products do
       resources :additional_descriptions, shallow: true
