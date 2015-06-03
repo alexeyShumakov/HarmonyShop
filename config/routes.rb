@@ -11,6 +11,11 @@ Rails.application.routes.draw do
   get 'admin', to: 'admin/admin#index', as: :admin
   namespace :admin do
     resources :users
+    resources :bg_images do
+      member do
+        post 'set_current'
+      end
+    end
     resources :services
     resources :services_groups
     resources :orders

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150423105917) do
+ActiveRecord::Schema.define(version: 20150603053045) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,6 +39,17 @@ ActiveRecord::Schema.define(version: 20150423105917) do
     t.datetime "locked_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "bg_images", force: :cascade do |t|
+    t.string   "title"
+    t.boolean  "current",            default: true
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   create_table "carts", force: :cascade do |t|
@@ -214,16 +225,4 @@ ActiveRecord::Schema.define(version: 20150423105917) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
-  add_foreign_key "additional_descriptions", "products"
-  add_foreign_key "images", "products_colors"
-  add_foreign_key "line_items", "carts"
-  add_foreign_key "line_items", "orders"
-  add_foreign_key "line_items", "products"
-  add_foreign_key "orders", "users"
-  add_foreign_key "products", "size_helpers"
-  add_foreign_key "products_colors", "colors"
-  add_foreign_key "products_colors", "products"
-  add_foreign_key "products_colors_sizes", "products_colors"
-  add_foreign_key "products_colors_sizes", "sizes"
-  add_foreign_key "services", "services_groups"
 end

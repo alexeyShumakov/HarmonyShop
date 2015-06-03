@@ -1,0 +1,32 @@
+<h1>Listing Admin Bg Images</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>title</th>
+      <th>current</th>
+      <th>image</th>
+      <th colspan="4"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @admin_bg_images.each do |admin_bg_image| %>
+      <tr>
+        <td><%= admin_bg_image.title %></td>
+        <td><%= admin_bg_image.current %></td>
+        <td><%= image_tag admin_bg_image.image.url, width: '100' %></td>
+        <td><%= link_to 'Show', admin_bg_image_path(admin_bg_image) %></td>
+        <td><%= link_to 'Set current', set_current_admin_bg_image_path(admin_bg_image),
+                        method: :post %></td>
+        <td><%= link_to 'Edit', edit_admin_bg_image_path(admin_bg_image) %></td>
+        <td><%= link_to 'Destroy', admin_bg_image_path(admin_bg_image),
+                        method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Bg image', new_admin_bg_image_path %>

@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   include CurrentCart
   protect_from_forgery with: :exception
   protect_from_forgery with: :exception
-  before_action :set_roots, :set_cart, :set_services
+  before_action :set_roots, :set_cart, :set_services, :set_bg_image
   before_action :configure_permitted_parameters, if: :devise_controller?
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
@@ -55,9 +55,13 @@ class ApplicationController < ActionController::Base
       @roots = Category.roots
     end
 
-  def current_user_admin?
-    unless current_user.try(:admin?)
-      raise ActionController::RoutingError.new('Not Found')
+    def set_bg_image
+      @bg_image = BgImage.find_by_current(true)
     end
-  end
+
+		def current_user_admin?
+			unless current_user.try(:admin?)
+				raise ActionController::RoutingError.new('Not Found')
+			end
+		end
 end

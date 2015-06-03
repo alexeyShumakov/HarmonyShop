@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+<table class="table">
+  <thead>
+  <tr>
+    <th>title</th>
+    <th>current</th>
+    <th>image</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td><%= @admin_bg_image.title %></td>
+    <td><%= @admin_bg_image.current %></td>
+    <td><%= image_tag @admin_bg_image.image.url, width: '100' %></td>
+  </tr>
+  </tbody>
+</table>
+<%= link_to 'Edit', edit_admin_bg_image_path(@admin_bg_image) %> |
+<%= link_to 'Back', admin_bg_images_path %>

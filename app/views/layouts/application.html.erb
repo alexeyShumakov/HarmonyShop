@@ -7,9 +7,9 @@
   <%= csrf_meta_tags %>
   <%= yield(:head) %>
 </head>
-<body>
+<body style="background: url(<%= @bg_image.image.url if @bg_image%>) repeat-x">
 
-<div id="page">
+<div id="page" >
 
   <div id="header">
     <div id="logo">
