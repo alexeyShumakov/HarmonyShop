@@ -1,4 +1,17 @@
 <p id="notice"><%= notice %></p>
-
+<table class="table">
+  <thead>
+    <tr>
+      <th>name</th>
+      <th>code</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= @admin_color.name %></td>
+      <td><%= @admin_color.code %></td>
+    </tr>
+  </tbody>
+</table>
 <%= link_to 'Edit', edit_admin_color_path(@admin_color) %> |
 <%= link_to 'Back', admin_colors_path %>

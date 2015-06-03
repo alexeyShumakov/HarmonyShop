@@ -1,0 +1,186 @@
+/* line 5, /home/alexey/RubymineProjects/HarmonyShop/app/assets/stylesheets/orders.scss */
+.order-item {
+  line-height: 50px;
+  height: 40px;
+  border-radius: 3px;
+  border-bottom: 1px solid #d1d1d1;
+  font-size: 14px;
+}
+/* line 11, /home/alexey/RubymineProjects/HarmonyShop/app/assets/stylesheets/orders.scss */
+.order-item a {
+  color: #8732c8;
+}
+/* line 13, /home/alexey/RubymineProjects/HarmonyShop/app/assets/stylesheets/orders.scss */
+.order-item a:hover {
+  text-decoration: none;
+}
+/* line 18, /home/alexey/RubymineProjects/HarmonyShop/app/assets/stylesheets/orders.scss */
+.order-item span {
+  margin-left: 220px;
+}
+
+/* line 23, /home/alexey/RubymineProjects/HarmonyShop/app/assets/stylesheets/orders.scss */
+.order_accept {
+  float: right;
+  width: 400px;
+  min-height: 200px;
+  margin-bottom: 200px;
+  margin-right: 50px;
+}
+/* line 26, /home/alexey/RubymineProjects/HarmonyShop/app/assets/stylesheets/orders.scss */
+.order_accept .order_price span {
+  color: #8732c8;
+  font-size: 17px;
+}
+/* line 32, /home/alexey/RubymineProjects/HarmonyShop/app/assets/stylesheets/orders.scss */
+.order_accept h2 {
+  color: #8732c8;
+  margin-top: 5px;
+}
+/* line 42, /home/alexey/RubymineProjects/HarmonyShop/app/assets/stylesheets/orders.scss */
+.order_accept .edit_cart {
+  margin-top: 5px;
+  float: right;
+}
+/* line 47, /home/alexey/RubymineProjects/HarmonyShop/app/assets/stylesheets/orders.scss */
+.order_accept .delivery {
+  float: left;
+  width: 380px;
+  height: 100px;
+  padding: 10px;
+}
+/* line 52, /home/alexey/RubymineProjects/HarmonyShop/app/assets/stylesheets/orders.scss */
+.order_accept .delivery h3 {
+  margin: 5px;
+}
+/* line 55, /home/alexey/RubymineProjects/HarmonyShop/app/assets/stylesheets/orders.scss */
+.order_accept .delivery .price {
+  margin: 5px 0;
+}
+/* line 58, /home/alexey/RubymineProjects/HarmonyShop/app/assets/stylesheets/orders.scss */
+.order_accept .delivery img {
+  margin: 5px;
+  float: left;
+}
+/* line 64, /home/alexey/RubymineProjects/HarmonyShop/app/assets/stylesheets/orders.scss */
+.order_accept .order_details {
+  margin: 30px 0;
+  float: left;
+  width: 400px;
+  min-height: 100px;
+  border-radius: 5px;
+  border: 1px solid #d5d5d5;
+  padding: 10px;
+}
+/* line 66, /home/alexey/RubymineProjects/HarmonyShop/app/assets/stylesheets/orders.scss */
+.order_accept .order_details ul {
+  margin: 0;
+  padding: 0;
+  max-height: 240px;
+  overflow: hidden;
+  overflow-y: auto;
+}
+/* line 73, /home/alexey/RubymineProjects/HarmonyShop/app/assets/stylesheets/orders.scss */
+.order_accept .order_details ul li {
+  width: 100%;
+  float: left;
+  border-bottom: 1px dashed #b6b6b6;
+  display: block;
+  padding: 10px 0;
+  margin: 0;
+}
+/* line 79, /home/alexey/RubymineProjects/HarmonyShop/app/assets/stylesheets/orders.scss */
+.order_accept .order_details ul li img {
+  float: left;
+}
+/* line 83, /home/alexey/RubymineProjects/HarmonyShop/app/assets/stylesheets/orders.scss */
+.order_accept .order_details ul li .order_info {
+  float: left;
+  width: 250px;
+}
+/* line 97, /home/alexey/RubymineProjects/HarmonyShop/app/assets/stylesheets/orders.scss */
+.order_accept .total_price {
+  margin: 30px 10px 30px 20px;
+  float: left;
+  width: 400px;
+}
+/* line 101, /home/alexey/RubymineProjects/HarmonyShop/app/assets/stylesheets/orders.scss */
+.order_accept .total_price span {
+  color: #d9198e;
+  font-size: 22px;
+  margin-left: 10px;
+}
+
+/* line 109, /home/alexey/RubymineProjects/HarmonyShop/app/assets/stylesheets/orders.scss */
+.order_block {
+  float: left;
+  width: 500px;
+}
+/* line 113, /home/alexey/RubymineProjects/HarmonyShop/app/assets/stylesheets/orders.scss */
+.order_block #flash_alert {
+  color: #ff2348;
+}
+/* line 116, /home/alexey/RubymineProjects/HarmonyShop/app/assets/stylesheets/orders.scss */
+.order_block .user_data {
+  margin-top: 10px;
+  width: 406px;
+  padding: 0 0 0 5px;
+  font-size: 15px;
+}
+/* line 125, /home/alexey/RubymineProjects/HarmonyShop/app/assets/stylesheets/orders.scss */
+.order_block .form-actions input {
+  margin-top: 10px;
+  border: 1px solid #6d2aa6;
+  border-radius: 3px;
+  width: 406px;
+  height: 30px;
+  cursor: pointer;
+  padding: 0 0 0 5px;
+  font-size: 15px;
+  background: #752db0;
+  color: #fff;
+}
+/* line 140, /home/alexey/RubymineProjects/HarmonyShop/app/assets/stylesheets/orders.scss */
+.order_block .form-inputs .input {
+  margin-top: 10px;
+}
+/* line 142, /home/alexey/RubymineProjects/HarmonyShop/app/assets/stylesheets/orders.scss */
+.order_block .form-inputs .input input {
+  border: 1px solid #dedede;
+  border-radius: 3px;
+  width: 400px;
+  height: 24px;
+  margin: 0;
+  padding: 0 0 0 5px;
+  font-size: 15px;
+  background: #fff;
+}
+/* line 153, /home/alexey/RubymineProjects/HarmonyShop/app/assets/stylesheets/orders.scss */
+.order_block .form-inputs .input input.radio_buttons {
+  vertical-align: middle;
+  width: 15px;
+  height: 15px;
+  margin-right: 10px;
+}
+/* line 159, /home/alexey/RubymineProjects/HarmonyShop/app/assets/stylesheets/orders.scss */
+.order_block .form-inputs .input .boolean {
+  background-color: transparent;
+  border: 0 none;
+  cursor: pointer;
+  height: auto;
+  line-height: normal;
+  margin: 3px;
+  padding: 0;
+  width: auto;
+}
+/* line 169, /home/alexey/RubymineProjects/HarmonyShop/app/assets/stylesheets/orders.scss */
+.order_block .form-inputs .input label {
+  display: block;
+}
+/* line 172, /home/alexey/RubymineProjects/HarmonyShop/app/assets/stylesheets/orders.scss */
+.order_block .form-inputs .input .error {
+  display: block;
+  font-weight: bold;
+  color: #752db0;
+  margin-left: 10px;
+}

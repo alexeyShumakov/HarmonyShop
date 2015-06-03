@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :set_roots, :set_cart, :set_services
   before_action :configure_permitted_parameters, if: :devise_controller?
+  rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
   protected
 
@@ -45,6 +46,10 @@ class ApplicationController < ActionController::Base
     def set_services
       @services_groups = ServicesGroup.all
     end
+
+		def user_not_authorized
+			redirect_to(request.referrer || root_path)
+		end
 
     def set_roots
       @roots = Category.roots

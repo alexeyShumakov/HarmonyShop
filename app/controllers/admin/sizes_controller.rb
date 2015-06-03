@@ -1,4 +1,4 @@
-class Admin::SizesController < ApplicationController
+class Admin::SizesController < Admin::AdminController
   layout 'admin'
   before_action :set_admin_size, only: [:show, :edit, :update, :destroy]
 

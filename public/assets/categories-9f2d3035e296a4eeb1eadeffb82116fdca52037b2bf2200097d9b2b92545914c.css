@@ -1,0 +1,62 @@
+/* line 3, /home/alexey/RubymineProjects/HarmonyShop/app/assets/stylesheets/categories.scss */
+h1 {
+  margin: 5px 0;
+  color: #824cac;
+}
+
+/* line 8, /home/alexey/RubymineProjects/HarmonyShop/app/assets/stylesheets/categories.scss */
+.bread-crumbs a {
+  color: #484848;
+  text-decoration: underline;
+}
+/* line 13, /home/alexey/RubymineProjects/HarmonyShop/app/assets/stylesheets/categories.scss */
+.bread-crumbs a:hover {
+  text-decoration: none;
+}
+
+/* line 18, /home/alexey/RubymineProjects/HarmonyShop/app/assets/stylesheets/categories.scss */
+.categories-wrapper {
+  float: left;
+  width: 800px;
+}
+
+/* line 22, /home/alexey/RubymineProjects/HarmonyShop/app/assets/stylesheets/categories.scss */
+.catalog-sidebar {
+  float: left;
+  width: 200px;
+  padding: 2px 0 0;
+}
+/* line 26, /home/alexey/RubymineProjects/HarmonyShop/app/assets/stylesheets/categories.scss */
+.catalog-sidebar ul {
+  padding: 0;
+}
+/* line 30, /home/alexey/RubymineProjects/HarmonyShop/app/assets/stylesheets/categories.scss */
+.catalog-sidebar .sidemenu {
+  float: left;
+  clear: both;
+  margin: 0;
+  padding: 5px 10px 15px 20px;
+}
+/* line 35, /home/alexey/RubymineProjects/HarmonyShop/app/assets/stylesheets/categories.scss */
+.catalog-sidebar .sidemenu a {
+  color: #484848;
+  text-decoration: none;
+}
+/* line 40, /home/alexey/RubymineProjects/HarmonyShop/app/assets/stylesheets/categories.scss */
+.catalog-sidebar .sidemenu a:hover {
+  text-decoration: underline;
+}
+/* line 44, /home/alexey/RubymineProjects/HarmonyShop/app/assets/stylesheets/categories.scss */
+.catalog-sidebar .sidemenu ul {
+  padding: 3px 0 15px 0;
+}
+/* line 50, /home/alexey/RubymineProjects/HarmonyShop/app/assets/stylesheets/categories.scss */
+.catalog-sidebar .sidemenu .current_category > a, .catalog-sidebar .sidemenu .root > a {
+  font-weight: bold;
+  color: #824cac;
+}
+/* line 58, /home/alexey/RubymineProjects/HarmonyShop/app/assets/stylesheets/categories.scss */
+.catalog-sidebar .sidemenu .parent_category > a {
+  font-weight: bold;
+  color: inherit;
+}

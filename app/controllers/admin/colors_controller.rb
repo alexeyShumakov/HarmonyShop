@@ -1,4 +1,4 @@
-class Admin::ColorsController < ApplicationController
+class Admin::ColorsController < Admin::AdminController
   layout 'admin'
   before_action :set_admin_color, only: [:show, :edit, :update, :destroy]
 

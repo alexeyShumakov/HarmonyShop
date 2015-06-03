@@ -1,11 +1,11 @@
-class Admin::OrdersController < ApplicationController
+class Admin::OrdersController < Admin::AdminController
   layout 'admin'
   before_action :set_admin_order, only: [:show, :edit, :update, :destroy]
 
   # GET /admin/orders
   # GET /admin/orders.json
   def index
-    @admin_orders = Admin::Order.all
+    @admin_orders = Order.all
   end
 
   # GET /admin/orders/1
@@ -15,7 +15,7 @@ class Admin::OrdersController < ApplicationController
 
   # GET /admin/orders/new
   def new
-    @admin_order = Admin::Order.new
+    @admin_order = Order.new
   end
 
   # GET /admin/orders/1/edit
@@ -25,11 +25,11 @@ class Admin::OrdersController < ApplicationController
   # POST /admin/orders
   # POST /admin/orders.json
   def create
-    @admin_order = Admin::Order.new(admin_order_params)
+    @admin_order = Order.new(admin_order_params)
 
     respond_to do |format|
       if @admin_order.save
-        format.html { redirect_to @admin_order, notice: 'Order was successfully created.' }
+        format.html { redirect_to admin_order_path(@admin_order), notice: 'Order was successfully created.' }
         format.json { render :show, status: :created, location: @admin_order }
       else
         format.html { render :new }
@@ -43,7 +43,7 @@ class Admin::OrdersController < ApplicationController
   def update
     respond_to do |format|
       if @admin_order.update(admin_order_params)
-        format.html { redirect_to @admin_order, notice: 'Order was successfully updated.' }
+        format.html { redirect_to admin_order_path(@admin_order), notice: 'Order was successfully updated.' }
         format.json { render :show, status: :ok, location: @admin_order }
       else
         format.html { render :edit }
@@ -65,7 +65,7 @@ class Admin::OrdersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_admin_order
-      @admin_order = Admin::Order.find(params[:id])
+      @admin_order = Order.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

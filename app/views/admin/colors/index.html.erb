@@ -16,7 +16,7 @@
         <td><%= admin_color.id %></td>
         <td><%= admin_color.name %></td>
         <td><%= admin_color.code %></td>
-        <td><%= link_to 'Show', admin_color %></td>
+        <td><%= link_to 'Show', admin_color_path(admin_color) %></td>
         <td><%= link_to 'Edit', edit_admin_color_path(admin_color) %></td>
         <td><%= link_to 'Destroy', admin_color_path(admin_color), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>

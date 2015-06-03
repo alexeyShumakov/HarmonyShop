@@ -1,4 +1,4 @@
-class Admin::ImagesController < ApplicationController
+class Admin::ImagesController < Admin::AdminController
   layout 'admin'
   before_action :set_admin_image, only: [:show, :edit, :update, :destroy]
   before_action :set_product_color, only: [ :show, :new, :edit, :create, :update]

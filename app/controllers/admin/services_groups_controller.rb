@@ -1,4 +1,4 @@
-class Admin::ServicesGroupsController < ApplicationController
+class Admin::ServicesGroupsController < Admin::AdminController
   layout 'admin'
   before_action :set_admin_services_group, only: [:show, :edit, :update, :destroy]
 

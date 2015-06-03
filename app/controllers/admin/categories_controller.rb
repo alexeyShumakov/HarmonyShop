@@ -1,4 +1,4 @@
-class Admin::CategoriesController < ApplicationController
+class Admin::CategoriesController < Admin::AdminController
   layout 'admin'
   before_action :set_admin_category, only: [:show, :edit, :update, :destroy]
 
@@ -65,7 +65,7 @@ class Admin::CategoriesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_admin_category
-      @admin_category = Admin::Category.find(params[:id])
+      @admin_category = Category.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

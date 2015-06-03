@@ -1,4 +1,4 @@
-class Admin::AdditionalDescriptionsController < ApplicationController
+class Admin::AdditionalDescriptionsController < Admin::AdminController
   layout 'admin'
   before_action :set_admin_additional_description, only: [:show, :edit, :update, :destroy]
   before_action :set_product, only: [:new, :create, :index]

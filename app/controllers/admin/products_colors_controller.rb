@@ -1,4 +1,4 @@
-class Admin::ProductsColorsController < ApplicationController
+class Admin::ProductsColorsController < Admin::AdminController
   layout 'admin'
   before_action :set_admin_products_color, only: [:show, :edit, :update, :destroy]
 
