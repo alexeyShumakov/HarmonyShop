@@ -1,4 +1,5 @@
 default: &default
+  host: localhost
   adapter: postgresql
   encoding: unicode
   pool: 5
@@ -17,5 +18,5 @@ test:
 production:
   <<: *default
   database: HarmonyShop_production
-  username: rails
+  username: <%= ENV['APP_DATABASE_USER'] %>
   password: <%= ENV['APP_DATABASE_PASSWORD'] %>
