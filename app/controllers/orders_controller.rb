@@ -53,7 +53,7 @@ class OrdersController < ApplicationController
     # delivery_price get from session, not from hidden input
     @order.delivery_price = session[:delivery_price]
     @order.total_price = @cart.total_price
-
+    @order.status = 0
     @user = current_user
 
     respond_to do |format|
@@ -108,6 +108,6 @@ class OrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:city, :city_id, :line_item, :pay_type, :address, :phone, :user_id)
+      params.require(:order).permit(:city, :city_id, :line_item, :pay_type, :address, :phone, :user_id, :status)
     end
 end

@@ -1,7 +1,17 @@
-<%= simple_form_for(@admin_order) do |f| %>
+<%= simple_form_for [ :admin, @admin_order ], :wrapper => :vertical_form do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
+    <%= f.input :status, label: 'Status' do %>
+      <%= f.select  :status, options_for_select(Order.statuses.keys) %>
+    <% end %>
+    <%= f.input :pay_type, label: 'Способ оплаты' do %>
+      <%= f.select  :pay_type, options_for_select(Order.pay_types.keys) %>
+    <% end %>
+    <%= f.input :address %>
+    <%= f.input :phone %>
+    <%= f.input :total_price %>
+    <%= f.input :delivery_price %>
   </div>
 
   <div class="form-actions">

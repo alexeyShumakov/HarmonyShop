@@ -1,7 +1,7 @@
 class Order < ActiveRecord::Base
   belongs_to :user
   has_many :line_items, dependent: :destroy
-  #enum status: ['', '']
+  enum status: ['В процессе', 'Доставка' , 'Завершен', 'Отмена']
   enum pay_type: ['Онлайн', 'При получении']
 
   validates :pay_type, :presence => true

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'subscribe/Subscribe'
+
   devise_for :admins
   devise_for :users, :controllers => {:registrations => 'registrations'}
 
@@ -69,6 +71,7 @@ Rails.application.routes.draw do
 
   root 'categories#index'
 
+  post '/subscribe', to: 'subscribe#subscribe', as: :subscribe
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

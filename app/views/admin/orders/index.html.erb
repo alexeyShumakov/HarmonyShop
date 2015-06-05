@@ -4,6 +4,7 @@
   <thead>
     <tr>
       <th>#</th>
+      <th>status</th>
       <th>user</th>
       <th>address</th>
       <th>city</th>
@@ -20,6 +21,7 @@
     <% @admin_orders.each do |admin_order| %>
       <tr>
         <td><%= admin_order.id %></td>
+        <td><%= admin_order.status %></td>
         <td>
           <%= admin_order.user.name %>
           <%= link_to admin_order.user.email, admin_user_path(admin_order.user) %>

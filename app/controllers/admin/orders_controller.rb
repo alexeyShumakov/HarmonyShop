@@ -70,6 +70,6 @@ class Admin::OrdersController < Admin::AdminController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def admin_order_params
-      params.require(:order).permit(:city, :city_id, :line_item, :pay_type, :address, :phone, :user_id)
+      params.require(:order).permit(:city, :city_id, :line_item, :pay_type, :address, :phone, :user_id, :status)
     end
 end

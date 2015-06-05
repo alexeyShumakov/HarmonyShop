@@ -94,7 +94,10 @@
       <% end %>
       <li>
         <div class="subscribe">
-          подписаться
+          <%= form_tag({controller: 'subscribe', action: 'subscribe'}) do %>
+            <%= text_field_tag(:q) %>
+            <%= submit_tag('Подписаться', class: 'subscribe-button') %>
+          <% end %>
         </div>
       </li>
       <li class="fix"></li>
