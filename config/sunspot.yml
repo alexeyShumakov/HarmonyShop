@@ -1,10 +1,10 @@
 production:
   solr:
-    solr_home: solr
+    # solr_home: solr
     hostname: localhost
     port: 8983
     log_level: WARNING
-    path: /solr/default
+    # path: /solr/default
 
 development:
   solr:

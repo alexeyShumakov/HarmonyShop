@@ -76,4 +76,15 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+  config.action_mailer.default_url_options = { host: 'readyant.ru' }
+
+  ActionMailer::Base.smtp_settings = {
+      :port           => 587,
+      :address        => 'smtp.mailgun.org',
+      :user_name      => ENV['MAILGUN_USER_NAME'],
+      :password       => ENV['MAILGUN_PASSWORD'],
+      :domain         => 'readyant.ru',
+      :authentication => :plain,
+  }
+  ActionMailer::Base.delivery_method = :smtp
 end
