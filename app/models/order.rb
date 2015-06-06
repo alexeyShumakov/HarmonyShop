@@ -8,7 +8,7 @@ class Order < ActiveRecord::Base
   validates :phone, presence: true
   validates :address, presence: true
   validates :city, presence: true
-
+  validates :total_price, numericality: {:less_than => 10000000}
   def total_price
     line_items.to_a.sum {|item| item.total_price}
   end
