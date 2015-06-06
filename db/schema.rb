@@ -225,4 +225,16 @@ ActiveRecord::Schema.define(version: 20150603053045) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "additional_descriptions", "products"
+  add_foreign_key "images", "products_colors"
+  add_foreign_key "line_items", "carts"
+  add_foreign_key "line_items", "orders"
+  add_foreign_key "line_items", "products"
+  add_foreign_key "orders", "users"
+  add_foreign_key "products", "size_helpers"
+  add_foreign_key "products_colors", "colors"
+  add_foreign_key "products_colors", "products"
+  add_foreign_key "products_colors_sizes", "products_colors"
+  add_foreign_key "products_colors_sizes", "sizes"
+  add_foreign_key "services", "services_groups"
 end
